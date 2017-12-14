@@ -91,7 +91,7 @@ const wp_posts = new Wp_posts_convert({
 wp_posts1.start('http://hoge.hoge/wordpress/newslist');
 ```
 
-### HTML/JS：書き出し先や、ヘルパー関数を指定
+### HTML/JS：書き出し先や、ヘルパー関数を指定
 
 
 ```html
@@ -163,7 +163,7 @@ new Wp_posts_convert({Object});
 
 | 引数 | デフォルト | 備考 |
 | ---- | ---- | ---- |
-| template | '&lt;li&gt;&lt;a href="{{permalink}}"&gt;{{post_title}}&lt;/a&gt;&lt;/li&gt;' | 表示テンプレート |
+| template | '&lt;li&gt;&lt;a href="{{permalink}}"&gt;{{post_title}}&lt;/a&gt;&lt;/li&gt;' | 表示テンプレート |
 | target | '.js-wp-posts' | 出力先のDOMセレクター |
 | helpers | {remove_tag, convert_date} | ヘルパー関数 |
 
@@ -219,6 +219,7 @@ WP_Postオブジェクトにはパーマリンクやアイキャッチ画像URL�
 ```
 
 | 識別子 | 内容 |
+| --- | --- |
 | YY | 年（4桁） |
 | MM | 月（2桁） |
 | DD | 日（2桁） |
@@ -227,7 +228,7 @@ WP_Postオブジェクトにはパーマリンクやアイキャッチ画像URL�
 
 ## Helper
 
-単純な文字列置き換えではなく、加工して出力したい場合はヘルパー関数を使用する。
+単純な文字列置き換えではなく、加工して出力したい場合はヘルパー関数を使用する。
 
 ### convert_date()
 
@@ -249,7 +250,7 @@ WP_Postオブジェクトにはパーマリンクやアイキャッチ画像URL�
 <!-- オリジナルデータ -->
 <strong>これはすごい！</strong>
 <!-- テンプレート -->
-{{{convert_maru("post_title")}}}
+{{{remove_tag("post_title")}}}
 <!-- 出力結果 -->
 これはすごい！
 ```
