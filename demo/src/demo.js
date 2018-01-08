@@ -1,5 +1,5 @@
 
-import Wp_posts_convert from '../../dist/syg-wp-posts-convert.es';
+import Wp_posts_convert from '../../dist/wp-posts-convert.es';
 // import wp_posts_convert from 'syg-wp-posts-convert';
 
 

@@ -941,7 +941,7 @@ module.exports = function bind(fn, thisArg) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dist_syg_wp_posts_convert_es__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dist_wp_posts_convert_es__ = __webpack_require__(9);
 
 
 // import wp_posts_convert from 'syg-wp-posts-convert';
@@ -950,7 +950,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 // --------------
 // シンプルなリスト
 // --------------
-var wp_posts1 = new __WEBPACK_IMPORTED_MODULE_0__dist_syg_wp_posts_convert_es__["a" /* default */]({
+var wp_posts1 = new __WEBPACK_IMPORTED_MODULE_0__dist_wp_posts_convert_es__["a" /* default */]({
     template: document.querySelector('.js-wp-posts-template-1').textContent
 });
 wp_posts1.start('./sample.json');
@@ -959,7 +959,7 @@ wp_posts1.start('./sample.json');
 // オプションを指定
 // --------------
 // 変換結果の配列も別途受け取る
-var wp_posts2 = new __WEBPACK_IMPORTED_MODULE_0__dist_syg_wp_posts_convert_es__["a" /* default */]({
+var wp_posts2 = new __WEBPACK_IMPORTED_MODULE_0__dist_wp_posts_convert_es__["a" /* default */]({
     template: document.querySelector('.js-wp-posts-template-2').textContent,
     target: '.js-wp-posts-2'
 });
@@ -1242,7 +1242,7 @@ var _class = function () {
 }();
 
 /* harmony default export */ __webpack_exports__["a"] = (_class);
-//# sourceMappingURL=syg-wp-posts-convert.es.js.map
+//# sourceMappingURL=wp-posts-convert.es.js.map
 
 /***/ }),
 /* 10 */

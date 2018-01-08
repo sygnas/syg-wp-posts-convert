@@ -10,7 +10,7 @@ Wordpress側で新着記事一覧などを json_encode() させる。
 ## Usage
 ### Install
 ```sh
-npm install syg-wp-posts-convert
+npm install --save @sygnas/wp-posts-convert
 ```
 
 ### Wordpress
@@ -81,7 +81,7 @@ WordpressのWP_Postオブジェクトで使われている名前を使う
 ```
 
 ```JavaScript
-import wp_posts_convert from 'syg-wp-posts-convert';
+import wp_posts_convert from '@sygnas/wp-posts-convert';
 
 // テンプレートを textContent パラメータで取得。
 // start() で jsonr の URL を指定して取得＞表示の流れ
@@ -119,7 +119,7 @@ convert_maru：数字を丸数字に変換する（後から追加）
 ```
 
 ```JavaScript
-import wp_posts_convert from 'syg-wp-posts-convert';
+import wp_posts_convert from '@sygnas/wp-posts-convert';
 
 // 書き出し先エレメントを target で指定
 const wp_posts = new Wp_posts_convert({

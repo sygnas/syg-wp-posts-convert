@@ -1,9 +1,9 @@
 {
-  "name": "syg-wp-posts-convert",
+  "name": "@sygnas/wp-posts-convert",
   "version": "1.0.0",
   "description": "Scroll in viewport add data attribute.",
-  "main": "dist/syg-wp-posts-convert.js",
-  "module": "dist/syg-wp-posts-convert.es.js",
+  "main": "dist/wp-posts-convert.js",
+  "module": "dist/wp-posts-convert.es.js",
   "moduleName": "syg-wp-posts-convert",
   "private": false,
   "repository": {

@@ -1,5 +1,11 @@
-import axios from 'axios';
-import Parser from 'csv-string/lib/parser';
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('axios'), require('csv-string/lib/parser')) :
+	typeof define === 'function' && define.amd ? define(['axios', 'csv-string/lib/parser'], factory) :
+	(global['syg-wp-posts-convert'] = factory(global.axios,global.Parser));
+}(this, (function (axios,Parser) { 'use strict';
+
+axios = axios && axios.hasOwnProperty('default') ? axios['default'] : axios;
+Parser = Parser && Parser.hasOwnProperty('default') ? Parser['default'] : Parser;
 
 // 日付書式変換
 function convert_date(post, key, format) {
@@ -226,5 +232,7 @@ var _class = function () {
     return _class;
 }();
 
-export default _class;
-//# sourceMappingURL=syg-wp-posts-convert.es.js.map
+return _class;
+
+})));
+//# sourceMappingURL=wp-posts-convert.js.map

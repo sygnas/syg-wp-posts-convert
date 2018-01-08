@@ -18,7 +18,7 @@ const paths = {
 let fileName,
     Configure;
 
-fileName = process.env.NODE_ENV !== 'production' ? 'syg-wp-posts-convert' : 'syg-wp-posts-convert.min';
+fileName = process.env.NODE_ENV !== 'production' ? 'wp-posts-convert' : 'wp-posts-convert.min';
 
 Configure = {
     input: `${paths.source.root}index.js`,
