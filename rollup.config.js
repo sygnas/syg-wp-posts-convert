@@ -2,6 +2,7 @@ import babel from 'rollup-plugin-babel';
 import uglify from 'rollup-plugin-uglify';
 import sourcemaps from 'rollup-plugin-sourcemaps';
 import resolve from 'rollup-plugin-node-resolve';
+import commonjs from 'rollup-plugin-commonjs';
 
 const packages = require('./package.json');
 
@@ -15,34 +16,35 @@ const paths = {
     },
 };
 
-let fileName,
-    Configure;
+const fileName = process.env.NODE_ENV !== 'production' ? 'wp-posts-convert' : 'wp-posts-convert.min';
 
-fileName = process.env.NODE_ENV !== 'production' ? 'wp-posts-convert' : 'wp-posts-convert.min';
-
-Configure = {
+const Configure = {
     input: `${paths.source.root}index.js`,
-    sourcemap: true,
-    moduleId: packages.moduleName,
-    name: packages.moduleName,
-    output: [{
+    output: [
+      {
         file: `${paths.dist.root}${fileName}.js`,
         format: 'umd',
-    }],
-    // targets: [{
-    //     dest: `${paths.dist.root}${fileName}.js`,
-    //     format: 'umd',
-    // }],
+        name: packages.moduleName,
+        sourcemap: true,
+      }
+    ],
     plugins: [
-        babel(),
+        babel({
+          plugins: ['external-helpers'],
+          externalHelpers: true,
+          runtimeHelpers: true,
+          exclude: 'node_modules/**'
+        }),
+        commonjs({
+          include: 'node_modules/**'
+        }),
         sourcemaps(),
         resolve(),
     ],
     external: [
-        'axios',
-        'csv-string',
-        'csv-string/lib/parser'
-    ]
+      'csv-string/lib/parser',
+      'axios'
+    ],
 };
 
 if (process.env.NODE_ENV === 'production') {
