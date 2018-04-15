@@ -1422,14 +1422,18 @@ function convert_date(post, key, format) {
     var date = post[key].split(/[: -]/);
     var YY = date[0];
     var MM = date[1];
+    var M = date[1].replace(/^0/, '');
     var DD = date[2];
+    var D = date[2].replace(/^0/, '');
     var hh = date[3];
     var mm = date[4];
 
     var output = format;
     output = output.split('YY').join(YY);
     output = output.split('MM').join(MM);
+    output = output.split('M').join(M);
     output = output.split('DD').join(DD);
+    output = output.split('D').join(D);
     output = output.split('hh').join(hh);
     output = output.split('mm').join(mm);
 
