@@ -1456,181 +1456,222 @@ function remove_tag(post, key) {
 // ヘルパー関数を使った置き換えのパターン
 var helper_reg = new RegExp('{{{(.+?)\\((.*?)\\)}}}');
 
+// 繰り返し処理のパターン
+var loop_reg = new RegExp('{{#loop (.+?)}}([\\s\\S]+?){{\\/#loop}}', 'm');
+
 /**
  *
  */
 
 var _class = function () {
 
-    /**
-     * コンストラクタ
-     * @param {Object} config 設定。const defaults 参照
-     */
-    function _class(config) {
-        _classCallCheck(this, _class);
+  /**
+   * コンストラクタ
+   * @param {Object} config 設定。const defaults 参照
+   */
+  function _class(config) {
+    _classCallCheck(this, _class);
 
-        // 初期設定
-        var defaults = {
-            // 表示テンプレート
-            template: '<li><a href="{{permalink}}">{{post_title}}</a></li>',
-            // 出力先のDOMセレクター
-            target: '.js-wp-posts',
-            // ヘルパー関数
-            helpers: {
-                remove_tag: remove_tag,
-                convert_date: convert_date
-            }
-        };
+    // 初期設定
+    var defaults = {
+      // 表示テンプレート
+      template: '<li><a href="{{permalink}}">{{post_title}}</a></li>',
+      // 出力先のDOMセレクター
+      target: '.js-wp-posts',
+      // ヘルパー関数
+      helpers: {
+        remove_tag: remove_tag,
+        convert_date: convert_date
+      }
+    };
 
-        // 設定をマージ
-        this.opt = _Object$assign(defaults, config);
+    // 設定をマージ
+    this.opt = _Object$assign(defaults, config);
+  }
+
+  /**
+   * json を読み込んでテンプレートを展開する
+   * @param {String} url json取得URL
+   * @return {Promise} 成功・失敗を返す。成功時には変換したリストを一緒に返す
+   */
+
+
+  _createClass(_class, [{
+    key: 'start',
+    value: function start(url) {
+      var _this = this;
+
+      return new _Promise(function (resolve, reject) {
+        // jsonを読み込む
+        axios.get(url).then(function (res) {
+          // 受け取った記事一覧を変換し、
+          // 指定されたエレメントに埋め込む
+          var list = _this.$_convert_list(res.data);
+          _this.$_insert_to_target(list.join(''));
+
+          // Promiseで変換済みリストを返す
+          resolve(list);
+        }).catch(function (e) {
+          reject(e);
+        });
+      });
     }
 
     /**
-     * json を読み込んでテンプレートを展開する
-     * @param {String} url json取得URL
-     * @return {Promise} 成功・失敗を返す。成功時には変換したリストを一緒に返す
+     * ヘルパー関数を追加
+     * @param {String} name 関数名
+     * @param {Function} func 関数
      */
 
+  }, {
+    key: 'add_helper',
+    value: function add_helper(name, func) {
+      this.opt.helpers[name] = func;
+    }
 
-    _createClass(_class, [{
-        key: 'start',
-        value: function start(url) {
-            var _this = this;
+    /**
+     * private
+     */
 
-            return new _Promise(function (resolve, reject) {
-                // jsonを読み込む
-                axios.get(url).then(function (res) {
-                    // 受け取った記事一覧を変換し、
-                    // 指定されたエレメントに埋め込む
-                    var list = _this.$_convert_list(res.data);
-                    _this.$_insert_to_target(list.join(''));
+    /**
+     * 変換したテンプレートをターゲットエレメントに挿入する
+     * エレメントが存在しなければ何もしない
+     * @param {String} output 変換済みテンプレート
+     */
 
-                    // Promiseで変換済みリストを返す
-                    resolve(list);
-                }).catch(function (e) {
-                    reject(e);
-                });
-            });
-        }
+  }, {
+    key: '$_insert_to_target',
+    value: function $_insert_to_target(output) {
+      var target = document.querySelector(this.opt.target);
+      if (target) {
+        target.insertAdjacentHTML('afterbegin', output);
+      }
+    }
 
-        /**
-         * ヘルパー関数を追加
-         * @param {String} name 関数名
-         * @param {Function} func 関数
-         */
+    /**
+     * 受け取った記事リストを変換して返す
+     * @param {Array} data WP_postの配列
+     * @return {Array} 変換した記事毎の配列
+     */
 
-    }, {
-        key: 'add_helper',
-        value: function add_helper(name, func) {
-            this.opt.helpers[name] = func;
-        }
+  }, {
+    key: '$_convert_list',
+    value: function $_convert_list(data) {
+      var _this2 = this;
 
-        /**
-         * private
-         */
+      var output_list = [];
+      // console.log(data);
 
-        /**
-         * 変換したテンプレートをターゲットエレメントに挿入する
-         * エレメントが存在しなければ何もしない
-         * @param {String} output 変換済みテンプレート
-         */
+      data.forEach(function (post) {
+        var result = _this2.$_convert_post(post);
+        output_list.push(result);
+      });
+      return output_list;
+    }
 
-    }, {
-        key: '$_insert_to_target',
-        value: function $_insert_to_target(output) {
-            var target = document.querySelector(this.opt.target);
-            if (target) {
-                target.insertAdjacentHTML('afterbegin', output);
-            }
-        }
+    /**
+     * 受け取った記事をテンプレートで変換して返す
+     * @param {Object} post
+     * @return {String} 変換したテンプレート
+     */
 
-        /**
-         * 受け取った記事リストを変換して返す
-         * @param {Array} data WP_postの配列
-         * @return {Array} 変換した記事毎の配列
-         */
+  }, {
+    key: '$_convert_post',
+    value: function $_convert_post(post) {
+      var template = this.opt.template;
 
-    }, {
-        key: '$_convert_list',
-        value: function $_convert_list(data) {
-            var _this2 = this;
+      // ヘルパーでの変換
+      template = this.$_convert_helper(template, post);
+      // 繰り返し項目の変換
+      template = this.$_convert_loop(template, post);
+      // 記事の項目で検索して変換
+      template = this.$_convert_simple(template, post);
 
-            var output_list = [];
-            // console.log(data);
+      return template;
+    }
 
-            data.forEach(function (post) {
-                var result = _this2.$_convert_post(post);
-                output_list.push(result);
-            });
-            return output_list;
-        }
+    /**
+     * 繰り返し項目の変換
+     * @param {String} template テンプレート
+     * @param {Object} post ポストデータ
+     * @return {String} 変換後テンプレート
+     */
 
-        /**
-         * 受け取った記事をテンプレートで変換して返す
-         * @param {Object} post
-         * @return {String} 変換したテンプレート
-         */
+  }, {
+    key: '$_convert_loop',
+    value: function $_convert_loop(template, post) {
+      var _this3 = this;
 
-    }, {
-        key: '$_convert_post',
-        value: function $_convert_post(post) {
-            var template = this.opt.template;
+      var match = void 0;
 
-            // ヘルパーでの置き換えを処理
-            template = this.$_convert_helper(template, post);
-            // 記事の項目で検索して書き換え
-            template = this.$_convert_simple(template, post);
+      var _loop = function _loop() {
+        // 検索パターン
+        var pattern = match[0];
+        // ループ用配列
+        var datalist = post[match[1]];
+        // 変換フォーマット
+        var format = match[2];
+        // 出力リスト
+        var output = [];
 
-            return template;
-        }
+        datalist.forEach(function (data) {
+          output.push(_this3.$_convert_simple(format, data));
+        });
+        template = template.replace(pattern, output.join(''));
+      };
 
-        /**
-         * 記事データの項目名で置換
-         * @param {String} template テンプレート
-         * @param {Object} post ポストデータ
-         * @return {String} 変換後テンプレート
-         */
+      while ((match = loop_reg.exec(template)) !== null) {
+        _loop();
+      }
+      return template;
+    }
 
-    }, {
-        key: '$_convert_simple',
-        value: function $_convert_simple(template, post) {
-            _Object$keys(post).forEach(function (key) {
-                template = template.replace('{{' + key + '}}', post[key]);
-            });
-            return template;
-        }
+    /**
+     * 記事データの項目名で置換
+     * @param {String} template テンプレート
+     * @param {Object} post ポストデータ
+     * @return {String} 変換後テンプレート
+     */
 
-        /**
-         * ヘルパー指定されたパターンからヘルパー名とパラメーターを抜き出して実行する
-         * @param {String} template テンプレート
-         * @param {Object} post ポストデータ
-         * @return {String} 変換後テンプレート
-         */
+  }, {
+    key: '$_convert_simple',
+    value: function $_convert_simple(template, post) {
+      _Object$keys(post).forEach(function (key) {
+        template = template.replace('{{' + key + '}}', post[key]);
+      });
+      return template;
+    }
 
-    }, {
-        key: '$_convert_helper',
-        value: function $_convert_helper(template, post) {
-            var helpers = this.opt.helpers;
-            var match = void 0;
+    /**
+     * ヘルパー指定されたパターンからヘルパー名とパラメーターを抜き出して実行する
+     * @param {String} template テンプレート
+     * @param {Object} post ポストデータ
+     * @return {String} 変換後テンプレート
+     */
 
-            while ((match = helper_reg.exec(template)) !== null) {
-                // 検索パターン
-                var pattern = match[0];
-                // ヘルパー関数名
-                var helper = match[1];
-                var parser = new Parser(match[2]);
-                // ヘルパーに渡す引数
-                var params = parser.File()[0];
-                // ヘルパーの実行結果で置換する
-                var helper_res = helpers[helper].apply(helpers, [post].concat(_toConsumableArray(params)));
-                template = template.replace(pattern, helper_res);
-            }
-            return template;
-        }
-    }]);
+  }, {
+    key: '$_convert_helper',
+    value: function $_convert_helper(template, post) {
+      var helpers = this.opt.helpers;
+      var match = void 0;
 
-    return _class;
+      while ((match = helper_reg.exec(template)) !== null) {
+        // 検索パターン
+        var pattern = match[0];
+        // ヘルパー関数名
+        var helper = match[1];
+        var parser = new Parser(match[2]);
+        // ヘルパーに渡す引数
+        var params = parser.File()[0];
+        // ヘルパーの実行結果で置換する
+        var helper_res = helpers[helper].apply(helpers, [post].concat(_toConsumableArray(params)));
+        template = template.replace(pattern, helper_res);
+      }
+      return template;
+    }
+  }]);
+
+  return _class;
 }();
 
 export default _class;

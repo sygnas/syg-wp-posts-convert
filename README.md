@@ -15,51 +15,29 @@ npm install --save @sygnas/wp-posts-convert
 
 ### Wordpress
 
-固定ページ用テンプレートを用意する。<br>
-ファイル名 `page-newslist.php` 等のようにして固定ページとして実装することをオススメします。
+固定ページ用テンプレートファイルを用意する。<br>
+≫[サンプル](./wordpress/page-newslist.php)
+
+ファイル名 `page-newslist.php` として保存し、テンプレートと同じ場所に設置する。
+
+同名の固定ページ「{ブログURL}/newslist」を作成する。
 
 Wordpress のテンプレートファイル名については Wordpress のドキュメントを参照してください。
 
-```php
-<?php
-// Wordpress側の固定ページテンプレートです。
-// get_posts() に渡すパラメーターや、
-// unset() する不要パラメーターは各自で調整してください。
+### Javascript
 
-$params = [
-    'posts_per_page' => 10
-];
-$posts = get_posts($params);
+```JavaScript
+import wp_posts_convert from '@sygnas/wp-posts-convert';
 
-// get_posts() ではパーマリンクやアイキャッチ画像のURLが入っていないので、
-// 画像サイズも含めて自分で指定する。
-// 不要なパラメータも削除する。
-// 変換したものを json_encode() でjsonとして表示
-$posts = array_map(
-    function($post){
-        $id = $post->ID;
-
-        // set permalink
-        $post->permalink = get_permalink($id);
-
-        // set eyecatch image
-        // get_the_post_thumbnail_url() is need Wordpress 4.4 over
-        $post->eyecatch = get_the_post_thumbnail_url($id, 'medium');
-
-        // delete unused content
-        unset($post->post_content);
-        unset($post->post_content_filtered);
-        unset($post->post_name);
-
-        return $post;
-    },
-    $posts
-);
-
-echo json_encode($posts);
+// テンプレートを textContent パラメータで取得。
+// start() で jsonr の URL を指定して取得＞表示の流れ
+const wp_posts = new Wp_posts_convert({
+    template: document.querySelector('.js-wp-posts-template').textContent
+});
+wp_posts.start('http://hoge.hoge/wordpress/newslist');
 ```
 
-### HTML/JS：シンプルな例
+### HTML：シンプルな例
 
 ```html
 <!--
@@ -80,19 +58,32 @@ WordpressのWP_Postオブジェクトで使われている名前を使う
 </ul>
 ```
 
-```JavaScript
-import wp_posts_convert from '@sygnas/wp-posts-convert';
 
-// テンプレートを textContent パラメータで取得。
-// start() で jsonr の URL を指定して取得＞表示の流れ
-const wp_posts = new Wp_posts_convert({
-    template: document.querySelector('.js-wp-posts-template').textContent
-});
-wp_posts1.start('http://hoge.hoge/wordpress/newslist');
+### HTML：カテゴリも表示
+
+```html
+<!--
+{{#loop categories}}〜{{/#loop}} 内がくり返される。
+-->
+<script type="text/x-template" class="js-wp-posts-template">
+<li>
+    <a href="{{permalink}}">
+        {{post_date}} -
+        {{#loop categories}}
+          <a href="{{link}}" class="{{slug}}">{{name}}</a>
+        {{/#loop}} -
+        {{post_title}}
+    </a>
+</li>
+</script>
+
+<!-- 出力先 -->
+<ul class="js-wp-posts">
+</ul>
 ```
 
-### HTML/JS：書き出し先や、ヘルパー関数を指定
 
+### HTML/JS：書き出し先や、ヘルパー関数を指定
 
 ```html
 <!--
