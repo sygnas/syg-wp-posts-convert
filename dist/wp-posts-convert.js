@@ -1419,7 +1419,7 @@ var _createClass = unwrapExports(createClass);
 // 日付書式変換
 function convert_date(post, key, format) {
 
-    var date = post[key].split(/[: -]/);
+    var date = post[key].split(/[T: -]/);
     var YY = date[0];
     var MM = date[1];
     var M = date[1].replace(/^0/, '');
@@ -1480,6 +1480,10 @@ var _class = function () {
 
     // 初期設定
     var defaults = {
+      // 取得元タイプ
+      // rest : WP REST API を使った取得（デフォルト）
+      // custom : 添付の page-newslist.php を使った方法
+      type: 'rest',
       // 表示テンプレート
       template: '<li><a href="{{permalink}}">{{post_title}}</a></li>',
       // 出力先のDOMセレクター
@@ -1566,7 +1570,6 @@ var _class = function () {
       var _this2 = this;
 
       var output_list = [];
-      // console.log(data);
 
       data.forEach(function (post) {
         var result = _this2.$_convert_post(post);
@@ -1586,6 +1589,10 @@ var _class = function () {
     value: function $_convert_post(post) {
       var template = this.opt.template;
 
+      // WP REST API の時に行う変換
+      if (this.opt.type === 'rest') {
+        post = this.$_convert_rest(post);
+      }
       // ヘルパーでの変換
       template = this.$_convert_helper(template, post);
       // 繰り返し項目の変換
@@ -1594,6 +1601,20 @@ var _class = function () {
       template = this.$_convert_simple(template, post);
 
       return template;
+    }
+
+    /**
+     * WP REST API の時に行う変換
+     * @param {Objedt} post
+     * @return {Object} 変換したpostオブジェクト
+     */
+
+  }, {
+    key: '$_convert_rest',
+    value: function $_convert_rest(post) {
+      var title = post.title.rendered;
+      post.title = title;
+      return post;
     }
 
     /**

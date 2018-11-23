@@ -7,13 +7,20 @@ Wordpress側で新着記事一覧などを json_encode() させる。
 それを受け取って html 出力させるだけ。
 よく使う処理なので npm にしました。
 
+## Release
+
+- 2018.11.23
+  - Wordpress WP REST API に対応。
+  - 過去バージョンの page-newslist.php を使う場合は `type: 'custom'` を指定する必要がある。
+  - ヘルパー convert_date() 内での日付分割方法を変更
+
 ## Usage
 ### Install
-```sh
+```
 npm install --save @sygnas/wp-posts-convert
 ```
 
-### Wordpress
+### Wordpress（type:'rest' の場合は不要）
 
 固定ページ用テンプレートファイルを用意する。<br>
 ≫[サンプル](./wordpress/page-newslist.php)
@@ -26,29 +33,30 @@ Wordpress のテンプレートファイル名については Wordpress のド�
 
 ### Javascript
 
-```JavaScript
+```
 import wp_posts_convert from '@sygnas/wp-posts-convert';
 
 // テンプレートを textContent パラメータで取得。
 // start() で jsonr の URL を指定して取得＞表示の流れ
 const wp_posts = new Wp_posts_convert({
+    type: 'rest',
     template: document.querySelector('.js-wp-posts-template').textContent
 });
-wp_posts.start('http://hoge.hoge/wordpress/newslist');
+wp_posts.start('http://hoge.hoge/wordpress/wp-json/wp/v2/posts');
 ```
 
 ### HTML：シンプルな例
 
-```html
+```
 <!--
 書き出しテンプレート
 {{}} で囲まれた箇所が置換される。
-WordpressのWP_Postオブジェクトで使われている名前を使う
+Wordpressの REST API で使用されている名前を使う
 -->
 <script type="text/x-template" class="js-wp-posts-template">
 <li>
-    <a href="{{permalink}}">
-        {{post_date}} - {{post_title}}
+    <a href="{{link}}">
+        {{date}} - {{title}}
     </a>
 </li>
 </script>
@@ -61,18 +69,18 @@ WordpressのWP_Postオブジェクトで使われている名前を使う
 
 ### HTML：カテゴリも表示
 
-```html
+```
 <!--
 {{#loop categories}}〜{{/#loop}} 内がくり返される。
 -->
 <script type="text/x-template" class="js-wp-posts-template">
 <li>
-    <a href="{{permalink}}">
-        {{post_date}} -
+    <a href="{{link}}">
+        {{date}} -
         {{#loop categories}}
           <a href="{{link}}" class="{{slug}}">{{name}}</a>
         {{/#loop}} -
-        {{post_title}}
+        {{title}}
     </a>
 </li>
 </script>
@@ -85,7 +93,7 @@ WordpressのWP_Postオブジェクトで使われている名前を使う
 
 ### HTML/JS：書き出し先や、ヘルパー関数を指定
 
-```html
+```
 <!--
 書き出しテンプレート
 {{{}}} で囲まれた箇所はヘルパー関数が使用される。
@@ -95,8 +103,8 @@ convert_maru：数字を丸数字に変換する（後から追加）
 <script type="text/x-template" class="js-wp-posts-template">
 <li>
     <a href="{{permalink}}">
-        {{{convert_date("post_date","YY年MM月DD日")}}} -
-        {{{convert_maru("post_title")}}}
+        {{{convert_date("date","YY年MM月DD日")}}} -
+        {{{convert_maru("title")}}}
     </a>
 </li>
 </script>
@@ -109,11 +117,12 @@ convert_maru：数字を丸数字に変換する（後から追加）
 </ul>
 ```
 
-```JavaScript
+```
 import wp_posts_convert from '@sygnas/wp-posts-convert';
 
 // 書き出し先エレメントを target で指定
 const wp_posts = new Wp_posts_convert({
+    type: 'rest',
     template: document.querySelector('.js-wp-posts-template').textContent,
     target: '.js-wp-posts-output'
 });
@@ -139,7 +148,7 @@ wp_posts2.add_helper('convert_maru', function(post, key){
 // json取得して表示
 // Promise が返されるので表示した後に then() で受け取れる。
 // 変換したものを配列で受け取れる
-wp_posts.start('http://hoge.hoge/wordpress/newslist')
+wp_posts.start('http://hoge.hoge/wordpress/wp-json/wp/v2/posts')
 .then(function(list) {
     console.log(list);
 });
@@ -148,12 +157,13 @@ wp_posts.start('http://hoge.hoge/wordpress/newslist')
 
 ## Options
 
-```JavaScript
+```
 new Wp_posts_convert({Object});
 ```
 
 | 引数 | デフォルト | 備考 |
 | ---- | ---- | ---- |
+| type | 'rest' | `rest` : Wordpress REST API を使用する / `custom` : 付属の page-newslist.php を使う場合 |
 | template | '&lt;li&gt;&lt;a href="{{permalink}}"&gt;{{post_title}}&lt;/a&gt;&lt;/li&gt;' | 表示テンプレート |
 | target | '.js-wp-posts' | 出力先のDOMセレクター |
 | helpers | {remove_tag, convert_date} | ヘルパー関数 |
@@ -181,7 +191,7 @@ Promise を返すので成功した場合は `.then(list)` で変換後リスト
 | name | String | 関数名 |
 | func | Function | 関数 |
 
-```javascript
+```
 wp_posts.add_helper('convert_maru', function(post, key){
     let output = post[key];
     output = output.replace('1', '①');
@@ -205,8 +215,8 @@ WP_Postオブジェクトにはパーマリンクやアイキャッチ画像URL�
 
 簡単な置換は `convert_date` というヘルパー関数を用意しているが、詳細な変換をしたければ独自にヘルパー関数を追加する必要がある。
 
-```html
-{{{convert_date("post_date","YY年MM月DD日")}}}
+```
+{{{convert_date("date","YY年MM月DD日")}}}
 ```
 
 | 識別子 | 内容 |
@@ -226,7 +236,7 @@ WP_Postオブジェクトにはパーマリンクやアイキャッチ画像URL�
 標準で搭載しているヘルパー関数。日付を好きなフォーマットに変換する。<br>
 シンプルな実装になっているので、月・日などは2桁のままになる。
 
-```html
+```
 <!-- テンプレート -->
 {{{convert_date("post_date","YY年MM月DD日")}}}
 <!-- 出力結果 -->
@@ -237,7 +247,7 @@ WP_Postオブジェクトにはパーマリンクやアイキャッチ画像URL�
 
 標準で搭載しているヘルパー関数。htmlタグを除去する。<br>
 
-```html
+```
 <!-- オリジナルデータ -->
 <strong>これはすごい！</strong>
 <!-- テンプレート -->
