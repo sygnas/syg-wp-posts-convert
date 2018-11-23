@@ -2,7 +2,7 @@
 // 日付書式変換
 export default function convert_date (post, key, format) {
 
-    const date = post[key].split(/[: -]/);
+    const date = post[key].split(/[T: -]/);
     const YY = date[0];
     const MM = date[1];
     const M = date[1].replace(/^0/, '');
