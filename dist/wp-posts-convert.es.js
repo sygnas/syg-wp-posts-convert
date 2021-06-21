@@ -1445,6 +1445,11 @@ function remove_tag(post, key) {
  * Wordpress の get_posts() の json を html に変換する。
  * htmlテンプレートには Handlebarsを使用
  *
+ * カテゴリ情報は本来 REST API で取得するデータには含まれないので、
+ * Wordpress テンプレートの functions.php に追加の記述が必要。
+ * 詳細は README.md 参照。
+ *
+ *
  * @author   Hiroshi Fukuda <info.sygnas@gmail.com>
  * @license  MIT
  */
@@ -1479,7 +1484,7 @@ var _class = function () {
       // custom : 添付の page-newslist.php を使った方法
       type: 'rest',
       // 表示テンプレート
-      template: '<li><a href="{{permalink}}">{{post_title}}</a></li>',
+      template: '<li><a href="{{link}}">{{post_title}}</a></li>',
       // 出力先のDOMセレクター
       target: '.js-wp-posts',
       // ヘルパー関数
@@ -1606,8 +1611,13 @@ var _class = function () {
   }, {
     key: '$_convert_rest',
     value: function $_convert_rest(post) {
+      // タイトル
       var title = post.title.rendered;
       post.title = title;
+
+      // カテゴリ
+      post.categories = post.cat_info;
+
       return post;
     }
 

@@ -9,6 +9,8 @@ Wordpress側で新着記事一覧などを json_encode() させる。
 
 ## Release
 
+- 2021.06.21
+  - カテゴリーに対応（要 functions.php の書き換え）
 - 2018.11.23
   - Wordpress WP REST API に対応。
   - 過去バージョンの page-newslist.php を使う場合は `type: 'custom'` を指定する必要がある。
@@ -20,7 +22,43 @@ Wordpress側で新着記事一覧などを json_encode() させる。
 npm install --save @sygnas/wp-posts-convert
 ```
 
-### Wordpress（type:'rest' の場合は不要）
+### Wordpress（REST API使用のパターン）
+
+標準の記事取得 REST API にはカテゴリ情報が含まれないので、使用するテンプレートの `functions.php` に下記の記述を追加する必要がある。
+関数名などは適宜変更しても良い。
+
+```
+/**
+* REST API にカテゴリ情報を含める
+**/
+add_action( 'rest_api_init', 'api_add_fields' );
+
+function api_add_fields() {
+  register_rest_field(
+    'post',
+    'cat_info',
+    array(
+      'get_callback'    => 'register_fields',
+      'update_callback' => null,
+      'schema'          => null,
+    )
+  );
+}
+
+function register_fields( $post, $name ) {
+  $categories = get_the_category($post['id']);
+
+  $categories = array_map(function($category){
+    $category->link = get_category_link($category->term_id);
+    return $category;
+  }, $categories);
+
+  return $categories;
+}
+```
+
+
+### Wordpress（REST API不使用のパターン）
 
 固定ページ用テンプレートファイルを用意する。<br>
 ≫[サンプル](./wordpress/page-newslist.php)
@@ -30,6 +68,7 @@ npm install --save @sygnas/wp-posts-convert
 同名の固定ページ「{ブログURL}/newslist」を作成する。
 
 Wordpress のテンプレートファイル名については Wordpress のドキュメントを参照してください。
+
 
 ### Javascript
 
