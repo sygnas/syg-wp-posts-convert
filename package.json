@@ -1,10 +1,10 @@
 {
   "name": "@sygnas/wp-posts-convert",
-  "version": "1.4.0",
-  "description": "Scroll in viewport add data attribute.",
-  "main": "dist/wp-posts-convert.js",
-  "module": "dist/wp-posts-convert.es.js",
-  "moduleName": "syg-wp-posts-convert",
+  "version": "2.0.0",
+  "description": "Wordpress REST API から記事を取得して出力する",
+  "main": "dist/commonjs/index.js",
+  "module": "dist/es6/index.js",
+  "moduleName": "sygWpPostsConvert",
   "private": false,
   "repository": {
     "type": "git",
@@ -12,10 +12,9 @@
   },
   "scripts": {
     "start": "npm run watch",
-    "watch": "NODE_ENV=example rollup -w -c rollup.config.js",
-    "dev": "NODE_ENV=development rollup -c rollup.config.js",
-    "prod": "NODE_ENV=production rollup -c rollup.config.js",
-    "production": "rm -rf dist && npm run dev && npm run prod",
+    "watch": "rollup -w -c rollup.config.js",
+    "build": "rm -rf dist && rollup -c rollup.config.js",
+    "demo": "webpack",
     "lint": "eslint src"
   },
   "keywords": [
@@ -27,22 +26,22 @@
   "author": "Hiroshi Fukuda <info.sygnas@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-eslint": "^8.2.1",
-    "babel-plugin-external-helpers": "^6.22.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-runtime": "^6.26.0",
-    "eslint": "^4.17.0",
-    "rollup": "^0.55.3",
-    "rollup-plugin-babel": "^3.0.3",
-    "rollup-plugin-commonjs": "^8.3.0",
-    "rollup-plugin-node-resolve": "^3.0.2",
-    "rollup-plugin-sourcemaps": "^0.4.2",
-    "rollup-plugin-uglify": "^3.0.0"
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-node-resolve": "^13.0.6",
+    "@rollup/plugin-typescript": "^8.3.0",
+    "@types/axios": "^0.14.0",
+    "rollup": "^2.60.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "tslib": "^2.3.1",
+    "typescript": "^4.5.2",
+    "webpack": "^5.64.3",
+    "webpack-cli": "^4.9.1"
   },
   "dependencies": {
-    "axios": "^0.21.1",
-    "csv-string": "^3.0.3"
+    "axios": "^0.24.0",
+    "csv-parse": "^5.0.3"
   }
 }

@@ -17,8 +17,7 @@ $posts = array_map(
 
     $id = $post->ID;
 
-    // set permalink
-    $post->permalink = get_permalink($id);
+    $post->link = get_permalink($id);
 
     // set eyecatch image
     // get_the_post_thumbnail_url() is need Wordpress 4.4 over
@@ -26,6 +25,11 @@ $posts = array_map(
 
     // category
     $post->categories = get_category_list($id);
+
+    // Advanced Custom Fields
+    if (function_exists('get_fields')) {
+      $post->acf = get_fields($post->ID);
+    }
 
     // delete unused content
     unset($post->post_excerpt);

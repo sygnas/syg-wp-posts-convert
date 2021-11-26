@@ -1,0 +1,1 @@
+{"version":3,"file":"removeTag.js","sources":["../../../src/helpers/removeTag.ts"],"sourcesContent":[null],"names":["removeTag","post","key","data","replace"],"mappings":"AAEA;SACwBA,UAAUC,MAAeC;AAC/C,MAAMC,IAAI,GAAWF,IAAI,CAACC,GAAD,CAAzB;AACA,SAAOC,IAAI,CAACC,OAAL,CAAa,8BAAb,EAA6C,EAA7C,CAAP;AACD;;;;"}

@@ -1,2354 +1,492 @@
-/******/ (function(modules) { // webpackBootstrap
+/*
+ * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+/******/ (() => { // webpackBootstrap
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./demo/src/demo.js":
+/*!**************************!*\
+  !*** ./demo/src/demo.js ***!
+  \**************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _dist_es6_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../dist/es6/index */ \"./dist/es6/index.js\");\n\n\n\n\n/**\n * シンプルなリスト\n * 取得URL例\n * https://####.com/news/wp-json/wp/v2/posts?_embed&per_page=3\n */\nconst template1 = document.querySelector('.js-wp-posts-template-1').textContent;\nconst url1 = document.querySelector('.js-wp-posts-1').dataset.url;\nconst convert1 = new _dist_es6_index__WEBPACK_IMPORTED_MODULE_0__[\"default\"]({\n  type: _dist_es6_index__WEBPACK_IMPORTED_MODULE_0__[\"default\"].TYPE.REST,\n  template: template1,\n  target: '.js-wp-posts-1',\n});\nconvert1.start(url1);\n\n\n///////////////////////////////////////////\n\n/**\n * 日付変換などを指定したパターン\n * page-newslist.php を呼び出している。もちろん REST API でも良い。\n * https://####.com/news/newslist\n */\n const template2 = document.querySelector('.js-wp-posts-template-2').textContent;\n const url2 = document.querySelector('.js-wp-posts-2').dataset.url;\n const convert2 = new _dist_es6_index__WEBPACK_IMPORTED_MODULE_0__[\"default\"]({\n   type: _dist_es6_index__WEBPACK_IMPORTED_MODULE_0__[\"default\"].TYPE.CUSTOM,\n   template: template2,\n   target: '.js-wp-posts-2',\n });\n\n// ヘルパー関数追加\n// 数字を丸数字にするサンプル\nconvert2.addHelper('convertMaru', function(post, key){\n  let output = post[key];\n  output = output.replace('1', '①');\n  output = output.replace('2', '②');\n  output = output.replace('3', '③');\n  output = output.replace('4', '④');\n  output = output.replace('5', '⑤');\n  output = output.replace('6', '⑥');\n  output = output.replace('7', '⑦');\n  output = output.replace('9', '⑧');\n  output = output.replace('9', '⑨');\n  output = output.replace('0', '⓪');\n  return output;\n});\n\n// Promiseが返されるので、完了後に console.log() を実行\nconvert2.start(url2)\n.then(function(list) {\n  console.log(\"変換したものを配列で受け取る\");\n  console.log(list);\n});\n\n\n\n\n\n//# sourceURL=webpack://@sygnas/wp-posts-convert/./demo/src/demo.js?");
+
+/***/ }),
+
+/***/ "./dist/es6/_virtual/_rollupPluginBabelHelpers.js":
+/*!********************************************************!*\
+  !*** ./dist/es6/_virtual/_rollupPluginBabelHelpers.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"arrayLikeToArray\": () => (/* binding */ _arrayLikeToArray),\n/* harmony export */   \"arrayWithoutHoles\": () => (/* binding */ _arrayWithoutHoles),\n/* harmony export */   \"classCallCheck\": () => (/* binding */ _classCallCheck),\n/* harmony export */   \"createClass\": () => (/* binding */ _createClass),\n/* harmony export */   \"defineProperty\": () => (/* binding */ _defineProperty),\n/* harmony export */   \"iterableToArray\": () => (/* binding */ _iterableToArray),\n/* harmony export */   \"nonIterableSpread\": () => (/* binding */ _nonIterableSpread),\n/* harmony export */   \"toConsumableArray\": () => (/* binding */ _toConsumableArray),\n/* harmony export */   \"unsupportedIterableToArray\": () => (/* binding */ _unsupportedIterableToArray)\n/* harmony export */ });\nfunction _classCallCheck(instance, Constructor) {\n  if (!(instance instanceof Constructor)) {\n    throw new TypeError(\"Cannot call a class as a function\");\n  }\n}\n\nfunction _defineProperties(target, props) {\n  for (var i = 0; i < props.length; i++) {\n    var descriptor = props[i];\n    descriptor.enumerable = descriptor.enumerable || false;\n    descriptor.configurable = true;\n    if (\"value\" in descriptor) descriptor.writable = true;\n    Object.defineProperty(target, descriptor.key, descriptor);\n  }\n}\n\nfunction _createClass(Constructor, protoProps, staticProps) {\n  if (protoProps) _defineProperties(Constructor.prototype, protoProps);\n  if (staticProps) _defineProperties(Constructor, staticProps);\n  return Constructor;\n}\n\nfunction _defineProperty(obj, key, value) {\n  if (key in obj) {\n    Object.defineProperty(obj, key, {\n      value: value,\n      enumerable: true,\n      configurable: true,\n      writable: true\n    });\n  } else {\n    obj[key] = value;\n  }\n\n  return obj;\n}\n\nfunction _toConsumableArray(arr) {\n  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();\n}\n\nfunction _arrayWithoutHoles(arr) {\n  if (Array.isArray(arr)) return _arrayLikeToArray(arr);\n}\n\nfunction _iterableToArray(iter) {\n  if (typeof Symbol !== \"undefined\" && iter[Symbol.iterator] != null || iter[\"@@iterator\"] != null) return Array.from(iter);\n}\n\nfunction _unsupportedIterableToArray(o, minLen) {\n  if (!o) return;\n  if (typeof o === \"string\") return _arrayLikeToArray(o, minLen);\n  var n = Object.prototype.toString.call(o).slice(8, -1);\n  if (n === \"Object\" && o.constructor) n = o.constructor.name;\n  if (n === \"Map\" || n === \"Set\") return Array.from(o);\n  if (n === \"Arguments\" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);\n}\n\nfunction _arrayLikeToArray(arr, len) {\n  if (len == null || len > arr.length) len = arr.length;\n\n  for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];\n\n  return arr2;\n}\n\nfunction _nonIterableSpread() {\n  throw new TypeError(\"Invalid attempt to spread non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.\");\n}\n\n\n//# sourceMappingURL=_rollupPluginBabelHelpers.js.map\n\n\n//# sourceURL=webpack://@sygnas/wp-posts-convert/./dist/es6/_virtual/_rollupPluginBabelHelpers.js?");
+
+/***/ }),
+
+/***/ "./dist/es6/convertCustomToNormal.js":
+/*!*******************************************!*\
+  !*** ./dist/es6/convertCustomToNormal.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ convertCustomToNormal)\n/* harmony export */ });\nvar convertCustomToNormal = function convertCustomToNormal(post) {\n  var data = {\n    id: post.ID,\n    date: post.post_date,\n    title: post.post_title,\n    link: post.link,\n    eyecatch: post.eyecatch,\n    acf: post.acf || {},\n    categories: post.categories\n  };\n  return data;\n};\n\n\n//# sourceMappingURL=convertCustomToNormal.js.map\n\n\n//# sourceURL=webpack://@sygnas/wp-posts-convert/./dist/es6/convertCustomToNormal.js?");
+
+/***/ }),
+
+/***/ "./dist/es6/convertRestToNormal.js":
+/*!*****************************************!*\
+  !*** ./dist/es6/convertRestToNormal.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ convertRestToNormal)\n/* harmony export */ });\nvar convertRestToNormal = function convertRestToNormal(post) {\n  var eyecatch = post._embedded ? post._embedded['wp:featuredmedia'][0].media_details.sizes.medium.source_url : '';\n  var data = {\n    id: post.id,\n    date: post.date,\n    title: post.title.rendered,\n    link: post.link,\n    eyecatch: eyecatch,\n    acf: post.acf || [],\n    categories: post.cat_info || []\n  };\n  return data;\n};\n\n\n//# sourceMappingURL=convertRestToNormal.js.map\n\n\n//# sourceURL=webpack://@sygnas/wp-posts-convert/./dist/es6/convertRestToNormal.js?");
+
+/***/ }),
+
+/***/ "./dist/es6/helpers/convertDate.js":
+/*!*****************************************!*\
+  !*** ./dist/es6/helpers/convertDate.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ convertDate)\n/* harmony export */ });\n// 日付書式変換\nfunction convertDate(post, key, format) {\n  var date = post[key];\n  var dateArray = date.split(/[T: -]/);\n  var YY = dateArray[0];\n  var MM = dateArray[1];\n  var M = dateArray[1].replace(/^0/, '');\n  var DD = dateArray[2];\n  var D = dateArray[2].replace(/^0/, '');\n  var hh = dateArray[3];\n  var mm = dateArray[4];\n  var output = format;\n  output = output.split('YY').join(YY);\n  output = output.split('MM').join(MM);\n  output = output.split('M').join(M);\n  output = output.split('DD').join(DD);\n  output = output.split('D').join(D);\n  output = output.split('hh').join(hh);\n  output = output.split('mm').join(mm);\n  return output;\n}\n\n\n//# sourceMappingURL=convertDate.js.map\n\n\n//# sourceURL=webpack://@sygnas/wp-posts-convert/./dist/es6/helpers/convertDate.js?");
+
+/***/ }),
+
+/***/ "./dist/es6/helpers/removeTag.js":
+/*!***************************************!*\
+  !*** ./dist/es6/helpers/removeTag.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ removeTag)\n/* harmony export */ });\n// タグ除去\nfunction removeTag(post, key) {\n  var data = post[key];\n  return data.replace(/<(\"[^\"]*\"|'[^']*'|[^'\">])*>/g, \"\");\n}\n\n\n//# sourceMappingURL=removeTag.js.map\n\n\n//# sourceURL=webpack://@sygnas/wp-posts-convert/./dist/es6/helpers/removeTag.js?");
+
+/***/ }),
+
+/***/ "./dist/es6/index.js":
+/*!***************************!*\
+  !*** ./dist/es6/index.js ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ WpPostsConvert)\n/* harmony export */ });\n/* harmony import */ var _virtual_rollupPluginBabelHelpers_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_virtual/_rollupPluginBabelHelpers.js */ \"./dist/es6/_virtual/_rollupPluginBabelHelpers.js\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var csv_parse_dist_esm_sync__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! csv-parse/dist/esm/sync */ \"./node_modules/csv-parse/dist/esm/sync.js\");\n/* harmony import */ var _convertRestToNormal_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./convertRestToNormal.js */ \"./dist/es6/convertRestToNormal.js\");\n/* harmony import */ var _convertCustomToNormal_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./convertCustomToNormal.js */ \"./dist/es6/convertCustomToNormal.js\");\n/* harmony import */ var _helpers_removeTag_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./helpers/removeTag.js */ \"./dist/es6/helpers/removeTag.js\");\n/* harmony import */ var _helpers_convertDate_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./helpers/convertDate.js */ \"./dist/es6/helpers/convertDate.js\");\n\n\n\n\n\n\n\n\nvar HELPER_REG = new RegExp(\"{{{(.+?)\\\\((.*?)\\\\)}}}\", \"m\"); // 繰り返し処理のパターン\n\nvar LOOP_REG = new RegExp(\"{{#loop (.+?)}}([\\\\s\\\\S]+?){{\\\\/#loop}}\", \"m\");\n/**\n *\n */\n\nvar WpPostsConvert = /*#__PURE__*/function () {\n  // 設定\n\n  /**\n   * コンストラクタ\n   * @param {Object} option 設定。const defaults 参照\n   */\n  function WpPostsConvert() {\n    var option = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};\n\n    (0,_virtual_rollupPluginBabelHelpers_js__WEBPACK_IMPORTED_MODULE_0__.classCallCheck)(this, WpPostsConvert);\n\n    (0,_virtual_rollupPluginBabelHelpers_js__WEBPACK_IMPORTED_MODULE_0__.defineProperty)(this, \"opt\", void 0);\n\n    // 初期設定\n    var defaults = {\n      // 取得元タイプ\n      // rest : WP REST API を使った取得（デフォルト）\n      // custom : 添付の page-newslist.php を使った方法\n      type: WpPostsConvert.TYPE.REST,\n      // 表示テンプレート\n      template: '<li><a href=\"{{link}}\">{{title}}</a></li>',\n      // 出力先のDOMセレクター\n      target: \".js-wp-posts\",\n      // ヘルパー関数\n      helpers: {\n        removeTag: _helpers_removeTag_js__WEBPACK_IMPORTED_MODULE_5__[\"default\"],\n        convertDate: _helpers_convertDate_js__WEBPACK_IMPORTED_MODULE_6__[\"default\"]\n      }\n    }; // 設定をマージ\n\n    this.opt = Object.assign(defaults, option);\n  }\n  /**\n   * json を読み込んでテンプレートを展開する\n   * @param {String} url json取得URL\n   * @return {Promise} 成功・失敗を返す。成功時には変換したリストを一緒に返す\n   */\n\n\n  (0,_virtual_rollupPluginBabelHelpers_js__WEBPACK_IMPORTED_MODULE_0__.createClass)(WpPostsConvert, [{\n    key: \"start\",\n    value: function start(url) {\n      var _this = this;\n\n      return new Promise(function (resolve, reject) {\n        // jsonを読み込む\n        axios__WEBPACK_IMPORTED_MODULE_1___default().get(url).then(function (res) {\n          // 受け取った記事一覧を変換し、\n          // 指定されたエレメントに埋め込む\n          var list = _this.convertList(res.data);\n\n          _this.insertToTarget(list.join(\"\")); // Promiseで変換済みリストを返す\n\n\n          resolve(list);\n        })[\"catch\"](function (e) {\n          reject(e);\n        });\n      });\n    }\n    /**\n     * ヘルパー関数を追加\n     * @param {String} name 関数名\n     * @param {Function} func 関数\n     */\n\n  }, {\n    key: \"addHelper\",\n    value: function addHelper(name, func) {\n      if (!this.opt.helpers) this.opt.helpers = {};\n      this.opt.helpers[name] = func;\n    }\n    /**\n     * private\n     */\n\n    /**\n     * WordpressからREST APIで受け取った記事リストを変換して返す\n     * @param {Array} data WP_postの配列\n     * @return {Array} 変換した記事毎の配列\n     */\n\n  }, {\n    key: \"convertList\",\n    value: function convertList(data) {\n      var _this2 = this;\n\n      var output_list = [];\n      data.forEach(function (post) {\n        var wpData; // REST API方式、カスタム方式の差異を吸収する\n\n        if (_this2.opt.type === WpPostsConvert.TYPE.REST) {\n          wpData = (0,_convertRestToNormal_js__WEBPACK_IMPORTED_MODULE_3__[\"default\"])(post);\n        } else {\n          wpData = (0,_convertCustomToNormal_js__WEBPACK_IMPORTED_MODULE_4__[\"default\"])(post);\n        } // テンプレートを適用\n\n\n        var result = _this2.convertPost(wpData);\n\n        output_list.push(result);\n      });\n      return output_list;\n    }\n    /**\n     * 受け取った記事をテンプレートで変換して返す\n     * @param {TWpData} post\n     * @return {String} 変換したテンプレート\n     */\n\n  }, {\n    key: \"convertPost\",\n    value: function convertPost(post) {\n      var template = this.opt.template || \"\"; // ヘルパーでの変換\n\n      template = this.convertHelper(template, post); // 繰り返し項目の変換\n\n      template = this.convertLoop(template, post); // 記事の項目で検索して変換\n\n      template = this.convertSimple(template, post);\n      return template;\n    }\n    /**\n     * ヘルパー指定されたパターンからヘルパー名とパラメーターを抜き出して実行する\n     * @param {String} template テンプレート\n     * @param {Object} post ポストデータ\n     * @return {String} 変換後テンプレート\n     */\n\n  }, {\n    key: \"convertHelper\",\n    value: function convertHelper(template, post) {\n      /*\n      HELPER_REG の中身 RegExp(\"{{{(.+?)\\\\((.*?)\\\\)}}}\")\n      対象例：{{{convert_date(\"date\",\"YY年MM月DD日\")}}}\n           match[0] の内容 {{{convert_date(\"date\",\"YY年MM月DD日\")}}}\n      match[1] の内容 convert_date\n      match[2] の内容 \"date\",\"YY年MM月DD日\"\n       */\n      var helpers = this.opt.helpers;\n      var match;\n\n      while ((match = HELPER_REG.exec(template)) !== null) {\n        // 検索パターン\n        var pattern = match[0]; // ヘルパー関数名\n\n        var helperName = match[1]; // ヘルパーに渡す引数（csv文字列）を配列に分解\n\n        var params = (0,csv_parse_dist_esm_sync__WEBPACK_IMPORTED_MODULE_2__.parse)(match[2], {\n          columns: false\n        })[0]; // ヘルパーの実行結果で置換する\n\n        if (helpers && helpers[helperName]) {\n          var result = helpers[helperName].apply(helpers, [post].concat((0,_virtual_rollupPluginBabelHelpers_js__WEBPACK_IMPORTED_MODULE_0__.toConsumableArray)(params)));\n          template = template.replace(pattern, result);\n        }\n      }\n\n      return template;\n    }\n    /**\n     * 繰り返し項目の変換\n     * カテゴリー処理用\n     * データの取得が1階層目なので（post[key]）ACF内の配列を処理することが出来ない\n     * ACFの内容で繰り返し処理をするならヘルパー関数で。\n     * @param {String} template テンプレート\n     * @param {Object} post ポストデータ\n     * @return {String} 変換後テンプレート\n     */\n\n  }, {\n    key: \"convertLoop\",\n    value: function convertLoop(template, post) {\n      var _this3 = this;\n\n      /*\n      LOOP_REG の内容\n      LOOP_REG = RegExp('{{#loop (.+?)}}([\\\\s\\\\S]+?){{\\\\/#loop}}', 'm');\n           例：カテゴリーを処理\n      {{#loop categories}}\n      <a href=\"{{link}}\" class=\"{{slug}}\">{{name}}</a>\n      {{/#loop}}\n           match[0] にはテンプレートの置き換え対象部分が入る\n      {{#loop categories}}\n      <a href=\"{{link}}\" class=\"{{slug}}\">{{name}}</a>\n      {{/#loop}}\n           match[1] には対象項目が入る。例では「categories」\n      match[2] にはテンプレートが入る。例では「<a href=\"{{link}}\" class=\"{{slug}}\">{{name}}</a>」\n      */\n      var match;\n\n      var _loop = function _loop() {\n        // 置き換え対象部分\n        var pattern = match[0]; // Wordpressのデータの該当要素。例なら categories の配列\n        // keyof について https://zenn.dev/katoaki/articles/37a8cff3a8a32a\n        // https://kodak.hatenablog.com/entry/2021/05/26/124807\n\n        var key = match[1];\n        var datalist = post[key]; // 変換テンプレート\n\n        var format = match[2]; // 出力リスト\n\n        var output = [];\n        datalist.forEach(function (data) {\n          output.push(_this3.convertSimple(format, data));\n        });\n        template = template.replace(pattern, output.join(\"\"));\n      };\n\n      while ((match = LOOP_REG.exec(template)) !== null) {\n        _loop();\n      }\n\n      return template;\n    }\n    /**\n     * 記事データの項目名で置換\n     * データの取得が1階層目なので（post[key]）ACF内の内容を処理することが出来ない\n     * ACFを処理をするならヘルパー関数で。\n     * @param {String} template テンプレート\n     * @param {Object} post ポストデータ\n     * @return {String} 変換後テンプレート\n     */\n\n  }, {\n    key: \"convertSimple\",\n    value: function convertSimple(template, post) {\n      Object.keys(post).forEach(function (key) {\n        template = template.replace(\"{{\".concat(key, \"}}\"), post[key]);\n      });\n      return template;\n    }\n    /**\n     * 変換したテンプレートをターゲットエレメントに挿入する\n     * エレメントが存在しなければ何もしない\n     * @param {String} output 変換済みテンプレート\n     */\n\n  }, {\n    key: \"insertToTarget\",\n    value: function insertToTarget(output) {\n      if (!this.opt.target) {\n        throw \"オプション target が指定されていません\";\n      }\n\n      var target = document.querySelector(this.opt.target);\n\n      if (target) {\n        target.insertAdjacentHTML(\"afterbegin\", output);\n      } else {\n        throw \"\\u633F\\u5165\\u5148 \".concat(this.opt.target, \" \\u304C\\u5B58\\u5728\\u3057\\u307E\\u305B\\u3093\");\n      }\n    }\n  }]);\n\n  return WpPostsConvert;\n}();\n\n(0,_virtual_rollupPluginBabelHelpers_js__WEBPACK_IMPORTED_MODULE_0__.defineProperty)(WpPostsConvert, \"TYPE\", {\n  REST: \"rest\",\n  CUSTOM: \"custom\"\n});\n\n\n//# sourceMappingURL=index.js.map\n\n\n//# sourceURL=webpack://@sygnas/wp-posts-convert/./dist/es6/index.js?");
+
+/***/ }),
+
+/***/ "./node_modules/axios/index.js":
+/*!*************************************!*\
+  !*** ./node_modules/axios/index.js ***!
+  \*************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__(/*! ./lib/axios */ \"./node_modules/axios/lib/axios.js\");\n\n//# sourceURL=webpack://@sygnas/wp-posts-convert/./node_modules/axios/index.js?");
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/adapters/xhr.js":
+/*!************************************************!*\
+  !*** ./node_modules/axios/lib/adapters/xhr.js ***!
+  \************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+eval("\n\nvar utils = __webpack_require__(/*! ./../utils */ \"./node_modules/axios/lib/utils.js\");\nvar settle = __webpack_require__(/*! ./../core/settle */ \"./node_modules/axios/lib/core/settle.js\");\nvar cookies = __webpack_require__(/*! ./../helpers/cookies */ \"./node_modules/axios/lib/helpers/cookies.js\");\nvar buildURL = __webpack_require__(/*! ./../helpers/buildURL */ \"./node_modules/axios/lib/helpers/buildURL.js\");\nvar buildFullPath = __webpack_require__(/*! ../core/buildFullPath */ \"./node_modules/axios/lib/core/buildFullPath.js\");\nvar parseHeaders = __webpack_require__(/*! ./../helpers/parseHeaders */ \"./node_modules/axios/lib/helpers/parseHeaders.js\");\nvar isURLSameOrigin = __webpack_require__(/*! ./../helpers/isURLSameOrigin */ \"./node_modules/axios/lib/helpers/isURLSameOrigin.js\");\nvar createError = __webpack_require__(/*! ../core/createError */ \"./node_modules/axios/lib/core/createError.js\");\nvar defaults = __webpack_require__(/*! ../defaults */ \"./node_modules/axios/lib/defaults.js\");\nvar Cancel = __webpack_require__(/*! ../cancel/Cancel */ \"./node_modules/axios/lib/cancel/Cancel.js\");\n\nmodule.exports = function xhrAdapter(config) {\n  return new Promise(function dispatchXhrRequest(resolve, reject) {\n    var requestData = config.data;\n    var requestHeaders = config.headers;\n    var responseType = config.responseType;\n    var onCanceled;\n    function done() {\n      if (config.cancelToken) {\n        config.cancelToken.unsubscribe(onCanceled);\n      }\n\n      if (config.signal) {\n        config.signal.removeEventListener('abort', onCanceled);\n      }\n    }\n\n    if (utils.isFormData(requestData)) {\n      delete requestHeaders['Content-Type']; // Let the browser set it\n    }\n\n    var request = new XMLHttpRequest();\n\n    // HTTP basic authentication\n    if (config.auth) {\n      var username = config.auth.username || '';\n      var password = config.auth.password ? unescape(encodeURIComponent(config.auth.password)) : '';\n      requestHeaders.Authorization = 'Basic ' + btoa(username + ':' + password);\n    }\n\n    var fullPath = buildFullPath(config.baseURL, config.url);\n    request.open(config.method.toUpperCase(), buildURL(fullPath, config.params, config.paramsSerializer), true);\n\n    // Set the request timeout in MS\n    request.timeout = config.timeout;\n\n    function onloadend() {\n      if (!request) {\n        return;\n      }\n      // Prepare the response\n      var responseHeaders = 'getAllResponseHeaders' in request ? parseHeaders(request.getAllResponseHeaders()) : null;\n      var responseData = !responseType || responseType === 'text' ||  responseType === 'json' ?\n        request.responseText : request.response;\n      var response = {\n        data: responseData,\n        status: request.status,\n        statusText: request.statusText,\n        headers: responseHeaders,\n        config: config,\n        request: request\n      };\n\n      settle(function _resolve(value) {\n        resolve(value);\n        done();\n      }, function _reject(err) {\n        reject(err);\n        done();\n      }, response);\n\n      // Clean up request\n      request = null;\n    }\n\n    if ('onloadend' in request) {\n      // Use onloadend if available\n      request.onloadend = onloadend;\n    } else {\n      // Listen for ready state to emulate onloadend\n      request.onreadystatechange = function handleLoad() {\n        if (!request || request.readyState !== 4) {\n          return;\n        }\n\n        // The request errored out and we didn't get a response, this will be\n        // handled by onerror instead\n        // With one exception: request that using file: protocol, most browsers\n        // will return status as 0 even though it's a successful request\n        if (request.status === 0 && !(request.responseURL && request.responseURL.indexOf('file:') === 0)) {\n          return;\n        }\n        // readystate handler is calling before onerror or ontimeout handlers,\n        // so we should call onloadend on the next 'tick'\n        setTimeout(onloadend);\n      };\n    }\n\n    // Handle browser request cancellation (as opposed to a manual cancellation)\n    request.onabort = function handleAbort() {\n      if (!request) {\n        return;\n      }\n\n      reject(createError('Request aborted', config, 'ECONNABORTED', request));\n\n      // Clean up request\n      request = null;\n    };\n\n    // Handle low level network errors\n    request.onerror = function handleError() {\n      // Real errors are hidden from us by the browser\n      // onerror should only fire if it's a network error\n      reject(createError('Network Error', config, null, request));\n\n      // Clean up request\n      request = null;\n    };\n\n    // Handle timeout\n    request.ontimeout = function handleTimeout() {\n      var timeoutErrorMessage = config.timeout ? 'timeout of ' + config.timeout + 'ms exceeded' : 'timeout exceeded';\n      var transitional = config.transitional || defaults.transitional;\n      if (config.timeoutErrorMessage) {\n        timeoutErrorMessage = config.timeoutErrorMessage;\n      }\n      reject(createError(\n        timeoutErrorMessage,\n        config,\n        transitional.clarifyTimeoutError ? 'ETIMEDOUT' : 'ECONNABORTED',\n        request));\n\n      // Clean up request\n      request = null;\n    };\n\n    // Add xsrf header\n    // This is only done if running in a standard browser environment.\n    // Specifically not if we're in a web worker, or react-native.\n    if (utils.isStandardBrowserEnv()) {\n      // Add xsrf header\n      var xsrfValue = (config.withCredentials || isURLSameOrigin(fullPath)) && config.xsrfCookieName ?\n        cookies.read(config.xsrfCookieName) :\n        undefined;\n\n      if (xsrfValue) {\n        requestHeaders[config.xsrfHeaderName] = xsrfValue;\n      }\n    }\n\n    // Add headers to the request\n    if ('setRequestHeader' in request) {\n      utils.forEach(requestHeaders, function setRequestHeader(val, key) {\n        if (typeof requestData === 'undefined' && key.toLowerCase() === 'content-type') {\n          // Remove Content-Type if data is undefined\n          delete requestHeaders[key];\n        } else {\n          // Otherwise add header to the request\n          request.setRequestHeader(key, val);\n        }\n      });\n    }\n\n    // Add withCredentials to request if needed\n    if (!utils.isUndefined(config.withCredentials)) {\n      request.withCredentials = !!config.withCredentials;\n    }\n\n    // Add responseType to request if needed\n    if (responseType && responseType !== 'json') {\n      request.responseType = config.responseType;\n    }\n\n    // Handle progress if needed\n    if (typeof config.onDownloadProgress === 'function') {\n      request.addEventListener('progress', config.onDownloadProgress);\n    }\n\n    // Not all browsers support upload events\n    if (typeof config.onUploadProgress === 'function' && request.upload) {\n      request.upload.addEventListener('progress', config.onUploadProgress);\n    }\n\n    if (config.cancelToken || config.signal) {\n      // Handle cancellation\n      // eslint-disable-next-line func-names\n      onCanceled = function(cancel) {\n        if (!request) {\n          return;\n        }\n        reject(!cancel || (cancel && cancel.type) ? new Cancel('canceled') : cancel);\n        request.abort();\n        request = null;\n      };\n\n      config.cancelToken && config.cancelToken.subscribe(onCanceled);\n      if (config.signal) {\n        config.signal.aborted ? onCanceled() : config.signal.addEventListener('abort', onCanceled);\n      }\n    }\n\n    if (!requestData) {\n      requestData = null;\n    }\n\n    // Send the request\n    request.send(requestData);\n  });\n};\n\n\n//# sourceURL=webpack://@sygnas/wp-posts-convert/./node_modules/axios/lib/adapters/xhr.js?");
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/axios.js":
+/*!*****************************************!*\
+  !*** ./node_modules/axios/lib/axios.js ***!
+  \*****************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+eval("\n\nvar utils = __webpack_require__(/*! ./utils */ \"./node_modules/axios/lib/utils.js\");\nvar bind = __webpack_require__(/*! ./helpers/bind */ \"./node_modules/axios/lib/helpers/bind.js\");\nvar Axios = __webpack_require__(/*! ./core/Axios */ \"./node_modules/axios/lib/core/Axios.js\");\nvar mergeConfig = __webpack_require__(/*! ./core/mergeConfig */ \"./node_modules/axios/lib/core/mergeConfig.js\");\nvar defaults = __webpack_require__(/*! ./defaults */ \"./node_modules/axios/lib/defaults.js\");\n\n/**\n * Create an instance of Axios\n *\n * @param {Object} defaultConfig The default config for the instance\n * @return {Axios} A new instance of Axios\n */\nfunction createInstance(defaultConfig) {\n  var context = new Axios(defaultConfig);\n  var instance = bind(Axios.prototype.request, context);\n\n  // Copy axios.prototype to instance\n  utils.extend(instance, Axios.prototype, context);\n\n  // Copy context to instance\n  utils.extend(instance, context);\n\n  // Factory for creating new instances\n  instance.create = function create(instanceConfig) {\n    return createInstance(mergeConfig(defaultConfig, instanceConfig));\n  };\n\n  return instance;\n}\n\n// Create the default instance to be exported\nvar axios = createInstance(defaults);\n\n// Expose Axios class to allow class inheritance\naxios.Axios = Axios;\n\n// Expose Cancel & CancelToken\naxios.Cancel = __webpack_require__(/*! ./cancel/Cancel */ \"./node_modules/axios/lib/cancel/Cancel.js\");\naxios.CancelToken = __webpack_require__(/*! ./cancel/CancelToken */ \"./node_modules/axios/lib/cancel/CancelToken.js\");\naxios.isCancel = __webpack_require__(/*! ./cancel/isCancel */ \"./node_modules/axios/lib/cancel/isCancel.js\");\naxios.VERSION = (__webpack_require__(/*! ./env/data */ \"./node_modules/axios/lib/env/data.js\").version);\n\n// Expose all/spread\naxios.all = function all(promises) {\n  return Promise.all(promises);\n};\naxios.spread = __webpack_require__(/*! ./helpers/spread */ \"./node_modules/axios/lib/helpers/spread.js\");\n\n// Expose isAxiosError\naxios.isAxiosError = __webpack_require__(/*! ./helpers/isAxiosError */ \"./node_modules/axios/lib/helpers/isAxiosError.js\");\n\nmodule.exports = axios;\n\n// Allow use of default import syntax in TypeScript\nmodule.exports[\"default\"] = axios;\n\n\n//# sourceURL=webpack://@sygnas/wp-posts-convert/./node_modules/axios/lib/axios.js?");
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/cancel/Cancel.js":
+/*!*************************************************!*\
+  !*** ./node_modules/axios/lib/cancel/Cancel.js ***!
+  \*************************************************/
+/***/ ((module) => {
+
+"use strict";
+eval("\n\n/**\n * A `Cancel` is an object that is thrown when an operation is canceled.\n *\n * @class\n * @param {string=} message The message.\n */\nfunction Cancel(message) {\n  this.message = message;\n}\n\nCancel.prototype.toString = function toString() {\n  return 'Cancel' + (this.message ? ': ' + this.message : '');\n};\n\nCancel.prototype.__CANCEL__ = true;\n\nmodule.exports = Cancel;\n\n\n//# sourceURL=webpack://@sygnas/wp-posts-convert/./node_modules/axios/lib/cancel/Cancel.js?");
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/cancel/CancelToken.js":
+/*!******************************************************!*\
+  !*** ./node_modules/axios/lib/cancel/CancelToken.js ***!
+  \******************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+eval("\n\nvar Cancel = __webpack_require__(/*! ./Cancel */ \"./node_modules/axios/lib/cancel/Cancel.js\");\n\n/**\n * A `CancelToken` is an object that can be used to request cancellation of an operation.\n *\n * @class\n * @param {Function} executor The executor function.\n */\nfunction CancelToken(executor) {\n  if (typeof executor !== 'function') {\n    throw new TypeError('executor must be a function.');\n  }\n\n  var resolvePromise;\n\n  this.promise = new Promise(function promiseExecutor(resolve) {\n    resolvePromise = resolve;\n  });\n\n  var token = this;\n\n  // eslint-disable-next-line func-names\n  this.promise.then(function(cancel) {\n    if (!token._listeners) return;\n\n    var i;\n    var l = token._listeners.length;\n\n    for (i = 0; i < l; i++) {\n      token._listeners[i](cancel);\n    }\n    token._listeners = null;\n  });\n\n  // eslint-disable-next-line func-names\n  this.promise.then = function(onfulfilled) {\n    var _resolve;\n    // eslint-disable-next-line func-names\n    var promise = new Promise(function(resolve) {\n      token.subscribe(resolve);\n      _resolve = resolve;\n    }).then(onfulfilled);\n\n    promise.cancel = function reject() {\n      token.unsubscribe(_resolve);\n    };\n\n    return promise;\n  };\n\n  executor(function cancel(message) {\n    if (token.reason) {\n      // Cancellation has already been requested\n      return;\n    }\n\n    token.reason = new Cancel(message);\n    resolvePromise(token.reason);\n  });\n}\n\n/**\n * Throws a `Cancel` if cancellation has been requested.\n */\nCancelToken.prototype.throwIfRequested = function throwIfRequested() {\n  if (this.reason) {\n    throw this.reason;\n  }\n};\n\n/**\n * Subscribe to the cancel signal\n */\n\nCancelToken.prototype.subscribe = function subscribe(listener) {\n  if (this.reason) {\n    listener(this.reason);\n    return;\n  }\n\n  if (this._listeners) {\n    this._listeners.push(listener);\n  } else {\n    this._listeners = [listener];\n  }\n};\n\n/**\n * Unsubscribe from the cancel signal\n */\n\nCancelToken.prototype.unsubscribe = function unsubscribe(listener) {\n  if (!this._listeners) {\n    return;\n  }\n  var index = this._listeners.indexOf(listener);\n  if (index !== -1) {\n    this._listeners.splice(index, 1);\n  }\n};\n\n/**\n * Returns an object that contains a new `CancelToken` and a function that, when called,\n * cancels the `CancelToken`.\n */\nCancelToken.source = function source() {\n  var cancel;\n  var token = new CancelToken(function executor(c) {\n    cancel = c;\n  });\n  return {\n    token: token,\n    cancel: cancel\n  };\n};\n\nmodule.exports = CancelToken;\n\n\n//# sourceURL=webpack://@sygnas/wp-posts-convert/./node_modules/axios/lib/cancel/CancelToken.js?");
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/cancel/isCancel.js":
+/*!***************************************************!*\
+  !*** ./node_modules/axios/lib/cancel/isCancel.js ***!
+  \***************************************************/
+/***/ ((module) => {
+
+"use strict";
+eval("\n\nmodule.exports = function isCancel(value) {\n  return !!(value && value.__CANCEL__);\n};\n\n\n//# sourceURL=webpack://@sygnas/wp-posts-convert/./node_modules/axios/lib/cancel/isCancel.js?");
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/core/Axios.js":
+/*!**********************************************!*\
+  !*** ./node_modules/axios/lib/core/Axios.js ***!
+  \**********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+eval("\n\nvar utils = __webpack_require__(/*! ./../utils */ \"./node_modules/axios/lib/utils.js\");\nvar buildURL = __webpack_require__(/*! ../helpers/buildURL */ \"./node_modules/axios/lib/helpers/buildURL.js\");\nvar InterceptorManager = __webpack_require__(/*! ./InterceptorManager */ \"./node_modules/axios/lib/core/InterceptorManager.js\");\nvar dispatchRequest = __webpack_require__(/*! ./dispatchRequest */ \"./node_modules/axios/lib/core/dispatchRequest.js\");\nvar mergeConfig = __webpack_require__(/*! ./mergeConfig */ \"./node_modules/axios/lib/core/mergeConfig.js\");\nvar validator = __webpack_require__(/*! ../helpers/validator */ \"./node_modules/axios/lib/helpers/validator.js\");\n\nvar validators = validator.validators;\n/**\n * Create a new instance of Axios\n *\n * @param {Object} instanceConfig The default config for the instance\n */\nfunction Axios(instanceConfig) {\n  this.defaults = instanceConfig;\n  this.interceptors = {\n    request: new InterceptorManager(),\n    response: new InterceptorManager()\n  };\n}\n\n/**\n * Dispatch a request\n *\n * @param {Object} config The config specific for this request (merged with this.defaults)\n */\nAxios.prototype.request = function request(config) {\n  /*eslint no-param-reassign:0*/\n  // Allow for axios('example/url'[, config]) a la fetch API\n  if (typeof config === 'string') {\n    config = arguments[1] || {};\n    config.url = arguments[0];\n  } else {\n    config = config || {};\n  }\n\n  config = mergeConfig(this.defaults, config);\n\n  // Set config.method\n  if (config.method) {\n    config.method = config.method.toLowerCase();\n  } else if (this.defaults.method) {\n    config.method = this.defaults.method.toLowerCase();\n  } else {\n    config.method = 'get';\n  }\n\n  var transitional = config.transitional;\n\n  if (transitional !== undefined) {\n    validator.assertOptions(transitional, {\n      silentJSONParsing: validators.transitional(validators.boolean),\n      forcedJSONParsing: validators.transitional(validators.boolean),\n      clarifyTimeoutError: validators.transitional(validators.boolean)\n    }, false);\n  }\n\n  // filter out skipped interceptors\n  var requestInterceptorChain = [];\n  var synchronousRequestInterceptors = true;\n  this.interceptors.request.forEach(function unshiftRequestInterceptors(interceptor) {\n    if (typeof interceptor.runWhen === 'function' && interceptor.runWhen(config) === false) {\n      return;\n    }\n\n    synchronousRequestInterceptors = synchronousRequestInterceptors && interceptor.synchronous;\n\n    requestInterceptorChain.unshift(interceptor.fulfilled, interceptor.rejected);\n  });\n\n  var responseInterceptorChain = [];\n  this.interceptors.response.forEach(function pushResponseInterceptors(interceptor) {\n    responseInterceptorChain.push(interceptor.fulfilled, interceptor.rejected);\n  });\n\n  var promise;\n\n  if (!synchronousRequestInterceptors) {\n    var chain = [dispatchRequest, undefined];\n\n    Array.prototype.unshift.apply(chain, requestInterceptorChain);\n    chain = chain.concat(responseInterceptorChain);\n\n    promise = Promise.resolve(config);\n    while (chain.length) {\n      promise = promise.then(chain.shift(), chain.shift());\n    }\n\n    return promise;\n  }\n\n\n  var newConfig = config;\n  while (requestInterceptorChain.length) {\n    var onFulfilled = requestInterceptorChain.shift();\n    var onRejected = requestInterceptorChain.shift();\n    try {\n      newConfig = onFulfilled(newConfig);\n    } catch (error) {\n      onRejected(error);\n      break;\n    }\n  }\n\n  try {\n    promise = dispatchRequest(newConfig);\n  } catch (error) {\n    return Promise.reject(error);\n  }\n\n  while (responseInterceptorChain.length) {\n    promise = promise.then(responseInterceptorChain.shift(), responseInterceptorChain.shift());\n  }\n\n  return promise;\n};\n\nAxios.prototype.getUri = function getUri(config) {\n  config = mergeConfig(this.defaults, config);\n  return buildURL(config.url, config.params, config.paramsSerializer).replace(/^\\?/, '');\n};\n\n// Provide aliases for supported request methods\nutils.forEach(['delete', 'get', 'head', 'options'], function forEachMethodNoData(method) {\n  /*eslint func-names:0*/\n  Axios.prototype[method] = function(url, config) {\n    return this.request(mergeConfig(config || {}, {\n      method: method,\n      url: url,\n      data: (config || {}).data\n    }));\n  };\n});\n\nutils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {\n  /*eslint func-names:0*/\n  Axios.prototype[method] = function(url, data, config) {\n    return this.request(mergeConfig(config || {}, {\n      method: method,\n      url: url,\n      data: data\n    }));\n  };\n});\n\nmodule.exports = Axios;\n\n\n//# sourceURL=webpack://@sygnas/wp-posts-convert/./node_modules/axios/lib/core/Axios.js?");
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/core/InterceptorManager.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/axios/lib/core/InterceptorManager.js ***!
+  \***********************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+eval("\n\nvar utils = __webpack_require__(/*! ./../utils */ \"./node_modules/axios/lib/utils.js\");\n\nfunction InterceptorManager() {\n  this.handlers = [];\n}\n\n/**\n * Add a new interceptor to the stack\n *\n * @param {Function} fulfilled The function to handle `then` for a `Promise`\n * @param {Function} rejected The function to handle `reject` for a `Promise`\n *\n * @return {Number} An ID used to remove interceptor later\n */\nInterceptorManager.prototype.use = function use(fulfilled, rejected, options) {\n  this.handlers.push({\n    fulfilled: fulfilled,\n    rejected: rejected,\n    synchronous: options ? options.synchronous : false,\n    runWhen: options ? options.runWhen : null\n  });\n  return this.handlers.length - 1;\n};\n\n/**\n * Remove an interceptor from the stack\n *\n * @param {Number} id The ID that was returned by `use`\n */\nInterceptorManager.prototype.eject = function eject(id) {\n  if (this.handlers[id]) {\n    this.handlers[id] = null;\n  }\n};\n\n/**\n * Iterate over all the registered interceptors\n *\n * This method is particularly useful for skipping over any\n * interceptors that may have become `null` calling `eject`.\n *\n * @param {Function} fn The function to call for each interceptor\n */\nInterceptorManager.prototype.forEach = function forEach(fn) {\n  utils.forEach(this.handlers, function forEachHandler(h) {\n    if (h !== null) {\n      fn(h);\n    }\n  });\n};\n\nmodule.exports = InterceptorManager;\n\n\n//# sourceURL=webpack://@sygnas/wp-posts-convert/./node_modules/axios/lib/core/InterceptorManager.js?");
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/core/buildFullPath.js":
+/*!******************************************************!*\
+  !*** ./node_modules/axios/lib/core/buildFullPath.js ***!
+  \******************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+eval("\n\nvar isAbsoluteURL = __webpack_require__(/*! ../helpers/isAbsoluteURL */ \"./node_modules/axios/lib/helpers/isAbsoluteURL.js\");\nvar combineURLs = __webpack_require__(/*! ../helpers/combineURLs */ \"./node_modules/axios/lib/helpers/combineURLs.js\");\n\n/**\n * Creates a new URL by combining the baseURL with the requestedURL,\n * only when the requestedURL is not already an absolute URL.\n * If the requestURL is absolute, this function returns the requestedURL untouched.\n *\n * @param {string} baseURL The base URL\n * @param {string} requestedURL Absolute or relative URL to combine\n * @returns {string} The combined full path\n */\nmodule.exports = function buildFullPath(baseURL, requestedURL) {\n  if (baseURL && !isAbsoluteURL(requestedURL)) {\n    return combineURLs(baseURL, requestedURL);\n  }\n  return requestedURL;\n};\n\n\n//# sourceURL=webpack://@sygnas/wp-posts-convert/./node_modules/axios/lib/core/buildFullPath.js?");
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/core/createError.js":
+/*!****************************************************!*\
+  !*** ./node_modules/axios/lib/core/createError.js ***!
+  \****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+eval("\n\nvar enhanceError = __webpack_require__(/*! ./enhanceError */ \"./node_modules/axios/lib/core/enhanceError.js\");\n\n/**\n * Create an Error with the specified message, config, error code, request and response.\n *\n * @param {string} message The error message.\n * @param {Object} config The config.\n * @param {string} [code] The error code (for example, 'ECONNABORTED').\n * @param {Object} [request] The request.\n * @param {Object} [response] The response.\n * @returns {Error} The created error.\n */\nmodule.exports = function createError(message, config, code, request, response) {\n  var error = new Error(message);\n  return enhanceError(error, config, code, request, response);\n};\n\n\n//# sourceURL=webpack://@sygnas/wp-posts-convert/./node_modules/axios/lib/core/createError.js?");
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/core/dispatchRequest.js":
+/*!********************************************************!*\
+  !*** ./node_modules/axios/lib/core/dispatchRequest.js ***!
+  \********************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+eval("\n\nvar utils = __webpack_require__(/*! ./../utils */ \"./node_modules/axios/lib/utils.js\");\nvar transformData = __webpack_require__(/*! ./transformData */ \"./node_modules/axios/lib/core/transformData.js\");\nvar isCancel = __webpack_require__(/*! ../cancel/isCancel */ \"./node_modules/axios/lib/cancel/isCancel.js\");\nvar defaults = __webpack_require__(/*! ../defaults */ \"./node_modules/axios/lib/defaults.js\");\nvar Cancel = __webpack_require__(/*! ../cancel/Cancel */ \"./node_modules/axios/lib/cancel/Cancel.js\");\n\n/**\n * Throws a `Cancel` if cancellation has been requested.\n */\nfunction throwIfCancellationRequested(config) {\n  if (config.cancelToken) {\n    config.cancelToken.throwIfRequested();\n  }\n\n  if (config.signal && config.signal.aborted) {\n    throw new Cancel('canceled');\n  }\n}\n\n/**\n * Dispatch a request to the server using the configured adapter.\n *\n * @param {object} config The config that is to be used for the request\n * @returns {Promise} The Promise to be fulfilled\n */\nmodule.exports = function dispatchRequest(config) {\n  throwIfCancellationRequested(config);\n\n  // Ensure headers exist\n  config.headers = config.headers || {};\n\n  // Transform request data\n  config.data = transformData.call(\n    config,\n    config.data,\n    config.headers,\n    config.transformRequest\n  );\n\n  // Flatten headers\n  config.headers = utils.merge(\n    config.headers.common || {},\n    config.headers[config.method] || {},\n    config.headers\n  );\n\n  utils.forEach(\n    ['delete', 'get', 'head', 'post', 'put', 'patch', 'common'],\n    function cleanHeaderConfig(method) {\n      delete config.headers[method];\n    }\n  );\n\n  var adapter = config.adapter || defaults.adapter;\n\n  return adapter(config).then(function onAdapterResolution(response) {\n    throwIfCancellationRequested(config);\n\n    // Transform response data\n    response.data = transformData.call(\n      config,\n      response.data,\n      response.headers,\n      config.transformResponse\n    );\n\n    return response;\n  }, function onAdapterRejection(reason) {\n    if (!isCancel(reason)) {\n      throwIfCancellationRequested(config);\n\n      // Transform response data\n      if (reason && reason.response) {\n        reason.response.data = transformData.call(\n          config,\n          reason.response.data,\n          reason.response.headers,\n          config.transformResponse\n        );\n      }\n    }\n\n    return Promise.reject(reason);\n  });\n};\n\n\n//# sourceURL=webpack://@sygnas/wp-posts-convert/./node_modules/axios/lib/core/dispatchRequest.js?");
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/core/enhanceError.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/axios/lib/core/enhanceError.js ***!
+  \*****************************************************/
+/***/ ((module) => {
+
+"use strict";
+eval("\n\n/**\n * Update an Error with the specified config, error code, and response.\n *\n * @param {Error} error The error to update.\n * @param {Object} config The config.\n * @param {string} [code] The error code (for example, 'ECONNABORTED').\n * @param {Object} [request] The request.\n * @param {Object} [response] The response.\n * @returns {Error} The error.\n */\nmodule.exports = function enhanceError(error, config, code, request, response) {\n  error.config = config;\n  if (code) {\n    error.code = code;\n  }\n\n  error.request = request;\n  error.response = response;\n  error.isAxiosError = true;\n\n  error.toJSON = function toJSON() {\n    return {\n      // Standard\n      message: this.message,\n      name: this.name,\n      // Microsoft\n      description: this.description,\n      number: this.number,\n      // Mozilla\n      fileName: this.fileName,\n      lineNumber: this.lineNumber,\n      columnNumber: this.columnNumber,\n      stack: this.stack,\n      // Axios\n      config: this.config,\n      code: this.code,\n      status: this.response && this.response.status ? this.response.status : null\n    };\n  };\n  return error;\n};\n\n\n//# sourceURL=webpack://@sygnas/wp-posts-convert/./node_modules/axios/lib/core/enhanceError.js?");
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/core/mergeConfig.js":
+/*!****************************************************!*\
+  !*** ./node_modules/axios/lib/core/mergeConfig.js ***!
+  \****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+eval("\n\nvar utils = __webpack_require__(/*! ../utils */ \"./node_modules/axios/lib/utils.js\");\n\n/**\n * Config-specific merge-function which creates a new config-object\n * by merging two configuration objects together.\n *\n * @param {Object} config1\n * @param {Object} config2\n * @returns {Object} New object resulting from merging config2 to config1\n */\nmodule.exports = function mergeConfig(config1, config2) {\n  // eslint-disable-next-line no-param-reassign\n  config2 = config2 || {};\n  var config = {};\n\n  function getMergedValue(target, source) {\n    if (utils.isPlainObject(target) && utils.isPlainObject(source)) {\n      return utils.merge(target, source);\n    } else if (utils.isPlainObject(source)) {\n      return utils.merge({}, source);\n    } else if (utils.isArray(source)) {\n      return source.slice();\n    }\n    return source;\n  }\n\n  // eslint-disable-next-line consistent-return\n  function mergeDeepProperties(prop) {\n    if (!utils.isUndefined(config2[prop])) {\n      return getMergedValue(config1[prop], config2[prop]);\n    } else if (!utils.isUndefined(config1[prop])) {\n      return getMergedValue(undefined, config1[prop]);\n    }\n  }\n\n  // eslint-disable-next-line consistent-return\n  function valueFromConfig2(prop) {\n    if (!utils.isUndefined(config2[prop])) {\n      return getMergedValue(undefined, config2[prop]);\n    }\n  }\n\n  // eslint-disable-next-line consistent-return\n  function defaultToConfig2(prop) {\n    if (!utils.isUndefined(config2[prop])) {\n      return getMergedValue(undefined, config2[prop]);\n    } else if (!utils.isUndefined(config1[prop])) {\n      return getMergedValue(undefined, config1[prop]);\n    }\n  }\n\n  // eslint-disable-next-line consistent-return\n  function mergeDirectKeys(prop) {\n    if (prop in config2) {\n      return getMergedValue(config1[prop], config2[prop]);\n    } else if (prop in config1) {\n      return getMergedValue(undefined, config1[prop]);\n    }\n  }\n\n  var mergeMap = {\n    'url': valueFromConfig2,\n    'method': valueFromConfig2,\n    'data': valueFromConfig2,\n    'baseURL': defaultToConfig2,\n    'transformRequest': defaultToConfig2,\n    'transformResponse': defaultToConfig2,\n    'paramsSerializer': defaultToConfig2,\n    'timeout': defaultToConfig2,\n    'timeoutMessage': defaultToConfig2,\n    'withCredentials': defaultToConfig2,\n    'adapter': defaultToConfig2,\n    'responseType': defaultToConfig2,\n    'xsrfCookieName': defaultToConfig2,\n    'xsrfHeaderName': defaultToConfig2,\n    'onUploadProgress': defaultToConfig2,\n    'onDownloadProgress': defaultToConfig2,\n    'decompress': defaultToConfig2,\n    'maxContentLength': defaultToConfig2,\n    'maxBodyLength': defaultToConfig2,\n    'transport': defaultToConfig2,\n    'httpAgent': defaultToConfig2,\n    'httpsAgent': defaultToConfig2,\n    'cancelToken': defaultToConfig2,\n    'socketPath': defaultToConfig2,\n    'responseEncoding': defaultToConfig2,\n    'validateStatus': mergeDirectKeys\n  };\n\n  utils.forEach(Object.keys(config1).concat(Object.keys(config2)), function computeConfigValue(prop) {\n    var merge = mergeMap[prop] || mergeDeepProperties;\n    var configValue = merge(prop);\n    (utils.isUndefined(configValue) && merge !== mergeDirectKeys) || (config[prop] = configValue);\n  });\n\n  return config;\n};\n\n\n//# sourceURL=webpack://@sygnas/wp-posts-convert/./node_modules/axios/lib/core/mergeConfig.js?");
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/core/settle.js":
+/*!***********************************************!*\
+  !*** ./node_modules/axios/lib/core/settle.js ***!
+  \***********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+eval("\n\nvar createError = __webpack_require__(/*! ./createError */ \"./node_modules/axios/lib/core/createError.js\");\n\n/**\n * Resolve or reject a Promise based on response status.\n *\n * @param {Function} resolve A function that resolves the promise.\n * @param {Function} reject A function that rejects the promise.\n * @param {object} response The response.\n */\nmodule.exports = function settle(resolve, reject, response) {\n  var validateStatus = response.config.validateStatus;\n  if (!response.status || !validateStatus || validateStatus(response.status)) {\n    resolve(response);\n  } else {\n    reject(createError(\n      'Request failed with status code ' + response.status,\n      response.config,\n      null,\n      response.request,\n      response\n    ));\n  }\n};\n\n\n//# sourceURL=webpack://@sygnas/wp-posts-convert/./node_modules/axios/lib/core/settle.js?");
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/core/transformData.js":
+/*!******************************************************!*\
+  !*** ./node_modules/axios/lib/core/transformData.js ***!
+  \******************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+eval("\n\nvar utils = __webpack_require__(/*! ./../utils */ \"./node_modules/axios/lib/utils.js\");\nvar defaults = __webpack_require__(/*! ./../defaults */ \"./node_modules/axios/lib/defaults.js\");\n\n/**\n * Transform the data for a request or a response\n *\n * @param {Object|String} data The data to be transformed\n * @param {Array} headers The headers for the request or response\n * @param {Array|Function} fns A single function or Array of functions\n * @returns {*} The resulting transformed data\n */\nmodule.exports = function transformData(data, headers, fns) {\n  var context = this || defaults;\n  /*eslint no-param-reassign:0*/\n  utils.forEach(fns, function transform(fn) {\n    data = fn.call(context, data, headers);\n  });\n\n  return data;\n};\n\n\n//# sourceURL=webpack://@sygnas/wp-posts-convert/./node_modules/axios/lib/core/transformData.js?");
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/defaults.js":
+/*!********************************************!*\
+  !*** ./node_modules/axios/lib/defaults.js ***!
+  \********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+eval("\n\nvar utils = __webpack_require__(/*! ./utils */ \"./node_modules/axios/lib/utils.js\");\nvar normalizeHeaderName = __webpack_require__(/*! ./helpers/normalizeHeaderName */ \"./node_modules/axios/lib/helpers/normalizeHeaderName.js\");\nvar enhanceError = __webpack_require__(/*! ./core/enhanceError */ \"./node_modules/axios/lib/core/enhanceError.js\");\n\nvar DEFAULT_CONTENT_TYPE = {\n  'Content-Type': 'application/x-www-form-urlencoded'\n};\n\nfunction setContentTypeIfUnset(headers, value) {\n  if (!utils.isUndefined(headers) && utils.isUndefined(headers['Content-Type'])) {\n    headers['Content-Type'] = value;\n  }\n}\n\nfunction getDefaultAdapter() {\n  var adapter;\n  if (typeof XMLHttpRequest !== 'undefined') {\n    // For browsers use XHR adapter\n    adapter = __webpack_require__(/*! ./adapters/xhr */ \"./node_modules/axios/lib/adapters/xhr.js\");\n  } else if (typeof process !== 'undefined' && Object.prototype.toString.call(process) === '[object process]') {\n    // For node use HTTP adapter\n    adapter = __webpack_require__(/*! ./adapters/http */ \"./node_modules/axios/lib/adapters/xhr.js\");\n  }\n  return adapter;\n}\n\nfunction stringifySafely(rawValue, parser, encoder) {\n  if (utils.isString(rawValue)) {\n    try {\n      (parser || JSON.parse)(rawValue);\n      return utils.trim(rawValue);\n    } catch (e) {\n      if (e.name !== 'SyntaxError') {\n        throw e;\n      }\n    }\n  }\n\n  return (encoder || JSON.stringify)(rawValue);\n}\n\nvar defaults = {\n\n  transitional: {\n    silentJSONParsing: true,\n    forcedJSONParsing: true,\n    clarifyTimeoutError: false\n  },\n\n  adapter: getDefaultAdapter(),\n\n  transformRequest: [function transformRequest(data, headers) {\n    normalizeHeaderName(headers, 'Accept');\n    normalizeHeaderName(headers, 'Content-Type');\n\n    if (utils.isFormData(data) ||\n      utils.isArrayBuffer(data) ||\n      utils.isBuffer(data) ||\n      utils.isStream(data) ||\n      utils.isFile(data) ||\n      utils.isBlob(data)\n    ) {\n      return data;\n    }\n    if (utils.isArrayBufferView(data)) {\n      return data.buffer;\n    }\n    if (utils.isURLSearchParams(data)) {\n      setContentTypeIfUnset(headers, 'application/x-www-form-urlencoded;charset=utf-8');\n      return data.toString();\n    }\n    if (utils.isObject(data) || (headers && headers['Content-Type'] === 'application/json')) {\n      setContentTypeIfUnset(headers, 'application/json');\n      return stringifySafely(data);\n    }\n    return data;\n  }],\n\n  transformResponse: [function transformResponse(data) {\n    var transitional = this.transitional || defaults.transitional;\n    var silentJSONParsing = transitional && transitional.silentJSONParsing;\n    var forcedJSONParsing = transitional && transitional.forcedJSONParsing;\n    var strictJSONParsing = !silentJSONParsing && this.responseType === 'json';\n\n    if (strictJSONParsing || (forcedJSONParsing && utils.isString(data) && data.length)) {\n      try {\n        return JSON.parse(data);\n      } catch (e) {\n        if (strictJSONParsing) {\n          if (e.name === 'SyntaxError') {\n            throw enhanceError(e, this, 'E_JSON_PARSE');\n          }\n          throw e;\n        }\n      }\n    }\n\n    return data;\n  }],\n\n  /**\n   * A timeout in milliseconds to abort a request. If set to 0 (default) a\n   * timeout is not created.\n   */\n  timeout: 0,\n\n  xsrfCookieName: 'XSRF-TOKEN',\n  xsrfHeaderName: 'X-XSRF-TOKEN',\n\n  maxContentLength: -1,\n  maxBodyLength: -1,\n\n  validateStatus: function validateStatus(status) {\n    return status >= 200 && status < 300;\n  },\n\n  headers: {\n    common: {\n      'Accept': 'application/json, text/plain, */*'\n    }\n  }\n};\n\nutils.forEach(['delete', 'get', 'head'], function forEachMethodNoData(method) {\n  defaults.headers[method] = {};\n});\n\nutils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {\n  defaults.headers[method] = utils.merge(DEFAULT_CONTENT_TYPE);\n});\n\nmodule.exports = defaults;\n\n\n//# sourceURL=webpack://@sygnas/wp-posts-convert/./node_modules/axios/lib/defaults.js?");
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/env/data.js":
+/*!********************************************!*\
+  !*** ./node_modules/axios/lib/env/data.js ***!
+  \********************************************/
+/***/ ((module) => {
+
+eval("module.exports = {\n  \"version\": \"0.24.0\"\n};\n\n//# sourceURL=webpack://@sygnas/wp-posts-convert/./node_modules/axios/lib/env/data.js?");
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/helpers/bind.js":
+/*!************************************************!*\
+  !*** ./node_modules/axios/lib/helpers/bind.js ***!
+  \************************************************/
+/***/ ((module) => {
+
+"use strict";
+eval("\n\nmodule.exports = function bind(fn, thisArg) {\n  return function wrap() {\n    var args = new Array(arguments.length);\n    for (var i = 0; i < args.length; i++) {\n      args[i] = arguments[i];\n    }\n    return fn.apply(thisArg, args);\n  };\n};\n\n\n//# sourceURL=webpack://@sygnas/wp-posts-convert/./node_modules/axios/lib/helpers/bind.js?");
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/helpers/buildURL.js":
+/*!****************************************************!*\
+  !*** ./node_modules/axios/lib/helpers/buildURL.js ***!
+  \****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+eval("\n\nvar utils = __webpack_require__(/*! ./../utils */ \"./node_modules/axios/lib/utils.js\");\n\nfunction encode(val) {\n  return encodeURIComponent(val).\n    replace(/%3A/gi, ':').\n    replace(/%24/g, '$').\n    replace(/%2C/gi, ',').\n    replace(/%20/g, '+').\n    replace(/%5B/gi, '[').\n    replace(/%5D/gi, ']');\n}\n\n/**\n * Build a URL by appending params to the end\n *\n * @param {string} url The base of the url (e.g., http://www.google.com)\n * @param {object} [params] The params to be appended\n * @returns {string} The formatted url\n */\nmodule.exports = function buildURL(url, params, paramsSerializer) {\n  /*eslint no-param-reassign:0*/\n  if (!params) {\n    return url;\n  }\n\n  var serializedParams;\n  if (paramsSerializer) {\n    serializedParams = paramsSerializer(params);\n  } else if (utils.isURLSearchParams(params)) {\n    serializedParams = params.toString();\n  } else {\n    var parts = [];\n\n    utils.forEach(params, function serialize(val, key) {\n      if (val === null || typeof val === 'undefined') {\n        return;\n      }\n\n      if (utils.isArray(val)) {\n        key = key + '[]';\n      } else {\n        val = [val];\n      }\n\n      utils.forEach(val, function parseValue(v) {\n        if (utils.isDate(v)) {\n          v = v.toISOString();\n        } else if (utils.isObject(v)) {\n          v = JSON.stringify(v);\n        }\n        parts.push(encode(key) + '=' + encode(v));\n      });\n    });\n\n    serializedParams = parts.join('&');\n  }\n\n  if (serializedParams) {\n    var hashmarkIndex = url.indexOf('#');\n    if (hashmarkIndex !== -1) {\n      url = url.slice(0, hashmarkIndex);\n    }\n\n    url += (url.indexOf('?') === -1 ? '?' : '&') + serializedParams;\n  }\n\n  return url;\n};\n\n\n//# sourceURL=webpack://@sygnas/wp-posts-convert/./node_modules/axios/lib/helpers/buildURL.js?");
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/helpers/combineURLs.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/axios/lib/helpers/combineURLs.js ***!
+  \*******************************************************/
+/***/ ((module) => {
+
+"use strict";
+eval("\n\n/**\n * Creates a new URL by combining the specified URLs\n *\n * @param {string} baseURL The base URL\n * @param {string} relativeURL The relative URL\n * @returns {string} The combined URL\n */\nmodule.exports = function combineURLs(baseURL, relativeURL) {\n  return relativeURL\n    ? baseURL.replace(/\\/+$/, '') + '/' + relativeURL.replace(/^\\/+/, '')\n    : baseURL;\n};\n\n\n//# sourceURL=webpack://@sygnas/wp-posts-convert/./node_modules/axios/lib/helpers/combineURLs.js?");
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/helpers/cookies.js":
+/*!***************************************************!*\
+  !*** ./node_modules/axios/lib/helpers/cookies.js ***!
+  \***************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+eval("\n\nvar utils = __webpack_require__(/*! ./../utils */ \"./node_modules/axios/lib/utils.js\");\n\nmodule.exports = (\n  utils.isStandardBrowserEnv() ?\n\n  // Standard browser envs support document.cookie\n    (function standardBrowserEnv() {\n      return {\n        write: function write(name, value, expires, path, domain, secure) {\n          var cookie = [];\n          cookie.push(name + '=' + encodeURIComponent(value));\n\n          if (utils.isNumber(expires)) {\n            cookie.push('expires=' + new Date(expires).toGMTString());\n          }\n\n          if (utils.isString(path)) {\n            cookie.push('path=' + path);\n          }\n\n          if (utils.isString(domain)) {\n            cookie.push('domain=' + domain);\n          }\n\n          if (secure === true) {\n            cookie.push('secure');\n          }\n\n          document.cookie = cookie.join('; ');\n        },\n\n        read: function read(name) {\n          var match = document.cookie.match(new RegExp('(^|;\\\\s*)(' + name + ')=([^;]*)'));\n          return (match ? decodeURIComponent(match[3]) : null);\n        },\n\n        remove: function remove(name) {\n          this.write(name, '', Date.now() - 86400000);\n        }\n      };\n    })() :\n\n  // Non standard browser env (web workers, react-native) lack needed support.\n    (function nonStandardBrowserEnv() {\n      return {\n        write: function write() {},\n        read: function read() { return null; },\n        remove: function remove() {}\n      };\n    })()\n);\n\n\n//# sourceURL=webpack://@sygnas/wp-posts-convert/./node_modules/axios/lib/helpers/cookies.js?");
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/helpers/isAbsoluteURL.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/axios/lib/helpers/isAbsoluteURL.js ***!
+  \*********************************************************/
+/***/ ((module) => {
+
+"use strict";
+eval("\n\n/**\n * Determines whether the specified URL is absolute\n *\n * @param {string} url The URL to test\n * @returns {boolean} True if the specified URL is absolute, otherwise false\n */\nmodule.exports = function isAbsoluteURL(url) {\n  // A URL is considered absolute if it begins with \"<scheme>://\" or \"//\" (protocol-relative URL).\n  // RFC 3986 defines scheme name as a sequence of characters beginning with a letter and followed\n  // by any combination of letters, digits, plus, period, or hyphen.\n  return /^([a-z][a-z\\d\\+\\-\\.]*:)?\\/\\//i.test(url);\n};\n\n\n//# sourceURL=webpack://@sygnas/wp-posts-convert/./node_modules/axios/lib/helpers/isAbsoluteURL.js?");
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/helpers/isAxiosError.js":
+/*!********************************************************!*\
+  !*** ./node_modules/axios/lib/helpers/isAxiosError.js ***!
+  \********************************************************/
+/***/ ((module) => {
+
+"use strict";
+eval("\n\n/**\n * Determines whether the payload is an error thrown by Axios\n *\n * @param {*} payload The value to test\n * @returns {boolean} True if the payload is an error thrown by Axios, otherwise false\n */\nmodule.exports = function isAxiosError(payload) {\n  return (typeof payload === 'object') && (payload.isAxiosError === true);\n};\n\n\n//# sourceURL=webpack://@sygnas/wp-posts-convert/./node_modules/axios/lib/helpers/isAxiosError.js?");
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/helpers/isURLSameOrigin.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/axios/lib/helpers/isURLSameOrigin.js ***!
+  \***********************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+eval("\n\nvar utils = __webpack_require__(/*! ./../utils */ \"./node_modules/axios/lib/utils.js\");\n\nmodule.exports = (\n  utils.isStandardBrowserEnv() ?\n\n  // Standard browser envs have full support of the APIs needed to test\n  // whether the request URL is of the same origin as current location.\n    (function standardBrowserEnv() {\n      var msie = /(msie|trident)/i.test(navigator.userAgent);\n      var urlParsingNode = document.createElement('a');\n      var originURL;\n\n      /**\n    * Parse a URL to discover it's components\n    *\n    * @param {String} url The URL to be parsed\n    * @returns {Object}\n    */\n      function resolveURL(url) {\n        var href = url;\n\n        if (msie) {\n        // IE needs attribute set twice to normalize properties\n          urlParsingNode.setAttribute('href', href);\n          href = urlParsingNode.href;\n        }\n\n        urlParsingNode.setAttribute('href', href);\n\n        // urlParsingNode provides the UrlUtils interface - http://url.spec.whatwg.org/#urlutils\n        return {\n          href: urlParsingNode.href,\n          protocol: urlParsingNode.protocol ? urlParsingNode.protocol.replace(/:$/, '') : '',\n          host: urlParsingNode.host,\n          search: urlParsingNode.search ? urlParsingNode.search.replace(/^\\?/, '') : '',\n          hash: urlParsingNode.hash ? urlParsingNode.hash.replace(/^#/, '') : '',\n          hostname: urlParsingNode.hostname,\n          port: urlParsingNode.port,\n          pathname: (urlParsingNode.pathname.charAt(0) === '/') ?\n            urlParsingNode.pathname :\n            '/' + urlParsingNode.pathname\n        };\n      }\n\n      originURL = resolveURL(window.location.href);\n\n      /**\n    * Determine if a URL shares the same origin as the current location\n    *\n    * @param {String} requestURL The URL to test\n    * @returns {boolean} True if URL shares the same origin, otherwise false\n    */\n      return function isURLSameOrigin(requestURL) {\n        var parsed = (utils.isString(requestURL)) ? resolveURL(requestURL) : requestURL;\n        return (parsed.protocol === originURL.protocol &&\n            parsed.host === originURL.host);\n      };\n    })() :\n\n  // Non standard browser envs (web workers, react-native) lack needed support.\n    (function nonStandardBrowserEnv() {\n      return function isURLSameOrigin() {\n        return true;\n      };\n    })()\n);\n\n\n//# sourceURL=webpack://@sygnas/wp-posts-convert/./node_modules/axios/lib/helpers/isURLSameOrigin.js?");
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/helpers/normalizeHeaderName.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/axios/lib/helpers/normalizeHeaderName.js ***!
+  \***************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+eval("\n\nvar utils = __webpack_require__(/*! ../utils */ \"./node_modules/axios/lib/utils.js\");\n\nmodule.exports = function normalizeHeaderName(headers, normalizedName) {\n  utils.forEach(headers, function processHeader(value, name) {\n    if (name !== normalizedName && name.toUpperCase() === normalizedName.toUpperCase()) {\n      headers[normalizedName] = value;\n      delete headers[name];\n    }\n  });\n};\n\n\n//# sourceURL=webpack://@sygnas/wp-posts-convert/./node_modules/axios/lib/helpers/normalizeHeaderName.js?");
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/helpers/parseHeaders.js":
+/*!********************************************************!*\
+  !*** ./node_modules/axios/lib/helpers/parseHeaders.js ***!
+  \********************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+eval("\n\nvar utils = __webpack_require__(/*! ./../utils */ \"./node_modules/axios/lib/utils.js\");\n\n// Headers whose duplicates are ignored by node\n// c.f. https://nodejs.org/api/http.html#http_message_headers\nvar ignoreDuplicateOf = [\n  'age', 'authorization', 'content-length', 'content-type', 'etag',\n  'expires', 'from', 'host', 'if-modified-since', 'if-unmodified-since',\n  'last-modified', 'location', 'max-forwards', 'proxy-authorization',\n  'referer', 'retry-after', 'user-agent'\n];\n\n/**\n * Parse headers into an object\n *\n * ```\n * Date: Wed, 27 Aug 2014 08:58:49 GMT\n * Content-Type: application/json\n * Connection: keep-alive\n * Transfer-Encoding: chunked\n * ```\n *\n * @param {String} headers Headers needing to be parsed\n * @returns {Object} Headers parsed into an object\n */\nmodule.exports = function parseHeaders(headers) {\n  var parsed = {};\n  var key;\n  var val;\n  var i;\n\n  if (!headers) { return parsed; }\n\n  utils.forEach(headers.split('\\n'), function parser(line) {\n    i = line.indexOf(':');\n    key = utils.trim(line.substr(0, i)).toLowerCase();\n    val = utils.trim(line.substr(i + 1));\n\n    if (key) {\n      if (parsed[key] && ignoreDuplicateOf.indexOf(key) >= 0) {\n        return;\n      }\n      if (key === 'set-cookie') {\n        parsed[key] = (parsed[key] ? parsed[key] : []).concat([val]);\n      } else {\n        parsed[key] = parsed[key] ? parsed[key] + ', ' + val : val;\n      }\n    }\n  });\n\n  return parsed;\n};\n\n\n//# sourceURL=webpack://@sygnas/wp-posts-convert/./node_modules/axios/lib/helpers/parseHeaders.js?");
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/helpers/spread.js":
+/*!**************************************************!*\
+  !*** ./node_modules/axios/lib/helpers/spread.js ***!
+  \**************************************************/
+/***/ ((module) => {
+
+"use strict";
+eval("\n\n/**\n * Syntactic sugar for invoking a function and expanding an array for arguments.\n *\n * Common use case would be to use `Function.prototype.apply`.\n *\n *  ```js\n *  function f(x, y, z) {}\n *  var args = [1, 2, 3];\n *  f.apply(null, args);\n *  ```\n *\n * With `spread` this example can be re-written.\n *\n *  ```js\n *  spread(function(x, y, z) {})([1, 2, 3]);\n *  ```\n *\n * @param {Function} callback\n * @returns {Function}\n */\nmodule.exports = function spread(callback) {\n  return function wrap(arr) {\n    return callback.apply(null, arr);\n  };\n};\n\n\n//# sourceURL=webpack://@sygnas/wp-posts-convert/./node_modules/axios/lib/helpers/spread.js?");
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/helpers/validator.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/axios/lib/helpers/validator.js ***!
+  \*****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+eval("\n\nvar VERSION = (__webpack_require__(/*! ../env/data */ \"./node_modules/axios/lib/env/data.js\").version);\n\nvar validators = {};\n\n// eslint-disable-next-line func-names\n['object', 'boolean', 'number', 'function', 'string', 'symbol'].forEach(function(type, i) {\n  validators[type] = function validator(thing) {\n    return typeof thing === type || 'a' + (i < 1 ? 'n ' : ' ') + type;\n  };\n});\n\nvar deprecatedWarnings = {};\n\n/**\n * Transitional option validator\n * @param {function|boolean?} validator - set to false if the transitional option has been removed\n * @param {string?} version - deprecated version / removed since version\n * @param {string?} message - some message with additional info\n * @returns {function}\n */\nvalidators.transitional = function transitional(validator, version, message) {\n  function formatMessage(opt, desc) {\n    return '[Axios v' + VERSION + '] Transitional option \\'' + opt + '\\'' + desc + (message ? '. ' + message : '');\n  }\n\n  // eslint-disable-next-line func-names\n  return function(value, opt, opts) {\n    if (validator === false) {\n      throw new Error(formatMessage(opt, ' has been removed' + (version ? ' in ' + version : '')));\n    }\n\n    if (version && !deprecatedWarnings[opt]) {\n      deprecatedWarnings[opt] = true;\n      // eslint-disable-next-line no-console\n      console.warn(\n        formatMessage(\n          opt,\n          ' has been deprecated since v' + version + ' and will be removed in the near future'\n        )\n      );\n    }\n\n    return validator ? validator(value, opt, opts) : true;\n  };\n};\n\n/**\n * Assert object's properties type\n * @param {object} options\n * @param {object} schema\n * @param {boolean?} allowUnknown\n */\n\nfunction assertOptions(options, schema, allowUnknown) {\n  if (typeof options !== 'object') {\n    throw new TypeError('options must be an object');\n  }\n  var keys = Object.keys(options);\n  var i = keys.length;\n  while (i-- > 0) {\n    var opt = keys[i];\n    var validator = schema[opt];\n    if (validator) {\n      var value = options[opt];\n      var result = value === undefined || validator(value, opt, options);\n      if (result !== true) {\n        throw new TypeError('option ' + opt + ' must be ' + result);\n      }\n      continue;\n    }\n    if (allowUnknown !== true) {\n      throw Error('Unknown option ' + opt);\n    }\n  }\n}\n\nmodule.exports = {\n  assertOptions: assertOptions,\n  validators: validators\n};\n\n\n//# sourceURL=webpack://@sygnas/wp-posts-convert/./node_modules/axios/lib/helpers/validator.js?");
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/utils.js":
+/*!*****************************************!*\
+  !*** ./node_modules/axios/lib/utils.js ***!
+  \*****************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+eval("\n\nvar bind = __webpack_require__(/*! ./helpers/bind */ \"./node_modules/axios/lib/helpers/bind.js\");\n\n// utils is a library of generic helper functions non-specific to axios\n\nvar toString = Object.prototype.toString;\n\n/**\n * Determine if a value is an Array\n *\n * @param {Object} val The value to test\n * @returns {boolean} True if value is an Array, otherwise false\n */\nfunction isArray(val) {\n  return toString.call(val) === '[object Array]';\n}\n\n/**\n * Determine if a value is undefined\n *\n * @param {Object} val The value to test\n * @returns {boolean} True if the value is undefined, otherwise false\n */\nfunction isUndefined(val) {\n  return typeof val === 'undefined';\n}\n\n/**\n * Determine if a value is a Buffer\n *\n * @param {Object} val The value to test\n * @returns {boolean} True if value is a Buffer, otherwise false\n */\nfunction isBuffer(val) {\n  return val !== null && !isUndefined(val) && val.constructor !== null && !isUndefined(val.constructor)\n    && typeof val.constructor.isBuffer === 'function' && val.constructor.isBuffer(val);\n}\n\n/**\n * Determine if a value is an ArrayBuffer\n *\n * @param {Object} val The value to test\n * @returns {boolean} True if value is an ArrayBuffer, otherwise false\n */\nfunction isArrayBuffer(val) {\n  return toString.call(val) === '[object ArrayBuffer]';\n}\n\n/**\n * Determine if a value is a FormData\n *\n * @param {Object} val The value to test\n * @returns {boolean} True if value is an FormData, otherwise false\n */\nfunction isFormData(val) {\n  return (typeof FormData !== 'undefined') && (val instanceof FormData);\n}\n\n/**\n * Determine if a value is a view on an ArrayBuffer\n *\n * @param {Object} val The value to test\n * @returns {boolean} True if value is a view on an ArrayBuffer, otherwise false\n */\nfunction isArrayBufferView(val) {\n  var result;\n  if ((typeof ArrayBuffer !== 'undefined') && (ArrayBuffer.isView)) {\n    result = ArrayBuffer.isView(val);\n  } else {\n    result = (val) && (val.buffer) && (val.buffer instanceof ArrayBuffer);\n  }\n  return result;\n}\n\n/**\n * Determine if a value is a String\n *\n * @param {Object} val The value to test\n * @returns {boolean} True if value is a String, otherwise false\n */\nfunction isString(val) {\n  return typeof val === 'string';\n}\n\n/**\n * Determine if a value is a Number\n *\n * @param {Object} val The value to test\n * @returns {boolean} True if value is a Number, otherwise false\n */\nfunction isNumber(val) {\n  return typeof val === 'number';\n}\n\n/**\n * Determine if a value is an Object\n *\n * @param {Object} val The value to test\n * @returns {boolean} True if value is an Object, otherwise false\n */\nfunction isObject(val) {\n  return val !== null && typeof val === 'object';\n}\n\n/**\n * Determine if a value is a plain Object\n *\n * @param {Object} val The value to test\n * @return {boolean} True if value is a plain Object, otherwise false\n */\nfunction isPlainObject(val) {\n  if (toString.call(val) !== '[object Object]') {\n    return false;\n  }\n\n  var prototype = Object.getPrototypeOf(val);\n  return prototype === null || prototype === Object.prototype;\n}\n\n/**\n * Determine if a value is a Date\n *\n * @param {Object} val The value to test\n * @returns {boolean} True if value is a Date, otherwise false\n */\nfunction isDate(val) {\n  return toString.call(val) === '[object Date]';\n}\n\n/**\n * Determine if a value is a File\n *\n * @param {Object} val The value to test\n * @returns {boolean} True if value is a File, otherwise false\n */\nfunction isFile(val) {\n  return toString.call(val) === '[object File]';\n}\n\n/**\n * Determine if a value is a Blob\n *\n * @param {Object} val The value to test\n * @returns {boolean} True if value is a Blob, otherwise false\n */\nfunction isBlob(val) {\n  return toString.call(val) === '[object Blob]';\n}\n\n/**\n * Determine if a value is a Function\n *\n * @param {Object} val The value to test\n * @returns {boolean} True if value is a Function, otherwise false\n */\nfunction isFunction(val) {\n  return toString.call(val) === '[object Function]';\n}\n\n/**\n * Determine if a value is a Stream\n *\n * @param {Object} val The value to test\n * @returns {boolean} True if value is a Stream, otherwise false\n */\nfunction isStream(val) {\n  return isObject(val) && isFunction(val.pipe);\n}\n\n/**\n * Determine if a value is a URLSearchParams object\n *\n * @param {Object} val The value to test\n * @returns {boolean} True if value is a URLSearchParams object, otherwise false\n */\nfunction isURLSearchParams(val) {\n  return typeof URLSearchParams !== 'undefined' && val instanceof URLSearchParams;\n}\n\n/**\n * Trim excess whitespace off the beginning and end of a string\n *\n * @param {String} str The String to trim\n * @returns {String} The String freed of excess whitespace\n */\nfunction trim(str) {\n  return str.trim ? str.trim() : str.replace(/^\\s+|\\s+$/g, '');\n}\n\n/**\n * Determine if we're running in a standard browser environment\n *\n * This allows axios to run in a web worker, and react-native.\n * Both environments support XMLHttpRequest, but not fully standard globals.\n *\n * web workers:\n *  typeof window -> undefined\n *  typeof document -> undefined\n *\n * react-native:\n *  navigator.product -> 'ReactNative'\n * nativescript\n *  navigator.product -> 'NativeScript' or 'NS'\n */\nfunction isStandardBrowserEnv() {\n  if (typeof navigator !== 'undefined' && (navigator.product === 'ReactNative' ||\n                                           navigator.product === 'NativeScript' ||\n                                           navigator.product === 'NS')) {\n    return false;\n  }\n  return (\n    typeof window !== 'undefined' &&\n    typeof document !== 'undefined'\n  );\n}\n\n/**\n * Iterate over an Array or an Object invoking a function for each item.\n *\n * If `obj` is an Array callback will be called passing\n * the value, index, and complete array for each item.\n *\n * If 'obj' is an Object callback will be called passing\n * the value, key, and complete object for each property.\n *\n * @param {Object|Array} obj The object to iterate\n * @param {Function} fn The callback to invoke for each item\n */\nfunction forEach(obj, fn) {\n  // Don't bother if no value provided\n  if (obj === null || typeof obj === 'undefined') {\n    return;\n  }\n\n  // Force an array if not already something iterable\n  if (typeof obj !== 'object') {\n    /*eslint no-param-reassign:0*/\n    obj = [obj];\n  }\n\n  if (isArray(obj)) {\n    // Iterate over array values\n    for (var i = 0, l = obj.length; i < l; i++) {\n      fn.call(null, obj[i], i, obj);\n    }\n  } else {\n    // Iterate over object keys\n    for (var key in obj) {\n      if (Object.prototype.hasOwnProperty.call(obj, key)) {\n        fn.call(null, obj[key], key, obj);\n      }\n    }\n  }\n}\n\n/**\n * Accepts varargs expecting each argument to be an object, then\n * immutably merges the properties of each object and returns result.\n *\n * When multiple objects contain the same key the later object in\n * the arguments list will take precedence.\n *\n * Example:\n *\n * ```js\n * var result = merge({foo: 123}, {foo: 456});\n * console.log(result.foo); // outputs 456\n * ```\n *\n * @param {Object} obj1 Object to merge\n * @returns {Object} Result of all merge properties\n */\nfunction merge(/* obj1, obj2, obj3, ... */) {\n  var result = {};\n  function assignValue(val, key) {\n    if (isPlainObject(result[key]) && isPlainObject(val)) {\n      result[key] = merge(result[key], val);\n    } else if (isPlainObject(val)) {\n      result[key] = merge({}, val);\n    } else if (isArray(val)) {\n      result[key] = val.slice();\n    } else {\n      result[key] = val;\n    }\n  }\n\n  for (var i = 0, l = arguments.length; i < l; i++) {\n    forEach(arguments[i], assignValue);\n  }\n  return result;\n}\n\n/**\n * Extends object a by mutably adding to it the properties of object b.\n *\n * @param {Object} a The object to be extended\n * @param {Object} b The object to copy properties from\n * @param {Object} thisArg The object to bind function to\n * @return {Object} The resulting value of object a\n */\nfunction extend(a, b, thisArg) {\n  forEach(b, function assignValue(val, key) {\n    if (thisArg && typeof val === 'function') {\n      a[key] = bind(val, thisArg);\n    } else {\n      a[key] = val;\n    }\n  });\n  return a;\n}\n\n/**\n * Remove byte order marker. This catches EF BB BF (the UTF-8 BOM)\n *\n * @param {string} content with BOM\n * @return {string} content value without BOM\n */\nfunction stripBOM(content) {\n  if (content.charCodeAt(0) === 0xFEFF) {\n    content = content.slice(1);\n  }\n  return content;\n}\n\nmodule.exports = {\n  isArray: isArray,\n  isArrayBuffer: isArrayBuffer,\n  isBuffer: isBuffer,\n  isFormData: isFormData,\n  isArrayBufferView: isArrayBufferView,\n  isString: isString,\n  isNumber: isNumber,\n  isObject: isObject,\n  isPlainObject: isPlainObject,\n  isUndefined: isUndefined,\n  isDate: isDate,\n  isFile: isFile,\n  isBlob: isBlob,\n  isFunction: isFunction,\n  isStream: isStream,\n  isURLSearchParams: isURLSearchParams,\n  isStandardBrowserEnv: isStandardBrowserEnv,\n  forEach: forEach,\n  merge: merge,\n  extend: extend,\n  trim: trim,\n  stripBOM: stripBOM\n};\n\n\n//# sourceURL=webpack://@sygnas/wp-posts-convert/./node_modules/axios/lib/utils.js?");
+
+/***/ }),
+
+/***/ "./node_modules/csv-parse/dist/esm/sync.js":
+/*!*************************************************!*\
+  !*** ./node_modules/csv-parse/dist/esm/sync.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"CsvError\": () => (/* binding */ CsvError),\n/* harmony export */   \"parse\": () => (/* binding */ parse)\n/* harmony export */ });\nvar global$1 = (typeof global !== \"undefined\" ? global :\n            typeof self !== \"undefined\" ? self :\n            typeof window !== \"undefined\" ? window : {});\n\nvar lookup = [];\nvar revLookup = [];\nvar Arr = typeof Uint8Array !== 'undefined' ? Uint8Array : Array;\nvar inited = false;\nfunction init () {\n  inited = true;\n  var code = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';\n  for (var i = 0, len = code.length; i < len; ++i) {\n    lookup[i] = code[i];\n    revLookup[code.charCodeAt(i)] = i;\n  }\n\n  revLookup['-'.charCodeAt(0)] = 62;\n  revLookup['_'.charCodeAt(0)] = 63;\n}\n\nfunction toByteArray (b64) {\n  if (!inited) {\n    init();\n  }\n  var i, j, l, tmp, placeHolders, arr;\n  var len = b64.length;\n\n  if (len % 4 > 0) {\n    throw new Error('Invalid string. Length must be a multiple of 4')\n  }\n\n  // the number of equal signs (place holders)\n  // if there are two placeholders, than the two characters before it\n  // represent one byte\n  // if there is only one, then the three characters before it represent 2 bytes\n  // this is just a cheap hack to not do indexOf twice\n  placeHolders = b64[len - 2] === '=' ? 2 : b64[len - 1] === '=' ? 1 : 0;\n\n  // base64 is 4/3 + up to two characters of the original data\n  arr = new Arr(len * 3 / 4 - placeHolders);\n\n  // if there are placeholders, only get up to the last complete 4 chars\n  l = placeHolders > 0 ? len - 4 : len;\n\n  var L = 0;\n\n  for (i = 0, j = 0; i < l; i += 4, j += 3) {\n    tmp = (revLookup[b64.charCodeAt(i)] << 18) | (revLookup[b64.charCodeAt(i + 1)] << 12) | (revLookup[b64.charCodeAt(i + 2)] << 6) | revLookup[b64.charCodeAt(i + 3)];\n    arr[L++] = (tmp >> 16) & 0xFF;\n    arr[L++] = (tmp >> 8) & 0xFF;\n    arr[L++] = tmp & 0xFF;\n  }\n\n  if (placeHolders === 2) {\n    tmp = (revLookup[b64.charCodeAt(i)] << 2) | (revLookup[b64.charCodeAt(i + 1)] >> 4);\n    arr[L++] = tmp & 0xFF;\n  } else if (placeHolders === 1) {\n    tmp = (revLookup[b64.charCodeAt(i)] << 10) | (revLookup[b64.charCodeAt(i + 1)] << 4) | (revLookup[b64.charCodeAt(i + 2)] >> 2);\n    arr[L++] = (tmp >> 8) & 0xFF;\n    arr[L++] = tmp & 0xFF;\n  }\n\n  return arr\n}\n\nfunction tripletToBase64 (num) {\n  return lookup[num >> 18 & 0x3F] + lookup[num >> 12 & 0x3F] + lookup[num >> 6 & 0x3F] + lookup[num & 0x3F]\n}\n\nfunction encodeChunk (uint8, start, end) {\n  var tmp;\n  var output = [];\n  for (var i = start; i < end; i += 3) {\n    tmp = (uint8[i] << 16) + (uint8[i + 1] << 8) + (uint8[i + 2]);\n    output.push(tripletToBase64(tmp));\n  }\n  return output.join('')\n}\n\nfunction fromByteArray (uint8) {\n  if (!inited) {\n    init();\n  }\n  var tmp;\n  var len = uint8.length;\n  var extraBytes = len % 3; // if we have 1 byte left, pad 2 bytes\n  var output = '';\n  var parts = [];\n  var maxChunkLength = 16383; // must be multiple of 3\n\n  // go through the array every three bytes, we'll deal with trailing stuff later\n  for (var i = 0, len2 = len - extraBytes; i < len2; i += maxChunkLength) {\n    parts.push(encodeChunk(uint8, i, (i + maxChunkLength) > len2 ? len2 : (i + maxChunkLength)));\n  }\n\n  // pad the end with zeros, but make sure to not forget the extra bytes\n  if (extraBytes === 1) {\n    tmp = uint8[len - 1];\n    output += lookup[tmp >> 2];\n    output += lookup[(tmp << 4) & 0x3F];\n    output += '==';\n  } else if (extraBytes === 2) {\n    tmp = (uint8[len - 2] << 8) + (uint8[len - 1]);\n    output += lookup[tmp >> 10];\n    output += lookup[(tmp >> 4) & 0x3F];\n    output += lookup[(tmp << 2) & 0x3F];\n    output += '=';\n  }\n\n  parts.push(output);\n\n  return parts.join('')\n}\n\nfunction read (buffer, offset, isLE, mLen, nBytes) {\n  var e, m;\n  var eLen = nBytes * 8 - mLen - 1;\n  var eMax = (1 << eLen) - 1;\n  var eBias = eMax >> 1;\n  var nBits = -7;\n  var i = isLE ? (nBytes - 1) : 0;\n  var d = isLE ? -1 : 1;\n  var s = buffer[offset + i];\n\n  i += d;\n\n  e = s & ((1 << (-nBits)) - 1);\n  s >>= (-nBits);\n  nBits += eLen;\n  for (; nBits > 0; e = e * 256 + buffer[offset + i], i += d, nBits -= 8) {}\n\n  m = e & ((1 << (-nBits)) - 1);\n  e >>= (-nBits);\n  nBits += mLen;\n  for (; nBits > 0; m = m * 256 + buffer[offset + i], i += d, nBits -= 8) {}\n\n  if (e === 0) {\n    e = 1 - eBias;\n  } else if (e === eMax) {\n    return m ? NaN : ((s ? -1 : 1) * Infinity)\n  } else {\n    m = m + Math.pow(2, mLen);\n    e = e - eBias;\n  }\n  return (s ? -1 : 1) * m * Math.pow(2, e - mLen)\n}\n\nfunction write (buffer, value, offset, isLE, mLen, nBytes) {\n  var e, m, c;\n  var eLen = nBytes * 8 - mLen - 1;\n  var eMax = (1 << eLen) - 1;\n  var eBias = eMax >> 1;\n  var rt = (mLen === 23 ? Math.pow(2, -24) - Math.pow(2, -77) : 0);\n  var i = isLE ? 0 : (nBytes - 1);\n  var d = isLE ? 1 : -1;\n  var s = value < 0 || (value === 0 && 1 / value < 0) ? 1 : 0;\n\n  value = Math.abs(value);\n\n  if (isNaN(value) || value === Infinity) {\n    m = isNaN(value) ? 1 : 0;\n    e = eMax;\n  } else {\n    e = Math.floor(Math.log(value) / Math.LN2);\n    if (value * (c = Math.pow(2, -e)) < 1) {\n      e--;\n      c *= 2;\n    }\n    if (e + eBias >= 1) {\n      value += rt / c;\n    } else {\n      value += rt * Math.pow(2, 1 - eBias);\n    }\n    if (value * c >= 2) {\n      e++;\n      c /= 2;\n    }\n\n    if (e + eBias >= eMax) {\n      m = 0;\n      e = eMax;\n    } else if (e + eBias >= 1) {\n      m = (value * c - 1) * Math.pow(2, mLen);\n      e = e + eBias;\n    } else {\n      m = value * Math.pow(2, eBias - 1) * Math.pow(2, mLen);\n      e = 0;\n    }\n  }\n\n  for (; mLen >= 8; buffer[offset + i] = m & 0xff, i += d, m /= 256, mLen -= 8) {}\n\n  e = (e << mLen) | m;\n  eLen += mLen;\n  for (; eLen > 0; buffer[offset + i] = e & 0xff, i += d, e /= 256, eLen -= 8) {}\n\n  buffer[offset + i - d] |= s * 128;\n}\n\nvar toString = {}.toString;\n\nvar isArray$1 = Array.isArray || function (arr) {\n  return toString.call(arr) == '[object Array]';\n};\n\nvar INSPECT_MAX_BYTES = 50;\n\n/**\n * If `Buffer.TYPED_ARRAY_SUPPORT`:\n *   === true    Use Uint8Array implementation (fastest)\n *   === false   Use Object implementation (most compatible, even IE6)\n *\n * Browsers that support typed arrays are IE 10+, Firefox 4+, Chrome 7+, Safari 5.1+,\n * Opera 11.6+, iOS 4.2+.\n *\n * Due to various browser bugs, sometimes the Object implementation will be used even\n * when the browser supports typed arrays.\n *\n * Note:\n *\n *   - Firefox 4-29 lacks support for adding new properties to `Uint8Array` instances,\n *     See: https://bugzilla.mozilla.org/show_bug.cgi?id=695438.\n *\n *   - Chrome 9-10 is missing the `TypedArray.prototype.subarray` function.\n *\n *   - IE10 has a broken `TypedArray.prototype.subarray` function which returns arrays of\n *     incorrect length in some situations.\n\n * We detect these buggy browsers and set `Buffer.TYPED_ARRAY_SUPPORT` to `false` so they\n * get the Object implementation, which is slower but behaves correctly.\n */\nBuffer.TYPED_ARRAY_SUPPORT = global$1.TYPED_ARRAY_SUPPORT !== undefined\n  ? global$1.TYPED_ARRAY_SUPPORT\n  : true;\n\nfunction kMaxLength () {\n  return Buffer.TYPED_ARRAY_SUPPORT\n    ? 0x7fffffff\n    : 0x3fffffff\n}\n\nfunction createBuffer (that, length) {\n  if (kMaxLength() < length) {\n    throw new RangeError('Invalid typed array length')\n  }\n  if (Buffer.TYPED_ARRAY_SUPPORT) {\n    // Return an augmented `Uint8Array` instance, for best performance\n    that = new Uint8Array(length);\n    that.__proto__ = Buffer.prototype;\n  } else {\n    // Fallback: Return an object instance of the Buffer class\n    if (that === null) {\n      that = new Buffer(length);\n    }\n    that.length = length;\n  }\n\n  return that\n}\n\n/**\n * The Buffer constructor returns instances of `Uint8Array` that have their\n * prototype changed to `Buffer.prototype`. Furthermore, `Buffer` is a subclass of\n * `Uint8Array`, so the returned instances will have all the node `Buffer` methods\n * and the `Uint8Array` methods. Square bracket notation works as expected -- it\n * returns a single octet.\n *\n * The `Uint8Array` prototype remains unmodified.\n */\n\nfunction Buffer (arg, encodingOrOffset, length) {\n  if (!Buffer.TYPED_ARRAY_SUPPORT && !(this instanceof Buffer)) {\n    return new Buffer(arg, encodingOrOffset, length)\n  }\n\n  // Common case.\n  if (typeof arg === 'number') {\n    if (typeof encodingOrOffset === 'string') {\n      throw new Error(\n        'If encoding is specified then the first argument must be a string'\n      )\n    }\n    return allocUnsafe(this, arg)\n  }\n  return from(this, arg, encodingOrOffset, length)\n}\n\nBuffer.poolSize = 8192; // not used by this implementation\n\n// TODO: Legacy, not needed anymore. Remove in next major version.\nBuffer._augment = function (arr) {\n  arr.__proto__ = Buffer.prototype;\n  return arr\n};\n\nfunction from (that, value, encodingOrOffset, length) {\n  if (typeof value === 'number') {\n    throw new TypeError('\"value\" argument must not be a number')\n  }\n\n  if (typeof ArrayBuffer !== 'undefined' && value instanceof ArrayBuffer) {\n    return fromArrayBuffer(that, value, encodingOrOffset, length)\n  }\n\n  if (typeof value === 'string') {\n    return fromString(that, value, encodingOrOffset)\n  }\n\n  return fromObject(that, value)\n}\n\n/**\n * Functionally equivalent to Buffer(arg, encoding) but throws a TypeError\n * if value is a number.\n * Buffer.from(str[, encoding])\n * Buffer.from(array)\n * Buffer.from(buffer)\n * Buffer.from(arrayBuffer[, byteOffset[, length]])\n **/\nBuffer.from = function (value, encodingOrOffset, length) {\n  return from(null, value, encodingOrOffset, length)\n};\n\nif (Buffer.TYPED_ARRAY_SUPPORT) {\n  Buffer.prototype.__proto__ = Uint8Array.prototype;\n  Buffer.__proto__ = Uint8Array;\n}\n\nfunction assertSize (size) {\n  if (typeof size !== 'number') {\n    throw new TypeError('\"size\" argument must be a number')\n  } else if (size < 0) {\n    throw new RangeError('\"size\" argument must not be negative')\n  }\n}\n\nfunction alloc (that, size, fill, encoding) {\n  assertSize(size);\n  if (size <= 0) {\n    return createBuffer(that, size)\n  }\n  if (fill !== undefined) {\n    // Only pay attention to encoding if it's a string. This\n    // prevents accidentally sending in a number that would\n    // be interpretted as a start offset.\n    return typeof encoding === 'string'\n      ? createBuffer(that, size).fill(fill, encoding)\n      : createBuffer(that, size).fill(fill)\n  }\n  return createBuffer(that, size)\n}\n\n/**\n * Creates a new filled Buffer instance.\n * alloc(size[, fill[, encoding]])\n **/\nBuffer.alloc = function (size, fill, encoding) {\n  return alloc(null, size, fill, encoding)\n};\n\nfunction allocUnsafe (that, size) {\n  assertSize(size);\n  that = createBuffer(that, size < 0 ? 0 : checked(size) | 0);\n  if (!Buffer.TYPED_ARRAY_SUPPORT) {\n    for (var i = 0; i < size; ++i) {\n      that[i] = 0;\n    }\n  }\n  return that\n}\n\n/**\n * Equivalent to Buffer(num), by default creates a non-zero-filled Buffer instance.\n * */\nBuffer.allocUnsafe = function (size) {\n  return allocUnsafe(null, size)\n};\n/**\n * Equivalent to SlowBuffer(num), by default creates a non-zero-filled Buffer instance.\n */\nBuffer.allocUnsafeSlow = function (size) {\n  return allocUnsafe(null, size)\n};\n\nfunction fromString (that, string, encoding) {\n  if (typeof encoding !== 'string' || encoding === '') {\n    encoding = 'utf8';\n  }\n\n  if (!Buffer.isEncoding(encoding)) {\n    throw new TypeError('\"encoding\" must be a valid string encoding')\n  }\n\n  var length = byteLength(string, encoding) | 0;\n  that = createBuffer(that, length);\n\n  var actual = that.write(string, encoding);\n\n  if (actual !== length) {\n    // Writing a hex string, for example, that contains invalid characters will\n    // cause everything after the first invalid character to be ignored. (e.g.\n    // 'abxxcd' will be treated as 'ab')\n    that = that.slice(0, actual);\n  }\n\n  return that\n}\n\nfunction fromArrayLike (that, array) {\n  var length = array.length < 0 ? 0 : checked(array.length) | 0;\n  that = createBuffer(that, length);\n  for (var i = 0; i < length; i += 1) {\n    that[i] = array[i] & 255;\n  }\n  return that\n}\n\nfunction fromArrayBuffer (that, array, byteOffset, length) {\n  array.byteLength; // this throws if `array` is not a valid ArrayBuffer\n\n  if (byteOffset < 0 || array.byteLength < byteOffset) {\n    throw new RangeError('\\'offset\\' is out of bounds')\n  }\n\n  if (array.byteLength < byteOffset + (length || 0)) {\n    throw new RangeError('\\'length\\' is out of bounds')\n  }\n\n  if (byteOffset === undefined && length === undefined) {\n    array = new Uint8Array(array);\n  } else if (length === undefined) {\n    array = new Uint8Array(array, byteOffset);\n  } else {\n    array = new Uint8Array(array, byteOffset, length);\n  }\n\n  if (Buffer.TYPED_ARRAY_SUPPORT) {\n    // Return an augmented `Uint8Array` instance, for best performance\n    that = array;\n    that.__proto__ = Buffer.prototype;\n  } else {\n    // Fallback: Return an object instance of the Buffer class\n    that = fromArrayLike(that, array);\n  }\n  return that\n}\n\nfunction fromObject (that, obj) {\n  if (internalIsBuffer(obj)) {\n    var len = checked(obj.length) | 0;\n    that = createBuffer(that, len);\n\n    if (that.length === 0) {\n      return that\n    }\n\n    obj.copy(that, 0, 0, len);\n    return that\n  }\n\n  if (obj) {\n    if ((typeof ArrayBuffer !== 'undefined' &&\n        obj.buffer instanceof ArrayBuffer) || 'length' in obj) {\n      if (typeof obj.length !== 'number' || isnan(obj.length)) {\n        return createBuffer(that, 0)\n      }\n      return fromArrayLike(that, obj)\n    }\n\n    if (obj.type === 'Buffer' && isArray$1(obj.data)) {\n      return fromArrayLike(that, obj.data)\n    }\n  }\n\n  throw new TypeError('First argument must be a string, Buffer, ArrayBuffer, Array, or array-like object.')\n}\n\nfunction checked (length) {\n  // Note: cannot use `length < kMaxLength()` here because that fails when\n  // length is NaN (which is otherwise coerced to zero.)\n  if (length >= kMaxLength()) {\n    throw new RangeError('Attempt to allocate Buffer larger than maximum ' +\n                         'size: 0x' + kMaxLength().toString(16) + ' bytes')\n  }\n  return length | 0\n}\nBuffer.isBuffer = isBuffer;\nfunction internalIsBuffer (b) {\n  return !!(b != null && b._isBuffer)\n}\n\nBuffer.compare = function compare (a, b) {\n  if (!internalIsBuffer(a) || !internalIsBuffer(b)) {\n    throw new TypeError('Arguments must be Buffers')\n  }\n\n  if (a === b) return 0\n\n  var x = a.length;\n  var y = b.length;\n\n  for (var i = 0, len = Math.min(x, y); i < len; ++i) {\n    if (a[i] !== b[i]) {\n      x = a[i];\n      y = b[i];\n      break\n    }\n  }\n\n  if (x < y) return -1\n  if (y < x) return 1\n  return 0\n};\n\nBuffer.isEncoding = function isEncoding (encoding) {\n  switch (String(encoding).toLowerCase()) {\n    case 'hex':\n    case 'utf8':\n    case 'utf-8':\n    case 'ascii':\n    case 'latin1':\n    case 'binary':\n    case 'base64':\n    case 'ucs2':\n    case 'ucs-2':\n    case 'utf16le':\n    case 'utf-16le':\n      return true\n    default:\n      return false\n  }\n};\n\nBuffer.concat = function concat (list, length) {\n  if (!isArray$1(list)) {\n    throw new TypeError('\"list\" argument must be an Array of Buffers')\n  }\n\n  if (list.length === 0) {\n    return Buffer.alloc(0)\n  }\n\n  var i;\n  if (length === undefined) {\n    length = 0;\n    for (i = 0; i < list.length; ++i) {\n      length += list[i].length;\n    }\n  }\n\n  var buffer = Buffer.allocUnsafe(length);\n  var pos = 0;\n  for (i = 0; i < list.length; ++i) {\n    var buf = list[i];\n    if (!internalIsBuffer(buf)) {\n      throw new TypeError('\"list\" argument must be an Array of Buffers')\n    }\n    buf.copy(buffer, pos);\n    pos += buf.length;\n  }\n  return buffer\n};\n\nfunction byteLength (string, encoding) {\n  if (internalIsBuffer(string)) {\n    return string.length\n  }\n  if (typeof ArrayBuffer !== 'undefined' && typeof ArrayBuffer.isView === 'function' &&\n      (ArrayBuffer.isView(string) || string instanceof ArrayBuffer)) {\n    return string.byteLength\n  }\n  if (typeof string !== 'string') {\n    string = '' + string;\n  }\n\n  var len = string.length;\n  if (len === 0) return 0\n\n  // Use a for loop to avoid recursion\n  var loweredCase = false;\n  for (;;) {\n    switch (encoding) {\n      case 'ascii':\n      case 'latin1':\n      case 'binary':\n        return len\n      case 'utf8':\n      case 'utf-8':\n      case undefined:\n        return utf8ToBytes(string).length\n      case 'ucs2':\n      case 'ucs-2':\n      case 'utf16le':\n      case 'utf-16le':\n        return len * 2\n      case 'hex':\n        return len >>> 1\n      case 'base64':\n        return base64ToBytes(string).length\n      default:\n        if (loweredCase) return utf8ToBytes(string).length // assume utf8\n        encoding = ('' + encoding).toLowerCase();\n        loweredCase = true;\n    }\n  }\n}\nBuffer.byteLength = byteLength;\n\nfunction slowToString (encoding, start, end) {\n  var loweredCase = false;\n\n  // No need to verify that \"this.length <= MAX_UINT32\" since it's a read-only\n  // property of a typed array.\n\n  // This behaves neither like String nor Uint8Array in that we set start/end\n  // to their upper/lower bounds if the value passed is out of range.\n  // undefined is handled specially as per ECMA-262 6th Edition,\n  // Section 13.3.3.7 Runtime Semantics: KeyedBindingInitialization.\n  if (start === undefined || start < 0) {\n    start = 0;\n  }\n  // Return early if start > this.length. Done here to prevent potential uint32\n  // coercion fail below.\n  if (start > this.length) {\n    return ''\n  }\n\n  if (end === undefined || end > this.length) {\n    end = this.length;\n  }\n\n  if (end <= 0) {\n    return ''\n  }\n\n  // Force coersion to uint32. This will also coerce falsey/NaN values to 0.\n  end >>>= 0;\n  start >>>= 0;\n\n  if (end <= start) {\n    return ''\n  }\n\n  if (!encoding) encoding = 'utf8';\n\n  while (true) {\n    switch (encoding) {\n      case 'hex':\n        return hexSlice(this, start, end)\n\n      case 'utf8':\n      case 'utf-8':\n        return utf8Slice(this, start, end)\n\n      case 'ascii':\n        return asciiSlice(this, start, end)\n\n      case 'latin1':\n      case 'binary':\n        return latin1Slice(this, start, end)\n\n      case 'base64':\n        return base64Slice(this, start, end)\n\n      case 'ucs2':\n      case 'ucs-2':\n      case 'utf16le':\n      case 'utf-16le':\n        return utf16leSlice(this, start, end)\n\n      default:\n        if (loweredCase) throw new TypeError('Unknown encoding: ' + encoding)\n        encoding = (encoding + '').toLowerCase();\n        loweredCase = true;\n    }\n  }\n}\n\n// The property is used by `Buffer.isBuffer` and `is-buffer` (in Safari 5-7) to detect\n// Buffer instances.\nBuffer.prototype._isBuffer = true;\n\nfunction swap (b, n, m) {\n  var i = b[n];\n  b[n] = b[m];\n  b[m] = i;\n}\n\nBuffer.prototype.swap16 = function swap16 () {\n  var len = this.length;\n  if (len % 2 !== 0) {\n    throw new RangeError('Buffer size must be a multiple of 16-bits')\n  }\n  for (var i = 0; i < len; i += 2) {\n    swap(this, i, i + 1);\n  }\n  return this\n};\n\nBuffer.prototype.swap32 = function swap32 () {\n  var len = this.length;\n  if (len % 4 !== 0) {\n    throw new RangeError('Buffer size must be a multiple of 32-bits')\n  }\n  for (var i = 0; i < len; i += 4) {\n    swap(this, i, i + 3);\n    swap(this, i + 1, i + 2);\n  }\n  return this\n};\n\nBuffer.prototype.swap64 = function swap64 () {\n  var len = this.length;\n  if (len % 8 !== 0) {\n    throw new RangeError('Buffer size must be a multiple of 64-bits')\n  }\n  for (var i = 0; i < len; i += 8) {\n    swap(this, i, i + 7);\n    swap(this, i + 1, i + 6);\n    swap(this, i + 2, i + 5);\n    swap(this, i + 3, i + 4);\n  }\n  return this\n};\n\nBuffer.prototype.toString = function toString () {\n  var length = this.length | 0;\n  if (length === 0) return ''\n  if (arguments.length === 0) return utf8Slice(this, 0, length)\n  return slowToString.apply(this, arguments)\n};\n\nBuffer.prototype.equals = function equals (b) {\n  if (!internalIsBuffer(b)) throw new TypeError('Argument must be a Buffer')\n  if (this === b) return true\n  return Buffer.compare(this, b) === 0\n};\n\nBuffer.prototype.inspect = function inspect () {\n  var str = '';\n  var max = INSPECT_MAX_BYTES;\n  if (this.length > 0) {\n    str = this.toString('hex', 0, max).match(/.{2}/g).join(' ');\n    if (this.length > max) str += ' ... ';\n  }\n  return '<Buffer ' + str + '>'\n};\n\nBuffer.prototype.compare = function compare (target, start, end, thisStart, thisEnd) {\n  if (!internalIsBuffer(target)) {\n    throw new TypeError('Argument must be a Buffer')\n  }\n\n  if (start === undefined) {\n    start = 0;\n  }\n  if (end === undefined) {\n    end = target ? target.length : 0;\n  }\n  if (thisStart === undefined) {\n    thisStart = 0;\n  }\n  if (thisEnd === undefined) {\n    thisEnd = this.length;\n  }\n\n  if (start < 0 || end > target.length || thisStart < 0 || thisEnd > this.length) {\n    throw new RangeError('out of range index')\n  }\n\n  if (thisStart >= thisEnd && start >= end) {\n    return 0\n  }\n  if (thisStart >= thisEnd) {\n    return -1\n  }\n  if (start >= end) {\n    return 1\n  }\n\n  start >>>= 0;\n  end >>>= 0;\n  thisStart >>>= 0;\n  thisEnd >>>= 0;\n\n  if (this === target) return 0\n\n  var x = thisEnd - thisStart;\n  var y = end - start;\n  var len = Math.min(x, y);\n\n  var thisCopy = this.slice(thisStart, thisEnd);\n  var targetCopy = target.slice(start, end);\n\n  for (var i = 0; i < len; ++i) {\n    if (thisCopy[i] !== targetCopy[i]) {\n      x = thisCopy[i];\n      y = targetCopy[i];\n      break\n    }\n  }\n\n  if (x < y) return -1\n  if (y < x) return 1\n  return 0\n};\n\n// Finds either the first index of `val` in `buffer` at offset >= `byteOffset`,\n// OR the last index of `val` in `buffer` at offset <= `byteOffset`.\n//\n// Arguments:\n// - buffer - a Buffer to search\n// - val - a string, Buffer, or number\n// - byteOffset - an index into `buffer`; will be clamped to an int32\n// - encoding - an optional encoding, relevant is val is a string\n// - dir - true for indexOf, false for lastIndexOf\nfunction bidirectionalIndexOf (buffer, val, byteOffset, encoding, dir) {\n  // Empty buffer means no match\n  if (buffer.length === 0) return -1\n\n  // Normalize byteOffset\n  if (typeof byteOffset === 'string') {\n    encoding = byteOffset;\n    byteOffset = 0;\n  } else if (byteOffset > 0x7fffffff) {\n    byteOffset = 0x7fffffff;\n  } else if (byteOffset < -0x80000000) {\n    byteOffset = -0x80000000;\n  }\n  byteOffset = +byteOffset;  // Coerce to Number.\n  if (isNaN(byteOffset)) {\n    // byteOffset: it it's undefined, null, NaN, \"foo\", etc, search whole buffer\n    byteOffset = dir ? 0 : (buffer.length - 1);\n  }\n\n  // Normalize byteOffset: negative offsets start from the end of the buffer\n  if (byteOffset < 0) byteOffset = buffer.length + byteOffset;\n  if (byteOffset >= buffer.length) {\n    if (dir) return -1\n    else byteOffset = buffer.length - 1;\n  } else if (byteOffset < 0) {\n    if (dir) byteOffset = 0;\n    else return -1\n  }\n\n  // Normalize val\n  if (typeof val === 'string') {\n    val = Buffer.from(val, encoding);\n  }\n\n  // Finally, search either indexOf (if dir is true) or lastIndexOf\n  if (internalIsBuffer(val)) {\n    // Special case: looking for empty string/buffer always fails\n    if (val.length === 0) {\n      return -1\n    }\n    return arrayIndexOf(buffer, val, byteOffset, encoding, dir)\n  } else if (typeof val === 'number') {\n    val = val & 0xFF; // Search for a byte value [0-255]\n    if (Buffer.TYPED_ARRAY_SUPPORT &&\n        typeof Uint8Array.prototype.indexOf === 'function') {\n      if (dir) {\n        return Uint8Array.prototype.indexOf.call(buffer, val, byteOffset)\n      } else {\n        return Uint8Array.prototype.lastIndexOf.call(buffer, val, byteOffset)\n      }\n    }\n    return arrayIndexOf(buffer, [ val ], byteOffset, encoding, dir)\n  }\n\n  throw new TypeError('val must be string, number or Buffer')\n}\n\nfunction arrayIndexOf (arr, val, byteOffset, encoding, dir) {\n  var indexSize = 1;\n  var arrLength = arr.length;\n  var valLength = val.length;\n\n  if (encoding !== undefined) {\n    encoding = String(encoding).toLowerCase();\n    if (encoding === 'ucs2' || encoding === 'ucs-2' ||\n        encoding === 'utf16le' || encoding === 'utf-16le') {\n      if (arr.length < 2 || val.length < 2) {\n        return -1\n      }\n      indexSize = 2;\n      arrLength /= 2;\n      valLength /= 2;\n      byteOffset /= 2;\n    }\n  }\n\n  function read (buf, i) {\n    if (indexSize === 1) {\n      return buf[i]\n    } else {\n      return buf.readUInt16BE(i * indexSize)\n    }\n  }\n\n  var i;\n  if (dir) {\n    var foundIndex = -1;\n    for (i = byteOffset; i < arrLength; i++) {\n      if (read(arr, i) === read(val, foundIndex === -1 ? 0 : i - foundIndex)) {\n        if (foundIndex === -1) foundIndex = i;\n        if (i - foundIndex + 1 === valLength) return foundIndex * indexSize\n      } else {\n        if (foundIndex !== -1) i -= i - foundIndex;\n        foundIndex = -1;\n      }\n    }\n  } else {\n    if (byteOffset + valLength > arrLength) byteOffset = arrLength - valLength;\n    for (i = byteOffset; i >= 0; i--) {\n      var found = true;\n      for (var j = 0; j < valLength; j++) {\n        if (read(arr, i + j) !== read(val, j)) {\n          found = false;\n          break\n        }\n      }\n      if (found) return i\n    }\n  }\n\n  return -1\n}\n\nBuffer.prototype.includes = function includes (val, byteOffset, encoding) {\n  return this.indexOf(val, byteOffset, encoding) !== -1\n};\n\nBuffer.prototype.indexOf = function indexOf (val, byteOffset, encoding) {\n  return bidirectionalIndexOf(this, val, byteOffset, encoding, true)\n};\n\nBuffer.prototype.lastIndexOf = function lastIndexOf (val, byteOffset, encoding) {\n  return bidirectionalIndexOf(this, val, byteOffset, encoding, false)\n};\n\nfunction hexWrite (buf, string, offset, length) {\n  offset = Number(offset) || 0;\n  var remaining = buf.length - offset;\n  if (!length) {\n    length = remaining;\n  } else {\n    length = Number(length);\n    if (length > remaining) {\n      length = remaining;\n    }\n  }\n\n  // must be an even number of digits\n  var strLen = string.length;\n  if (strLen % 2 !== 0) throw new TypeError('Invalid hex string')\n\n  if (length > strLen / 2) {\n    length = strLen / 2;\n  }\n  for (var i = 0; i < length; ++i) {\n    var parsed = parseInt(string.substr(i * 2, 2), 16);\n    if (isNaN(parsed)) return i\n    buf[offset + i] = parsed;\n  }\n  return i\n}\n\nfunction utf8Write (buf, string, offset, length) {\n  return blitBuffer(utf8ToBytes(string, buf.length - offset), buf, offset, length)\n}\n\nfunction asciiWrite (buf, string, offset, length) {\n  return blitBuffer(asciiToBytes(string), buf, offset, length)\n}\n\nfunction latin1Write (buf, string, offset, length) {\n  return asciiWrite(buf, string, offset, length)\n}\n\nfunction base64Write (buf, string, offset, length) {\n  return blitBuffer(base64ToBytes(string), buf, offset, length)\n}\n\nfunction ucs2Write (buf, string, offset, length) {\n  return blitBuffer(utf16leToBytes(string, buf.length - offset), buf, offset, length)\n}\n\nBuffer.prototype.write = function write (string, offset, length, encoding) {\n  // Buffer#write(string)\n  if (offset === undefined) {\n    encoding = 'utf8';\n    length = this.length;\n    offset = 0;\n  // Buffer#write(string, encoding)\n  } else if (length === undefined && typeof offset === 'string') {\n    encoding = offset;\n    length = this.length;\n    offset = 0;\n  // Buffer#write(string, offset[, length][, encoding])\n  } else if (isFinite(offset)) {\n    offset = offset | 0;\n    if (isFinite(length)) {\n      length = length | 0;\n      if (encoding === undefined) encoding = 'utf8';\n    } else {\n      encoding = length;\n      length = undefined;\n    }\n  // legacy write(string, encoding, offset, length) - remove in v0.13\n  } else {\n    throw new Error(\n      'Buffer.write(string, encoding, offset[, length]) is no longer supported'\n    )\n  }\n\n  var remaining = this.length - offset;\n  if (length === undefined || length > remaining) length = remaining;\n\n  if ((string.length > 0 && (length < 0 || offset < 0)) || offset > this.length) {\n    throw new RangeError('Attempt to write outside buffer bounds')\n  }\n\n  if (!encoding) encoding = 'utf8';\n\n  var loweredCase = false;\n  for (;;) {\n    switch (encoding) {\n      case 'hex':\n        return hexWrite(this, string, offset, length)\n\n      case 'utf8':\n      case 'utf-8':\n        return utf8Write(this, string, offset, length)\n\n      case 'ascii':\n        return asciiWrite(this, string, offset, length)\n\n      case 'latin1':\n      case 'binary':\n        return latin1Write(this, string, offset, length)\n\n      case 'base64':\n        // Warning: maxLength not taken into account in base64Write\n        return base64Write(this, string, offset, length)\n\n      case 'ucs2':\n      case 'ucs-2':\n      case 'utf16le':\n      case 'utf-16le':\n        return ucs2Write(this, string, offset, length)\n\n      default:\n        if (loweredCase) throw new TypeError('Unknown encoding: ' + encoding)\n        encoding = ('' + encoding).toLowerCase();\n        loweredCase = true;\n    }\n  }\n};\n\nBuffer.prototype.toJSON = function toJSON () {\n  return {\n    type: 'Buffer',\n    data: Array.prototype.slice.call(this._arr || this, 0)\n  }\n};\n\nfunction base64Slice (buf, start, end) {\n  if (start === 0 && end === buf.length) {\n    return fromByteArray(buf)\n  } else {\n    return fromByteArray(buf.slice(start, end))\n  }\n}\n\nfunction utf8Slice (buf, start, end) {\n  end = Math.min(buf.length, end);\n  var res = [];\n\n  var i = start;\n  while (i < end) {\n    var firstByte = buf[i];\n    var codePoint = null;\n    var bytesPerSequence = (firstByte > 0xEF) ? 4\n      : (firstByte > 0xDF) ? 3\n      : (firstByte > 0xBF) ? 2\n      : 1;\n\n    if (i + bytesPerSequence <= end) {\n      var secondByte, thirdByte, fourthByte, tempCodePoint;\n\n      switch (bytesPerSequence) {\n        case 1:\n          if (firstByte < 0x80) {\n            codePoint = firstByte;\n          }\n          break\n        case 2:\n          secondByte = buf[i + 1];\n          if ((secondByte & 0xC0) === 0x80) {\n            tempCodePoint = (firstByte & 0x1F) << 0x6 | (secondByte & 0x3F);\n            if (tempCodePoint > 0x7F) {\n              codePoint = tempCodePoint;\n            }\n          }\n          break\n        case 3:\n          secondByte = buf[i + 1];\n          thirdByte = buf[i + 2];\n          if ((secondByte & 0xC0) === 0x80 && (thirdByte & 0xC0) === 0x80) {\n            tempCodePoint = (firstByte & 0xF) << 0xC | (secondByte & 0x3F) << 0x6 | (thirdByte & 0x3F);\n            if (tempCodePoint > 0x7FF && (tempCodePoint < 0xD800 || tempCodePoint > 0xDFFF)) {\n              codePoint = tempCodePoint;\n            }\n          }\n          break\n        case 4:\n          secondByte = buf[i + 1];\n          thirdByte = buf[i + 2];\n          fourthByte = buf[i + 3];\n          if ((secondByte & 0xC0) === 0x80 && (thirdByte & 0xC0) === 0x80 && (fourthByte & 0xC0) === 0x80) {\n            tempCodePoint = (firstByte & 0xF) << 0x12 | (secondByte & 0x3F) << 0xC | (thirdByte & 0x3F) << 0x6 | (fourthByte & 0x3F);\n            if (tempCodePoint > 0xFFFF && tempCodePoint < 0x110000) {\n              codePoint = tempCodePoint;\n            }\n          }\n      }\n    }\n\n    if (codePoint === null) {\n      // we did not generate a valid codePoint so insert a\n      // replacement char (U+FFFD) and advance only 1 byte\n      codePoint = 0xFFFD;\n      bytesPerSequence = 1;\n    } else if (codePoint > 0xFFFF) {\n      // encode to utf16 (surrogate pair dance)\n      codePoint -= 0x10000;\n      res.push(codePoint >>> 10 & 0x3FF | 0xD800);\n      codePoint = 0xDC00 | codePoint & 0x3FF;\n    }\n\n    res.push(codePoint);\n    i += bytesPerSequence;\n  }\n\n  return decodeCodePointsArray(res)\n}\n\n// Based on http://stackoverflow.com/a/22747272/680742, the browser with\n// the lowest limit is Chrome, with 0x10000 args.\n// We go 1 magnitude less, for safety\nvar MAX_ARGUMENTS_LENGTH = 0x1000;\n\nfunction decodeCodePointsArray (codePoints) {\n  var len = codePoints.length;\n  if (len <= MAX_ARGUMENTS_LENGTH) {\n    return String.fromCharCode.apply(String, codePoints) // avoid extra slice()\n  }\n\n  // Decode in chunks to avoid \"call stack size exceeded\".\n  var res = '';\n  var i = 0;\n  while (i < len) {\n    res += String.fromCharCode.apply(\n      String,\n      codePoints.slice(i, i += MAX_ARGUMENTS_LENGTH)\n    );\n  }\n  return res\n}\n\nfunction asciiSlice (buf, start, end) {\n  var ret = '';\n  end = Math.min(buf.length, end);\n\n  for (var i = start; i < end; ++i) {\n    ret += String.fromCharCode(buf[i] & 0x7F);\n  }\n  return ret\n}\n\nfunction latin1Slice (buf, start, end) {\n  var ret = '';\n  end = Math.min(buf.length, end);\n\n  for (var i = start; i < end; ++i) {\n    ret += String.fromCharCode(buf[i]);\n  }\n  return ret\n}\n\nfunction hexSlice (buf, start, end) {\n  var len = buf.length;\n\n  if (!start || start < 0) start = 0;\n  if (!end || end < 0 || end > len) end = len;\n\n  var out = '';\n  for (var i = start; i < end; ++i) {\n    out += toHex(buf[i]);\n  }\n  return out\n}\n\nfunction utf16leSlice (buf, start, end) {\n  var bytes = buf.slice(start, end);\n  var res = '';\n  for (var i = 0; i < bytes.length; i += 2) {\n    res += String.fromCharCode(bytes[i] + bytes[i + 1] * 256);\n  }\n  return res\n}\n\nBuffer.prototype.slice = function slice (start, end) {\n  var len = this.length;\n  start = ~~start;\n  end = end === undefined ? len : ~~end;\n\n  if (start < 0) {\n    start += len;\n    if (start < 0) start = 0;\n  } else if (start > len) {\n    start = len;\n  }\n\n  if (end < 0) {\n    end += len;\n    if (end < 0) end = 0;\n  } else if (end > len) {\n    end = len;\n  }\n\n  if (end < start) end = start;\n\n  var newBuf;\n  if (Buffer.TYPED_ARRAY_SUPPORT) {\n    newBuf = this.subarray(start, end);\n    newBuf.__proto__ = Buffer.prototype;\n  } else {\n    var sliceLen = end - start;\n    newBuf = new Buffer(sliceLen, undefined);\n    for (var i = 0; i < sliceLen; ++i) {\n      newBuf[i] = this[i + start];\n    }\n  }\n\n  return newBuf\n};\n\n/*\n * Need to make sure that buffer isn't trying to write out of bounds.\n */\nfunction checkOffset (offset, ext, length) {\n  if ((offset % 1) !== 0 || offset < 0) throw new RangeError('offset is not uint')\n  if (offset + ext > length) throw new RangeError('Trying to access beyond buffer length')\n}\n\nBuffer.prototype.readUIntLE = function readUIntLE (offset, byteLength, noAssert) {\n  offset = offset | 0;\n  byteLength = byteLength | 0;\n  if (!noAssert) checkOffset(offset, byteLength, this.length);\n\n  var val = this[offset];\n  var mul = 1;\n  var i = 0;\n  while (++i < byteLength && (mul *= 0x100)) {\n    val += this[offset + i] * mul;\n  }\n\n  return val\n};\n\nBuffer.prototype.readUIntBE = function readUIntBE (offset, byteLength, noAssert) {\n  offset = offset | 0;\n  byteLength = byteLength | 0;\n  if (!noAssert) {\n    checkOffset(offset, byteLength, this.length);\n  }\n\n  var val = this[offset + --byteLength];\n  var mul = 1;\n  while (byteLength > 0 && (mul *= 0x100)) {\n    val += this[offset + --byteLength] * mul;\n  }\n\n  return val\n};\n\nBuffer.prototype.readUInt8 = function readUInt8 (offset, noAssert) {\n  if (!noAssert) checkOffset(offset, 1, this.length);\n  return this[offset]\n};\n\nBuffer.prototype.readUInt16LE = function readUInt16LE (offset, noAssert) {\n  if (!noAssert) checkOffset(offset, 2, this.length);\n  return this[offset] | (this[offset + 1] << 8)\n};\n\nBuffer.prototype.readUInt16BE = function readUInt16BE (offset, noAssert) {\n  if (!noAssert) checkOffset(offset, 2, this.length);\n  return (this[offset] << 8) | this[offset + 1]\n};\n\nBuffer.prototype.readUInt32LE = function readUInt32LE (offset, noAssert) {\n  if (!noAssert) checkOffset(offset, 4, this.length);\n\n  return ((this[offset]) |\n      (this[offset + 1] << 8) |\n      (this[offset + 2] << 16)) +\n      (this[offset + 3] * 0x1000000)\n};\n\nBuffer.prototype.readUInt32BE = function readUInt32BE (offset, noAssert) {\n  if (!noAssert) checkOffset(offset, 4, this.length);\n\n  return (this[offset] * 0x1000000) +\n    ((this[offset + 1] << 16) |\n    (this[offset + 2] << 8) |\n    this[offset + 3])\n};\n\nBuffer.prototype.readIntLE = function readIntLE (offset, byteLength, noAssert) {\n  offset = offset | 0;\n  byteLength = byteLength | 0;\n  if (!noAssert) checkOffset(offset, byteLength, this.length);\n\n  var val = this[offset];\n  var mul = 1;\n  var i = 0;\n  while (++i < byteLength && (mul *= 0x100)) {\n    val += this[offset + i] * mul;\n  }\n  mul *= 0x80;\n\n  if (val >= mul) val -= Math.pow(2, 8 * byteLength);\n\n  return val\n};\n\nBuffer.prototype.readIntBE = function readIntBE (offset, byteLength, noAssert) {\n  offset = offset | 0;\n  byteLength = byteLength | 0;\n  if (!noAssert) checkOffset(offset, byteLength, this.length);\n\n  var i = byteLength;\n  var mul = 1;\n  var val = this[offset + --i];\n  while (i > 0 && (mul *= 0x100)) {\n    val += this[offset + --i] * mul;\n  }\n  mul *= 0x80;\n\n  if (val >= mul) val -= Math.pow(2, 8 * byteLength);\n\n  return val\n};\n\nBuffer.prototype.readInt8 = function readInt8 (offset, noAssert) {\n  if (!noAssert) checkOffset(offset, 1, this.length);\n  if (!(this[offset] & 0x80)) return (this[offset])\n  return ((0xff - this[offset] + 1) * -1)\n};\n\nBuffer.prototype.readInt16LE = function readInt16LE (offset, noAssert) {\n  if (!noAssert) checkOffset(offset, 2, this.length);\n  var val = this[offset] | (this[offset + 1] << 8);\n  return (val & 0x8000) ? val | 0xFFFF0000 : val\n};\n\nBuffer.prototype.readInt16BE = function readInt16BE (offset, noAssert) {\n  if (!noAssert) checkOffset(offset, 2, this.length);\n  var val = this[offset + 1] | (this[offset] << 8);\n  return (val & 0x8000) ? val | 0xFFFF0000 : val\n};\n\nBuffer.prototype.readInt32LE = function readInt32LE (offset, noAssert) {\n  if (!noAssert) checkOffset(offset, 4, this.length);\n\n  return (this[offset]) |\n    (this[offset + 1] << 8) |\n    (this[offset + 2] << 16) |\n    (this[offset + 3] << 24)\n};\n\nBuffer.prototype.readInt32BE = function readInt32BE (offset, noAssert) {\n  if (!noAssert) checkOffset(offset, 4, this.length);\n\n  return (this[offset] << 24) |\n    (this[offset + 1] << 16) |\n    (this[offset + 2] << 8) |\n    (this[offset + 3])\n};\n\nBuffer.prototype.readFloatLE = function readFloatLE (offset, noAssert) {\n  if (!noAssert) checkOffset(offset, 4, this.length);\n  return read(this, offset, true, 23, 4)\n};\n\nBuffer.prototype.readFloatBE = function readFloatBE (offset, noAssert) {\n  if (!noAssert) checkOffset(offset, 4, this.length);\n  return read(this, offset, false, 23, 4)\n};\n\nBuffer.prototype.readDoubleLE = function readDoubleLE (offset, noAssert) {\n  if (!noAssert) checkOffset(offset, 8, this.length);\n  return read(this, offset, true, 52, 8)\n};\n\nBuffer.prototype.readDoubleBE = function readDoubleBE (offset, noAssert) {\n  if (!noAssert) checkOffset(offset, 8, this.length);\n  return read(this, offset, false, 52, 8)\n};\n\nfunction checkInt (buf, value, offset, ext, max, min) {\n  if (!internalIsBuffer(buf)) throw new TypeError('\"buffer\" argument must be a Buffer instance')\n  if (value > max || value < min) throw new RangeError('\"value\" argument is out of bounds')\n  if (offset + ext > buf.length) throw new RangeError('Index out of range')\n}\n\nBuffer.prototype.writeUIntLE = function writeUIntLE (value, offset, byteLength, noAssert) {\n  value = +value;\n  offset = offset | 0;\n  byteLength = byteLength | 0;\n  if (!noAssert) {\n    var maxBytes = Math.pow(2, 8 * byteLength) - 1;\n    checkInt(this, value, offset, byteLength, maxBytes, 0);\n  }\n\n  var mul = 1;\n  var i = 0;\n  this[offset] = value & 0xFF;\n  while (++i < byteLength && (mul *= 0x100)) {\n    this[offset + i] = (value / mul) & 0xFF;\n  }\n\n  return offset + byteLength\n};\n\nBuffer.prototype.writeUIntBE = function writeUIntBE (value, offset, byteLength, noAssert) {\n  value = +value;\n  offset = offset | 0;\n  byteLength = byteLength | 0;\n  if (!noAssert) {\n    var maxBytes = Math.pow(2, 8 * byteLength) - 1;\n    checkInt(this, value, offset, byteLength, maxBytes, 0);\n  }\n\n  var i = byteLength - 1;\n  var mul = 1;\n  this[offset + i] = value & 0xFF;\n  while (--i >= 0 && (mul *= 0x100)) {\n    this[offset + i] = (value / mul) & 0xFF;\n  }\n\n  return offset + byteLength\n};\n\nBuffer.prototype.writeUInt8 = function writeUInt8 (value, offset, noAssert) {\n  value = +value;\n  offset = offset | 0;\n  if (!noAssert) checkInt(this, value, offset, 1, 0xff, 0);\n  if (!Buffer.TYPED_ARRAY_SUPPORT) value = Math.floor(value);\n  this[offset] = (value & 0xff);\n  return offset + 1\n};\n\nfunction objectWriteUInt16 (buf, value, offset, littleEndian) {\n  if (value < 0) value = 0xffff + value + 1;\n  for (var i = 0, j = Math.min(buf.length - offset, 2); i < j; ++i) {\n    buf[offset + i] = (value & (0xff << (8 * (littleEndian ? i : 1 - i)))) >>>\n      (littleEndian ? i : 1 - i) * 8;\n  }\n}\n\nBuffer.prototype.writeUInt16LE = function writeUInt16LE (value, offset, noAssert) {\n  value = +value;\n  offset = offset | 0;\n  if (!noAssert) checkInt(this, value, offset, 2, 0xffff, 0);\n  if (Buffer.TYPED_ARRAY_SUPPORT) {\n    this[offset] = (value & 0xff);\n    this[offset + 1] = (value >>> 8);\n  } else {\n    objectWriteUInt16(this, value, offset, true);\n  }\n  return offset + 2\n};\n\nBuffer.prototype.writeUInt16BE = function writeUInt16BE (value, offset, noAssert) {\n  value = +value;\n  offset = offset | 0;\n  if (!noAssert) checkInt(this, value, offset, 2, 0xffff, 0);\n  if (Buffer.TYPED_ARRAY_SUPPORT) {\n    this[offset] = (value >>> 8);\n    this[offset + 1] = (value & 0xff);\n  } else {\n    objectWriteUInt16(this, value, offset, false);\n  }\n  return offset + 2\n};\n\nfunction objectWriteUInt32 (buf, value, offset, littleEndian) {\n  if (value < 0) value = 0xffffffff + value + 1;\n  for (var i = 0, j = Math.min(buf.length - offset, 4); i < j; ++i) {\n    buf[offset + i] = (value >>> (littleEndian ? i : 3 - i) * 8) & 0xff;\n  }\n}\n\nBuffer.prototype.writeUInt32LE = function writeUInt32LE (value, offset, noAssert) {\n  value = +value;\n  offset = offset | 0;\n  if (!noAssert) checkInt(this, value, offset, 4, 0xffffffff, 0);\n  if (Buffer.TYPED_ARRAY_SUPPORT) {\n    this[offset + 3] = (value >>> 24);\n    this[offset + 2] = (value >>> 16);\n    this[offset + 1] = (value >>> 8);\n    this[offset] = (value & 0xff);\n  } else {\n    objectWriteUInt32(this, value, offset, true);\n  }\n  return offset + 4\n};\n\nBuffer.prototype.writeUInt32BE = function writeUInt32BE (value, offset, noAssert) {\n  value = +value;\n  offset = offset | 0;\n  if (!noAssert) checkInt(this, value, offset, 4, 0xffffffff, 0);\n  if (Buffer.TYPED_ARRAY_SUPPORT) {\n    this[offset] = (value >>> 24);\n    this[offset + 1] = (value >>> 16);\n    this[offset + 2] = (value >>> 8);\n    this[offset + 3] = (value & 0xff);\n  } else {\n    objectWriteUInt32(this, value, offset, false);\n  }\n  return offset + 4\n};\n\nBuffer.prototype.writeIntLE = function writeIntLE (value, offset, byteLength, noAssert) {\n  value = +value;\n  offset = offset | 0;\n  if (!noAssert) {\n    var limit = Math.pow(2, 8 * byteLength - 1);\n\n    checkInt(this, value, offset, byteLength, limit - 1, -limit);\n  }\n\n  var i = 0;\n  var mul = 1;\n  var sub = 0;\n  this[offset] = value & 0xFF;\n  while (++i < byteLength && (mul *= 0x100)) {\n    if (value < 0 && sub === 0 && this[offset + i - 1] !== 0) {\n      sub = 1;\n    }\n    this[offset + i] = ((value / mul) >> 0) - sub & 0xFF;\n  }\n\n  return offset + byteLength\n};\n\nBuffer.prototype.writeIntBE = function writeIntBE (value, offset, byteLength, noAssert) {\n  value = +value;\n  offset = offset | 0;\n  if (!noAssert) {\n    var limit = Math.pow(2, 8 * byteLength - 1);\n\n    checkInt(this, value, offset, byteLength, limit - 1, -limit);\n  }\n\n  var i = byteLength - 1;\n  var mul = 1;\n  var sub = 0;\n  this[offset + i] = value & 0xFF;\n  while (--i >= 0 && (mul *= 0x100)) {\n    if (value < 0 && sub === 0 && this[offset + i + 1] !== 0) {\n      sub = 1;\n    }\n    this[offset + i] = ((value / mul) >> 0) - sub & 0xFF;\n  }\n\n  return offset + byteLength\n};\n\nBuffer.prototype.writeInt8 = function writeInt8 (value, offset, noAssert) {\n  value = +value;\n  offset = offset | 0;\n  if (!noAssert) checkInt(this, value, offset, 1, 0x7f, -0x80);\n  if (!Buffer.TYPED_ARRAY_SUPPORT) value = Math.floor(value);\n  if (value < 0) value = 0xff + value + 1;\n  this[offset] = (value & 0xff);\n  return offset + 1\n};\n\nBuffer.prototype.writeInt16LE = function writeInt16LE (value, offset, noAssert) {\n  value = +value;\n  offset = offset | 0;\n  if (!noAssert) checkInt(this, value, offset, 2, 0x7fff, -0x8000);\n  if (Buffer.TYPED_ARRAY_SUPPORT) {\n    this[offset] = (value & 0xff);\n    this[offset + 1] = (value >>> 8);\n  } else {\n    objectWriteUInt16(this, value, offset, true);\n  }\n  return offset + 2\n};\n\nBuffer.prototype.writeInt16BE = function writeInt16BE (value, offset, noAssert) {\n  value = +value;\n  offset = offset | 0;\n  if (!noAssert) checkInt(this, value, offset, 2, 0x7fff, -0x8000);\n  if (Buffer.TYPED_ARRAY_SUPPORT) {\n    this[offset] = (value >>> 8);\n    this[offset + 1] = (value & 0xff);\n  } else {\n    objectWriteUInt16(this, value, offset, false);\n  }\n  return offset + 2\n};\n\nBuffer.prototype.writeInt32LE = function writeInt32LE (value, offset, noAssert) {\n  value = +value;\n  offset = offset | 0;\n  if (!noAssert) checkInt(this, value, offset, 4, 0x7fffffff, -0x80000000);\n  if (Buffer.TYPED_ARRAY_SUPPORT) {\n    this[offset] = (value & 0xff);\n    this[offset + 1] = (value >>> 8);\n    this[offset + 2] = (value >>> 16);\n    this[offset + 3] = (value >>> 24);\n  } else {\n    objectWriteUInt32(this, value, offset, true);\n  }\n  return offset + 4\n};\n\nBuffer.prototype.writeInt32BE = function writeInt32BE (value, offset, noAssert) {\n  value = +value;\n  offset = offset | 0;\n  if (!noAssert) checkInt(this, value, offset, 4, 0x7fffffff, -0x80000000);\n  if (value < 0) value = 0xffffffff + value + 1;\n  if (Buffer.TYPED_ARRAY_SUPPORT) {\n    this[offset] = (value >>> 24);\n    this[offset + 1] = (value >>> 16);\n    this[offset + 2] = (value >>> 8);\n    this[offset + 3] = (value & 0xff);\n  } else {\n    objectWriteUInt32(this, value, offset, false);\n  }\n  return offset + 4\n};\n\nfunction checkIEEE754 (buf, value, offset, ext, max, min) {\n  if (offset + ext > buf.length) throw new RangeError('Index out of range')\n  if (offset < 0) throw new RangeError('Index out of range')\n}\n\nfunction writeFloat (buf, value, offset, littleEndian, noAssert) {\n  if (!noAssert) {\n    checkIEEE754(buf, value, offset, 4);\n  }\n  write(buf, value, offset, littleEndian, 23, 4);\n  return offset + 4\n}\n\nBuffer.prototype.writeFloatLE = function writeFloatLE (value, offset, noAssert) {\n  return writeFloat(this, value, offset, true, noAssert)\n};\n\nBuffer.prototype.writeFloatBE = function writeFloatBE (value, offset, noAssert) {\n  return writeFloat(this, value, offset, false, noAssert)\n};\n\nfunction writeDouble (buf, value, offset, littleEndian, noAssert) {\n  if (!noAssert) {\n    checkIEEE754(buf, value, offset, 8);\n  }\n  write(buf, value, offset, littleEndian, 52, 8);\n  return offset + 8\n}\n\nBuffer.prototype.writeDoubleLE = function writeDoubleLE (value, offset, noAssert) {\n  return writeDouble(this, value, offset, true, noAssert)\n};\n\nBuffer.prototype.writeDoubleBE = function writeDoubleBE (value, offset, noAssert) {\n  return writeDouble(this, value, offset, false, noAssert)\n};\n\n// copy(targetBuffer, targetStart=0, sourceStart=0, sourceEnd=buffer.length)\nBuffer.prototype.copy = function copy (target, targetStart, start, end) {\n  if (!start) start = 0;\n  if (!end && end !== 0) end = this.length;\n  if (targetStart >= target.length) targetStart = target.length;\n  if (!targetStart) targetStart = 0;\n  if (end > 0 && end < start) end = start;\n\n  // Copy 0 bytes; we're done\n  if (end === start) return 0\n  if (target.length === 0 || this.length === 0) return 0\n\n  // Fatal error conditions\n  if (targetStart < 0) {\n    throw new RangeError('targetStart out of bounds')\n  }\n  if (start < 0 || start >= this.length) throw new RangeError('sourceStart out of bounds')\n  if (end < 0) throw new RangeError('sourceEnd out of bounds')\n\n  // Are we oob?\n  if (end > this.length) end = this.length;\n  if (target.length - targetStart < end - start) {\n    end = target.length - targetStart + start;\n  }\n\n  var len = end - start;\n  var i;\n\n  if (this === target && start < targetStart && targetStart < end) {\n    // descending copy from end\n    for (i = len - 1; i >= 0; --i) {\n      target[i + targetStart] = this[i + start];\n    }\n  } else if (len < 1000 || !Buffer.TYPED_ARRAY_SUPPORT) {\n    // ascending copy from start\n    for (i = 0; i < len; ++i) {\n      target[i + targetStart] = this[i + start];\n    }\n  } else {\n    Uint8Array.prototype.set.call(\n      target,\n      this.subarray(start, start + len),\n      targetStart\n    );\n  }\n\n  return len\n};\n\n// Usage:\n//    buffer.fill(number[, offset[, end]])\n//    buffer.fill(buffer[, offset[, end]])\n//    buffer.fill(string[, offset[, end]][, encoding])\nBuffer.prototype.fill = function fill (val, start, end, encoding) {\n  // Handle string cases:\n  if (typeof val === 'string') {\n    if (typeof start === 'string') {\n      encoding = start;\n      start = 0;\n      end = this.length;\n    } else if (typeof end === 'string') {\n      encoding = end;\n      end = this.length;\n    }\n    if (val.length === 1) {\n      var code = val.charCodeAt(0);\n      if (code < 256) {\n        val = code;\n      }\n    }\n    if (encoding !== undefined && typeof encoding !== 'string') {\n      throw new TypeError('encoding must be a string')\n    }\n    if (typeof encoding === 'string' && !Buffer.isEncoding(encoding)) {\n      throw new TypeError('Unknown encoding: ' + encoding)\n    }\n  } else if (typeof val === 'number') {\n    val = val & 255;\n  }\n\n  // Invalid ranges are not set to a default, so can range check early.\n  if (start < 0 || this.length < start || this.length < end) {\n    throw new RangeError('Out of range index')\n  }\n\n  if (end <= start) {\n    return this\n  }\n\n  start = start >>> 0;\n  end = end === undefined ? this.length : end >>> 0;\n\n  if (!val) val = 0;\n\n  var i;\n  if (typeof val === 'number') {\n    for (i = start; i < end; ++i) {\n      this[i] = val;\n    }\n  } else {\n    var bytes = internalIsBuffer(val)\n      ? val\n      : utf8ToBytes(new Buffer(val, encoding).toString());\n    var len = bytes.length;\n    for (i = 0; i < end - start; ++i) {\n      this[i + start] = bytes[i % len];\n    }\n  }\n\n  return this\n};\n\n// HELPER FUNCTIONS\n// ================\n\nvar INVALID_BASE64_RE = /[^+\\/0-9A-Za-z-_]/g;\n\nfunction base64clean (str) {\n  // Node strips out invalid characters like \\n and \\t from the string, base64-js does not\n  str = stringtrim(str).replace(INVALID_BASE64_RE, '');\n  // Node converts strings with length < 2 to ''\n  if (str.length < 2) return ''\n  // Node allows for non-padded base64 strings (missing trailing ===), base64-js does not\n  while (str.length % 4 !== 0) {\n    str = str + '=';\n  }\n  return str\n}\n\nfunction stringtrim (str) {\n  if (str.trim) return str.trim()\n  return str.replace(/^\\s+|\\s+$/g, '')\n}\n\nfunction toHex (n) {\n  if (n < 16) return '0' + n.toString(16)\n  return n.toString(16)\n}\n\nfunction utf8ToBytes (string, units) {\n  units = units || Infinity;\n  var codePoint;\n  var length = string.length;\n  var leadSurrogate = null;\n  var bytes = [];\n\n  for (var i = 0; i < length; ++i) {\n    codePoint = string.charCodeAt(i);\n\n    // is surrogate component\n    if (codePoint > 0xD7FF && codePoint < 0xE000) {\n      // last char was a lead\n      if (!leadSurrogate) {\n        // no lead yet\n        if (codePoint > 0xDBFF) {\n          // unexpected trail\n          if ((units -= 3) > -1) bytes.push(0xEF, 0xBF, 0xBD);\n          continue\n        } else if (i + 1 === length) {\n          // unpaired lead\n          if ((units -= 3) > -1) bytes.push(0xEF, 0xBF, 0xBD);\n          continue\n        }\n\n        // valid lead\n        leadSurrogate = codePoint;\n\n        continue\n      }\n\n      // 2 leads in a row\n      if (codePoint < 0xDC00) {\n        if ((units -= 3) > -1) bytes.push(0xEF, 0xBF, 0xBD);\n        leadSurrogate = codePoint;\n        continue\n      }\n\n      // valid surrogate pair\n      codePoint = (leadSurrogate - 0xD800 << 10 | codePoint - 0xDC00) + 0x10000;\n    } else if (leadSurrogate) {\n      // valid bmp char, but last char was a lead\n      if ((units -= 3) > -1) bytes.push(0xEF, 0xBF, 0xBD);\n    }\n\n    leadSurrogate = null;\n\n    // encode utf8\n    if (codePoint < 0x80) {\n      if ((units -= 1) < 0) break\n      bytes.push(codePoint);\n    } else if (codePoint < 0x800) {\n      if ((units -= 2) < 0) break\n      bytes.push(\n        codePoint >> 0x6 | 0xC0,\n        codePoint & 0x3F | 0x80\n      );\n    } else if (codePoint < 0x10000) {\n      if ((units -= 3) < 0) break\n      bytes.push(\n        codePoint >> 0xC | 0xE0,\n        codePoint >> 0x6 & 0x3F | 0x80,\n        codePoint & 0x3F | 0x80\n      );\n    } else if (codePoint < 0x110000) {\n      if ((units -= 4) < 0) break\n      bytes.push(\n        codePoint >> 0x12 | 0xF0,\n        codePoint >> 0xC & 0x3F | 0x80,\n        codePoint >> 0x6 & 0x3F | 0x80,\n        codePoint & 0x3F | 0x80\n      );\n    } else {\n      throw new Error('Invalid code point')\n    }\n  }\n\n  return bytes\n}\n\nfunction asciiToBytes (str) {\n  var byteArray = [];\n  for (var i = 0; i < str.length; ++i) {\n    // Node's code seems to be doing this and not & 0x7F..\n    byteArray.push(str.charCodeAt(i) & 0xFF);\n  }\n  return byteArray\n}\n\nfunction utf16leToBytes (str, units) {\n  var c, hi, lo;\n  var byteArray = [];\n  for (var i = 0; i < str.length; ++i) {\n    if ((units -= 2) < 0) break\n\n    c = str.charCodeAt(i);\n    hi = c >> 8;\n    lo = c % 256;\n    byteArray.push(lo);\n    byteArray.push(hi);\n  }\n\n  return byteArray\n}\n\n\nfunction base64ToBytes (str) {\n  return toByteArray(base64clean(str))\n}\n\nfunction blitBuffer (src, dst, offset, length) {\n  for (var i = 0; i < length; ++i) {\n    if ((i + offset >= dst.length) || (i >= src.length)) break\n    dst[i + offset] = src[i];\n  }\n  return i\n}\n\nfunction isnan (val) {\n  return val !== val // eslint-disable-line no-self-compare\n}\n\n\n// the following is from is-buffer, also by Feross Aboukhadijeh and with same lisence\n// The _isBuffer check is for Safari 5-7 support, because it's missing\n// Object.prototype.constructor. Remove this eventually\nfunction isBuffer(obj) {\n  return obj != null && (!!obj._isBuffer || isFastBuffer(obj) || isSlowBuffer(obj))\n}\n\nfunction isFastBuffer (obj) {\n  return !!obj.constructor && typeof obj.constructor.isBuffer === 'function' && obj.constructor.isBuffer(obj)\n}\n\n// For Node v0.10 support. Remove this eventually.\nfunction isSlowBuffer (obj) {\n  return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isFastBuffer(obj.slice(0, 0))\n}\n\nvar domain;\n\n// This constructor is used to store event handlers. Instantiating this is\n// faster than explicitly calling `Object.create(null)` to get a \"clean\" empty\n// object (tested with v8 v4.9).\nfunction EventHandlers() {}\nEventHandlers.prototype = Object.create(null);\n\nfunction EventEmitter() {\n  EventEmitter.init.call(this);\n}\n\n// nodejs oddity\n// require('events') === require('events').EventEmitter\nEventEmitter.EventEmitter = EventEmitter;\n\nEventEmitter.usingDomains = false;\n\nEventEmitter.prototype.domain = undefined;\nEventEmitter.prototype._events = undefined;\nEventEmitter.prototype._maxListeners = undefined;\n\n// By default EventEmitters will print a warning if more than 10 listeners are\n// added to it. This is a useful default which helps finding memory leaks.\nEventEmitter.defaultMaxListeners = 10;\n\nEventEmitter.init = function() {\n  this.domain = null;\n  if (EventEmitter.usingDomains) {\n    // if there is an active domain, then attach to it.\n    if (domain.active ) ;\n  }\n\n  if (!this._events || this._events === Object.getPrototypeOf(this)._events) {\n    this._events = new EventHandlers();\n    this._eventsCount = 0;\n  }\n\n  this._maxListeners = this._maxListeners || undefined;\n};\n\n// Obviously not all Emitters should be limited to 10. This function allows\n// that to be increased. Set to zero for unlimited.\nEventEmitter.prototype.setMaxListeners = function setMaxListeners(n) {\n  if (typeof n !== 'number' || n < 0 || isNaN(n))\n    throw new TypeError('\"n\" argument must be a positive number');\n  this._maxListeners = n;\n  return this;\n};\n\nfunction $getMaxListeners(that) {\n  if (that._maxListeners === undefined)\n    return EventEmitter.defaultMaxListeners;\n  return that._maxListeners;\n}\n\nEventEmitter.prototype.getMaxListeners = function getMaxListeners() {\n  return $getMaxListeners(this);\n};\n\n// These standalone emit* functions are used to optimize calling of event\n// handlers for fast cases because emit() itself often has a variable number of\n// arguments and can be deoptimized because of that. These functions always have\n// the same number of arguments and thus do not get deoptimized, so the code\n// inside them can execute faster.\nfunction emitNone(handler, isFn, self) {\n  if (isFn)\n    handler.call(self);\n  else {\n    var len = handler.length;\n    var listeners = arrayClone(handler, len);\n    for (var i = 0; i < len; ++i)\n      listeners[i].call(self);\n  }\n}\nfunction emitOne(handler, isFn, self, arg1) {\n  if (isFn)\n    handler.call(self, arg1);\n  else {\n    var len = handler.length;\n    var listeners = arrayClone(handler, len);\n    for (var i = 0; i < len; ++i)\n      listeners[i].call(self, arg1);\n  }\n}\nfunction emitTwo(handler, isFn, self, arg1, arg2) {\n  if (isFn)\n    handler.call(self, arg1, arg2);\n  else {\n    var len = handler.length;\n    var listeners = arrayClone(handler, len);\n    for (var i = 0; i < len; ++i)\n      listeners[i].call(self, arg1, arg2);\n  }\n}\nfunction emitThree(handler, isFn, self, arg1, arg2, arg3) {\n  if (isFn)\n    handler.call(self, arg1, arg2, arg3);\n  else {\n    var len = handler.length;\n    var listeners = arrayClone(handler, len);\n    for (var i = 0; i < len; ++i)\n      listeners[i].call(self, arg1, arg2, arg3);\n  }\n}\n\nfunction emitMany(handler, isFn, self, args) {\n  if (isFn)\n    handler.apply(self, args);\n  else {\n    var len = handler.length;\n    var listeners = arrayClone(handler, len);\n    for (var i = 0; i < len; ++i)\n      listeners[i].apply(self, args);\n  }\n}\n\nEventEmitter.prototype.emit = function emit(type) {\n  var er, handler, len, args, i, events, domain;\n  var doError = (type === 'error');\n\n  events = this._events;\n  if (events)\n    doError = (doError && events.error == null);\n  else if (!doError)\n    return false;\n\n  domain = this.domain;\n\n  // If there is no 'error' event listener then throw.\n  if (doError) {\n    er = arguments[1];\n    if (domain) {\n      if (!er)\n        er = new Error('Uncaught, unspecified \"error\" event');\n      er.domainEmitter = this;\n      er.domain = domain;\n      er.domainThrown = false;\n      domain.emit('error', er);\n    } else if (er instanceof Error) {\n      throw er; // Unhandled 'error' event\n    } else {\n      // At least give some kind of context to the user\n      var err = new Error('Uncaught, unspecified \"error\" event. (' + er + ')');\n      err.context = er;\n      throw err;\n    }\n    return false;\n  }\n\n  handler = events[type];\n\n  if (!handler)\n    return false;\n\n  var isFn = typeof handler === 'function';\n  len = arguments.length;\n  switch (len) {\n    // fast cases\n    case 1:\n      emitNone(handler, isFn, this);\n      break;\n    case 2:\n      emitOne(handler, isFn, this, arguments[1]);\n      break;\n    case 3:\n      emitTwo(handler, isFn, this, arguments[1], arguments[2]);\n      break;\n    case 4:\n      emitThree(handler, isFn, this, arguments[1], arguments[2], arguments[3]);\n      break;\n    // slower\n    default:\n      args = new Array(len - 1);\n      for (i = 1; i < len; i++)\n        args[i - 1] = arguments[i];\n      emitMany(handler, isFn, this, args);\n  }\n\n  return true;\n};\n\nfunction _addListener(target, type, listener, prepend) {\n  var m;\n  var events;\n  var existing;\n\n  if (typeof listener !== 'function')\n    throw new TypeError('\"listener\" argument must be a function');\n\n  events = target._events;\n  if (!events) {\n    events = target._events = new EventHandlers();\n    target._eventsCount = 0;\n  } else {\n    // To avoid recursion in the case that type === \"newListener\"! Before\n    // adding it to the listeners, first emit \"newListener\".\n    if (events.newListener) {\n      target.emit('newListener', type,\n                  listener.listener ? listener.listener : listener);\n\n      // Re-assign `events` because a newListener handler could have caused the\n      // this._events to be assigned to a new object\n      events = target._events;\n    }\n    existing = events[type];\n  }\n\n  if (!existing) {\n    // Optimize the case of one listener. Don't need the extra array object.\n    existing = events[type] = listener;\n    ++target._eventsCount;\n  } else {\n    if (typeof existing === 'function') {\n      // Adding the second element, need to change to array.\n      existing = events[type] = prepend ? [listener, existing] :\n                                          [existing, listener];\n    } else {\n      // If we've already got an array, just append.\n      if (prepend) {\n        existing.unshift(listener);\n      } else {\n        existing.push(listener);\n      }\n    }\n\n    // Check for listener leak\n    if (!existing.warned) {\n      m = $getMaxListeners(target);\n      if (m && m > 0 && existing.length > m) {\n        existing.warned = true;\n        var w = new Error('Possible EventEmitter memory leak detected. ' +\n                            existing.length + ' ' + type + ' listeners added. ' +\n                            'Use emitter.setMaxListeners() to increase limit');\n        w.name = 'MaxListenersExceededWarning';\n        w.emitter = target;\n        w.type = type;\n        w.count = existing.length;\n        emitWarning(w);\n      }\n    }\n  }\n\n  return target;\n}\nfunction emitWarning(e) {\n  typeof console.warn === 'function' ? console.warn(e) : console.log(e);\n}\nEventEmitter.prototype.addListener = function addListener(type, listener) {\n  return _addListener(this, type, listener, false);\n};\n\nEventEmitter.prototype.on = EventEmitter.prototype.addListener;\n\nEventEmitter.prototype.prependListener =\n    function prependListener(type, listener) {\n      return _addListener(this, type, listener, true);\n    };\n\nfunction _onceWrap(target, type, listener) {\n  var fired = false;\n  function g() {\n    target.removeListener(type, g);\n    if (!fired) {\n      fired = true;\n      listener.apply(target, arguments);\n    }\n  }\n  g.listener = listener;\n  return g;\n}\n\nEventEmitter.prototype.once = function once(type, listener) {\n  if (typeof listener !== 'function')\n    throw new TypeError('\"listener\" argument must be a function');\n  this.on(type, _onceWrap(this, type, listener));\n  return this;\n};\n\nEventEmitter.prototype.prependOnceListener =\n    function prependOnceListener(type, listener) {\n      if (typeof listener !== 'function')\n        throw new TypeError('\"listener\" argument must be a function');\n      this.prependListener(type, _onceWrap(this, type, listener));\n      return this;\n    };\n\n// emits a 'removeListener' event iff the listener was removed\nEventEmitter.prototype.removeListener =\n    function removeListener(type, listener) {\n      var list, events, position, i, originalListener;\n\n      if (typeof listener !== 'function')\n        throw new TypeError('\"listener\" argument must be a function');\n\n      events = this._events;\n      if (!events)\n        return this;\n\n      list = events[type];\n      if (!list)\n        return this;\n\n      if (list === listener || (list.listener && list.listener === listener)) {\n        if (--this._eventsCount === 0)\n          this._events = new EventHandlers();\n        else {\n          delete events[type];\n          if (events.removeListener)\n            this.emit('removeListener', type, list.listener || listener);\n        }\n      } else if (typeof list !== 'function') {\n        position = -1;\n\n        for (i = list.length; i-- > 0;) {\n          if (list[i] === listener ||\n              (list[i].listener && list[i].listener === listener)) {\n            originalListener = list[i].listener;\n            position = i;\n            break;\n          }\n        }\n\n        if (position < 0)\n          return this;\n\n        if (list.length === 1) {\n          list[0] = undefined;\n          if (--this._eventsCount === 0) {\n            this._events = new EventHandlers();\n            return this;\n          } else {\n            delete events[type];\n          }\n        } else {\n          spliceOne(list, position);\n        }\n\n        if (events.removeListener)\n          this.emit('removeListener', type, originalListener || listener);\n      }\n\n      return this;\n    };\n\nEventEmitter.prototype.removeAllListeners =\n    function removeAllListeners(type) {\n      var listeners, events;\n\n      events = this._events;\n      if (!events)\n        return this;\n\n      // not listening for removeListener, no need to emit\n      if (!events.removeListener) {\n        if (arguments.length === 0) {\n          this._events = new EventHandlers();\n          this._eventsCount = 0;\n        } else if (events[type]) {\n          if (--this._eventsCount === 0)\n            this._events = new EventHandlers();\n          else\n            delete events[type];\n        }\n        return this;\n      }\n\n      // emit removeListener for all listeners on all events\n      if (arguments.length === 0) {\n        var keys = Object.keys(events);\n        for (var i = 0, key; i < keys.length; ++i) {\n          key = keys[i];\n          if (key === 'removeListener') continue;\n          this.removeAllListeners(key);\n        }\n        this.removeAllListeners('removeListener');\n        this._events = new EventHandlers();\n        this._eventsCount = 0;\n        return this;\n      }\n\n      listeners = events[type];\n\n      if (typeof listeners === 'function') {\n        this.removeListener(type, listeners);\n      } else if (listeners) {\n        // LIFO order\n        do {\n          this.removeListener(type, listeners[listeners.length - 1]);\n        } while (listeners[0]);\n      }\n\n      return this;\n    };\n\nEventEmitter.prototype.listeners = function listeners(type) {\n  var evlistener;\n  var ret;\n  var events = this._events;\n\n  if (!events)\n    ret = [];\n  else {\n    evlistener = events[type];\n    if (!evlistener)\n      ret = [];\n    else if (typeof evlistener === 'function')\n      ret = [evlistener.listener || evlistener];\n    else\n      ret = unwrapListeners(evlistener);\n  }\n\n  return ret;\n};\n\nEventEmitter.listenerCount = function(emitter, type) {\n  if (typeof emitter.listenerCount === 'function') {\n    return emitter.listenerCount(type);\n  } else {\n    return listenerCount$1.call(emitter, type);\n  }\n};\n\nEventEmitter.prototype.listenerCount = listenerCount$1;\nfunction listenerCount$1(type) {\n  var events = this._events;\n\n  if (events) {\n    var evlistener = events[type];\n\n    if (typeof evlistener === 'function') {\n      return 1;\n    } else if (evlistener) {\n      return evlistener.length;\n    }\n  }\n\n  return 0;\n}\n\nEventEmitter.prototype.eventNames = function eventNames() {\n  return this._eventsCount > 0 ? Reflect.ownKeys(this._events) : [];\n};\n\n// About 1.5x faster than the two-arg version of Array#splice().\nfunction spliceOne(list, index) {\n  for (var i = index, k = i + 1, n = list.length; k < n; i += 1, k += 1)\n    list[i] = list[k];\n  list.pop();\n}\n\nfunction arrayClone(arr, i) {\n  var copy = new Array(i);\n  while (i--)\n    copy[i] = arr[i];\n  return copy;\n}\n\nfunction unwrapListeners(arr) {\n  var ret = new Array(arr.length);\n  for (var i = 0; i < ret.length; ++i) {\n    ret[i] = arr[i].listener || arr[i];\n  }\n  return ret;\n}\n\n// shim for using process in browser\n// based off https://github.com/defunctzombie/node-process/blob/master/browser.js\n\nfunction defaultSetTimout() {\n    throw new Error('setTimeout has not been defined');\n}\nfunction defaultClearTimeout () {\n    throw new Error('clearTimeout has not been defined');\n}\nvar cachedSetTimeout = defaultSetTimout;\nvar cachedClearTimeout = defaultClearTimeout;\nif (typeof global$1.setTimeout === 'function') {\n    cachedSetTimeout = setTimeout;\n}\nif (typeof global$1.clearTimeout === 'function') {\n    cachedClearTimeout = clearTimeout;\n}\n\nfunction runTimeout(fun) {\n    if (cachedSetTimeout === setTimeout) {\n        //normal enviroments in sane situations\n        return setTimeout(fun, 0);\n    }\n    // if setTimeout wasn't available but was latter defined\n    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {\n        cachedSetTimeout = setTimeout;\n        return setTimeout(fun, 0);\n    }\n    try {\n        // when when somebody has screwed with setTimeout but no I.E. maddness\n        return cachedSetTimeout(fun, 0);\n    } catch(e){\n        try {\n            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally\n            return cachedSetTimeout.call(null, fun, 0);\n        } catch(e){\n            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error\n            return cachedSetTimeout.call(this, fun, 0);\n        }\n    }\n\n\n}\nfunction runClearTimeout(marker) {\n    if (cachedClearTimeout === clearTimeout) {\n        //normal enviroments in sane situations\n        return clearTimeout(marker);\n    }\n    // if clearTimeout wasn't available but was latter defined\n    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {\n        cachedClearTimeout = clearTimeout;\n        return clearTimeout(marker);\n    }\n    try {\n        // when when somebody has screwed with setTimeout but no I.E. maddness\n        return cachedClearTimeout(marker);\n    } catch (e){\n        try {\n            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally\n            return cachedClearTimeout.call(null, marker);\n        } catch (e){\n            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.\n            // Some versions of I.E. have different rules for clearTimeout vs setTimeout\n            return cachedClearTimeout.call(this, marker);\n        }\n    }\n\n\n\n}\nvar queue = [];\nvar draining = false;\nvar currentQueue;\nvar queueIndex = -1;\n\nfunction cleanUpNextTick() {\n    if (!draining || !currentQueue) {\n        return;\n    }\n    draining = false;\n    if (currentQueue.length) {\n        queue = currentQueue.concat(queue);\n    } else {\n        queueIndex = -1;\n    }\n    if (queue.length) {\n        drainQueue();\n    }\n}\n\nfunction drainQueue() {\n    if (draining) {\n        return;\n    }\n    var timeout = runTimeout(cleanUpNextTick);\n    draining = true;\n\n    var len = queue.length;\n    while(len) {\n        currentQueue = queue;\n        queue = [];\n        while (++queueIndex < len) {\n            if (currentQueue) {\n                currentQueue[queueIndex].run();\n            }\n        }\n        queueIndex = -1;\n        len = queue.length;\n    }\n    currentQueue = null;\n    draining = false;\n    runClearTimeout(timeout);\n}\nfunction nextTick(fun) {\n    var args = new Array(arguments.length - 1);\n    if (arguments.length > 1) {\n        for (var i = 1; i < arguments.length; i++) {\n            args[i - 1] = arguments[i];\n        }\n    }\n    queue.push(new Item(fun, args));\n    if (queue.length === 1 && !draining) {\n        runTimeout(drainQueue);\n    }\n}\n// v8 likes predictible objects\nfunction Item(fun, array) {\n    this.fun = fun;\n    this.array = array;\n}\nItem.prototype.run = function () {\n    this.fun.apply(null, this.array);\n};\n\n// from https://github.com/kumavis/browser-process-hrtime/blob/master/index.js\nvar performance = global$1.performance || {};\nperformance.now        ||\n  performance.mozNow     ||\n  performance.msNow      ||\n  performance.oNow       ||\n  performance.webkitNow  ||\n  function(){ return (new Date()).getTime() };\n\nvar inherits;\nif (typeof Object.create === 'function'){\n  inherits = function inherits(ctor, superCtor) {\n    // implementation from standard node.js 'util' module\n    ctor.super_ = superCtor;\n    ctor.prototype = Object.create(superCtor.prototype, {\n      constructor: {\n        value: ctor,\n        enumerable: false,\n        writable: true,\n        configurable: true\n      }\n    });\n  };\n} else {\n  inherits = function inherits(ctor, superCtor) {\n    ctor.super_ = superCtor;\n    var TempCtor = function () {};\n    TempCtor.prototype = superCtor.prototype;\n    ctor.prototype = new TempCtor();\n    ctor.prototype.constructor = ctor;\n  };\n}\nvar inherits$1 = inherits;\n\nvar formatRegExp = /%[sdj%]/g;\nfunction format(f) {\n  if (!isString(f)) {\n    var objects = [];\n    for (var i = 0; i < arguments.length; i++) {\n      objects.push(inspect(arguments[i]));\n    }\n    return objects.join(' ');\n  }\n\n  var i = 1;\n  var args = arguments;\n  var len = args.length;\n  var str = String(f).replace(formatRegExp, function(x) {\n    if (x === '%%') return '%';\n    if (i >= len) return x;\n    switch (x) {\n      case '%s': return String(args[i++]);\n      case '%d': return Number(args[i++]);\n      case '%j':\n        try {\n          return JSON.stringify(args[i++]);\n        } catch (_) {\n          return '[Circular]';\n        }\n      default:\n        return x;\n    }\n  });\n  for (var x = args[i]; i < len; x = args[++i]) {\n    if (isNull(x) || !isObject$1(x)) {\n      str += ' ' + x;\n    } else {\n      str += ' ' + inspect(x);\n    }\n  }\n  return str;\n}\n\n// Mark that a method should not be used.\n// Returns a modified function which warns once by default.\n// If --no-deprecation is set, then it is a no-op.\nfunction deprecate(fn, msg) {\n  // Allow for deprecating things in the process of starting up.\n  if (isUndefined(global$1.process)) {\n    return function() {\n      return deprecate(fn, msg).apply(this, arguments);\n    };\n  }\n\n  var warned = false;\n  function deprecated() {\n    if (!warned) {\n      {\n        console.error(msg);\n      }\n      warned = true;\n    }\n    return fn.apply(this, arguments);\n  }\n\n  return deprecated;\n}\n\nvar debugs = {};\nvar debugEnviron;\nfunction debuglog(set) {\n  if (isUndefined(debugEnviron))\n    debugEnviron = '';\n  set = set.toUpperCase();\n  if (!debugs[set]) {\n    if (new RegExp('\\\\b' + set + '\\\\b', 'i').test(debugEnviron)) {\n      var pid = 0;\n      debugs[set] = function() {\n        var msg = format.apply(null, arguments);\n        console.error('%s %d: %s', set, pid, msg);\n      };\n    } else {\n      debugs[set] = function() {};\n    }\n  }\n  return debugs[set];\n}\n\n/**\n * Echos the value of a value. Trys to print the value out\n * in the best way possible given the different types.\n *\n * @param {Object} obj The object to print out.\n * @param {Object} opts Optional options object that alters the output.\n */\n/* legacy: obj, showHidden, depth, colors*/\nfunction inspect(obj, opts) {\n  // default options\n  var ctx = {\n    seen: [],\n    stylize: stylizeNoColor\n  };\n  // legacy...\n  if (arguments.length >= 3) ctx.depth = arguments[2];\n  if (arguments.length >= 4) ctx.colors = arguments[3];\n  if (isBoolean(opts)) {\n    // legacy...\n    ctx.showHidden = opts;\n  } else if (opts) {\n    // got an \"options\" object\n    _extend(ctx, opts);\n  }\n  // set default options\n  if (isUndefined(ctx.showHidden)) ctx.showHidden = false;\n  if (isUndefined(ctx.depth)) ctx.depth = 2;\n  if (isUndefined(ctx.colors)) ctx.colors = false;\n  if (isUndefined(ctx.customInspect)) ctx.customInspect = true;\n  if (ctx.colors) ctx.stylize = stylizeWithColor;\n  return formatValue(ctx, obj, ctx.depth);\n}\n\n// http://en.wikipedia.org/wiki/ANSI_escape_code#graphics\ninspect.colors = {\n  'bold' : [1, 22],\n  'italic' : [3, 23],\n  'underline' : [4, 24],\n  'inverse' : [7, 27],\n  'white' : [37, 39],\n  'grey' : [90, 39],\n  'black' : [30, 39],\n  'blue' : [34, 39],\n  'cyan' : [36, 39],\n  'green' : [32, 39],\n  'magenta' : [35, 39],\n  'red' : [31, 39],\n  'yellow' : [33, 39]\n};\n\n// Don't use 'blue' not visible on cmd.exe\ninspect.styles = {\n  'special': 'cyan',\n  'number': 'yellow',\n  'boolean': 'yellow',\n  'undefined': 'grey',\n  'null': 'bold',\n  'string': 'green',\n  'date': 'magenta',\n  // \"name\": intentionally not styling\n  'regexp': 'red'\n};\n\n\nfunction stylizeWithColor(str, styleType) {\n  var style = inspect.styles[styleType];\n\n  if (style) {\n    return '\\u001b[' + inspect.colors[style][0] + 'm' + str +\n           '\\u001b[' + inspect.colors[style][1] + 'm';\n  } else {\n    return str;\n  }\n}\n\n\nfunction stylizeNoColor(str, styleType) {\n  return str;\n}\n\n\nfunction arrayToHash(array) {\n  var hash = {};\n\n  array.forEach(function(val, idx) {\n    hash[val] = true;\n  });\n\n  return hash;\n}\n\n\nfunction formatValue(ctx, value, recurseTimes) {\n  // Provide a hook for user-specified inspect functions.\n  // Check that value is an object with an inspect function on it\n  if (ctx.customInspect &&\n      value &&\n      isFunction(value.inspect) &&\n      // Filter out the util module, it's inspect function is special\n      value.inspect !== inspect &&\n      // Also filter out any prototype objects using the circular check.\n      !(value.constructor && value.constructor.prototype === value)) {\n    var ret = value.inspect(recurseTimes, ctx);\n    if (!isString(ret)) {\n      ret = formatValue(ctx, ret, recurseTimes);\n    }\n    return ret;\n  }\n\n  // Primitive types cannot have properties\n  var primitive = formatPrimitive(ctx, value);\n  if (primitive) {\n    return primitive;\n  }\n\n  // Look up the keys of the object.\n  var keys = Object.keys(value);\n  var visibleKeys = arrayToHash(keys);\n\n  if (ctx.showHidden) {\n    keys = Object.getOwnPropertyNames(value);\n  }\n\n  // IE doesn't make error fields non-enumerable\n  // http://msdn.microsoft.com/en-us/library/ie/dww52sbt(v=vs.94).aspx\n  if (isError(value)\n      && (keys.indexOf('message') >= 0 || keys.indexOf('description') >= 0)) {\n    return formatError(value);\n  }\n\n  // Some type of object without properties can be shortcutted.\n  if (keys.length === 0) {\n    if (isFunction(value)) {\n      var name = value.name ? ': ' + value.name : '';\n      return ctx.stylize('[Function' + name + ']', 'special');\n    }\n    if (isRegExp(value)) {\n      return ctx.stylize(RegExp.prototype.toString.call(value), 'regexp');\n    }\n    if (isDate(value)) {\n      return ctx.stylize(Date.prototype.toString.call(value), 'date');\n    }\n    if (isError(value)) {\n      return formatError(value);\n    }\n  }\n\n  var base = '', array = false, braces = ['{', '}'];\n\n  // Make Array say that they are Array\n  if (isArray(value)) {\n    array = true;\n    braces = ['[', ']'];\n  }\n\n  // Make functions say that they are functions\n  if (isFunction(value)) {\n    var n = value.name ? ': ' + value.name : '';\n    base = ' [Function' + n + ']';\n  }\n\n  // Make RegExps say that they are RegExps\n  if (isRegExp(value)) {\n    base = ' ' + RegExp.prototype.toString.call(value);\n  }\n\n  // Make dates with properties first say the date\n  if (isDate(value)) {\n    base = ' ' + Date.prototype.toUTCString.call(value);\n  }\n\n  // Make error with message first say the error\n  if (isError(value)) {\n    base = ' ' + formatError(value);\n  }\n\n  if (keys.length === 0 && (!array || value.length == 0)) {\n    return braces[0] + base + braces[1];\n  }\n\n  if (recurseTimes < 0) {\n    if (isRegExp(value)) {\n      return ctx.stylize(RegExp.prototype.toString.call(value), 'regexp');\n    } else {\n      return ctx.stylize('[Object]', 'special');\n    }\n  }\n\n  ctx.seen.push(value);\n\n  var output;\n  if (array) {\n    output = formatArray(ctx, value, recurseTimes, visibleKeys, keys);\n  } else {\n    output = keys.map(function(key) {\n      return formatProperty(ctx, value, recurseTimes, visibleKeys, key, array);\n    });\n  }\n\n  ctx.seen.pop();\n\n  return reduceToSingleString(output, base, braces);\n}\n\n\nfunction formatPrimitive(ctx, value) {\n  if (isUndefined(value))\n    return ctx.stylize('undefined', 'undefined');\n  if (isString(value)) {\n    var simple = '\\'' + JSON.stringify(value).replace(/^\"|\"$/g, '')\n                                             .replace(/'/g, \"\\\\'\")\n                                             .replace(/\\\\\"/g, '\"') + '\\'';\n    return ctx.stylize(simple, 'string');\n  }\n  if (isNumber(value))\n    return ctx.stylize('' + value, 'number');\n  if (isBoolean(value))\n    return ctx.stylize('' + value, 'boolean');\n  // For some reason typeof null is \"object\", so special case here.\n  if (isNull(value))\n    return ctx.stylize('null', 'null');\n}\n\n\nfunction formatError(value) {\n  return '[' + Error.prototype.toString.call(value) + ']';\n}\n\n\nfunction formatArray(ctx, value, recurseTimes, visibleKeys, keys) {\n  var output = [];\n  for (var i = 0, l = value.length; i < l; ++i) {\n    if (hasOwnProperty(value, String(i))) {\n      output.push(formatProperty(ctx, value, recurseTimes, visibleKeys,\n          String(i), true));\n    } else {\n      output.push('');\n    }\n  }\n  keys.forEach(function(key) {\n    if (!key.match(/^\\d+$/)) {\n      output.push(formatProperty(ctx, value, recurseTimes, visibleKeys,\n          key, true));\n    }\n  });\n  return output;\n}\n\n\nfunction formatProperty(ctx, value, recurseTimes, visibleKeys, key, array) {\n  var name, str, desc;\n  desc = Object.getOwnPropertyDescriptor(value, key) || { value: value[key] };\n  if (desc.get) {\n    if (desc.set) {\n      str = ctx.stylize('[Getter/Setter]', 'special');\n    } else {\n      str = ctx.stylize('[Getter]', 'special');\n    }\n  } else {\n    if (desc.set) {\n      str = ctx.stylize('[Setter]', 'special');\n    }\n  }\n  if (!hasOwnProperty(visibleKeys, key)) {\n    name = '[' + key + ']';\n  }\n  if (!str) {\n    if (ctx.seen.indexOf(desc.value) < 0) {\n      if (isNull(recurseTimes)) {\n        str = formatValue(ctx, desc.value, null);\n      } else {\n        str = formatValue(ctx, desc.value, recurseTimes - 1);\n      }\n      if (str.indexOf('\\n') > -1) {\n        if (array) {\n          str = str.split('\\n').map(function(line) {\n            return '  ' + line;\n          }).join('\\n').substr(2);\n        } else {\n          str = '\\n' + str.split('\\n').map(function(line) {\n            return '   ' + line;\n          }).join('\\n');\n        }\n      }\n    } else {\n      str = ctx.stylize('[Circular]', 'special');\n    }\n  }\n  if (isUndefined(name)) {\n    if (array && key.match(/^\\d+$/)) {\n      return str;\n    }\n    name = JSON.stringify('' + key);\n    if (name.match(/^\"([a-zA-Z_][a-zA-Z_0-9]*)\"$/)) {\n      name = name.substr(1, name.length - 2);\n      name = ctx.stylize(name, 'name');\n    } else {\n      name = name.replace(/'/g, \"\\\\'\")\n                 .replace(/\\\\\"/g, '\"')\n                 .replace(/(^\"|\"$)/g, \"'\");\n      name = ctx.stylize(name, 'string');\n    }\n  }\n\n  return name + ': ' + str;\n}\n\n\nfunction reduceToSingleString(output, base, braces) {\n  var length = output.reduce(function(prev, cur) {\n    if (cur.indexOf('\\n') >= 0) ;\n    return prev + cur.replace(/\\u001b\\[\\d\\d?m/g, '').length + 1;\n  }, 0);\n\n  if (length > 60) {\n    return braces[0] +\n           (base === '' ? '' : base + '\\n ') +\n           ' ' +\n           output.join(',\\n  ') +\n           ' ' +\n           braces[1];\n  }\n\n  return braces[0] + base + ' ' + output.join(', ') + ' ' + braces[1];\n}\n\n\n// NOTE: These type checking functions intentionally don't use `instanceof`\n// because it is fragile and can be easily faked with `Object.create()`.\nfunction isArray(ar) {\n  return Array.isArray(ar);\n}\n\nfunction isBoolean(arg) {\n  return typeof arg === 'boolean';\n}\n\nfunction isNull(arg) {\n  return arg === null;\n}\n\nfunction isNumber(arg) {\n  return typeof arg === 'number';\n}\n\nfunction isString(arg) {\n  return typeof arg === 'string';\n}\n\nfunction isUndefined(arg) {\n  return arg === void 0;\n}\n\nfunction isRegExp(re) {\n  return isObject$1(re) && objectToString(re) === '[object RegExp]';\n}\n\nfunction isObject$1(arg) {\n  return typeof arg === 'object' && arg !== null;\n}\n\nfunction isDate(d) {\n  return isObject$1(d) && objectToString(d) === '[object Date]';\n}\n\nfunction isError(e) {\n  return isObject$1(e) &&\n      (objectToString(e) === '[object Error]' || e instanceof Error);\n}\n\nfunction isFunction(arg) {\n  return typeof arg === 'function';\n}\n\nfunction objectToString(o) {\n  return Object.prototype.toString.call(o);\n}\n\nfunction _extend(origin, add) {\n  // Don't do anything if add isn't an object\n  if (!add || !isObject$1(add)) return origin;\n\n  var keys = Object.keys(add);\n  var i = keys.length;\n  while (i--) {\n    origin[keys[i]] = add[keys[i]];\n  }\n  return origin;\n}\nfunction hasOwnProperty(obj, prop) {\n  return Object.prototype.hasOwnProperty.call(obj, prop);\n}\n\nfunction BufferList() {\n  this.head = null;\n  this.tail = null;\n  this.length = 0;\n}\n\nBufferList.prototype.push = function (v) {\n  var entry = { data: v, next: null };\n  if (this.length > 0) this.tail.next = entry;else this.head = entry;\n  this.tail = entry;\n  ++this.length;\n};\n\nBufferList.prototype.unshift = function (v) {\n  var entry = { data: v, next: this.head };\n  if (this.length === 0) this.tail = entry;\n  this.head = entry;\n  ++this.length;\n};\n\nBufferList.prototype.shift = function () {\n  if (this.length === 0) return;\n  var ret = this.head.data;\n  if (this.length === 1) this.head = this.tail = null;else this.head = this.head.next;\n  --this.length;\n  return ret;\n};\n\nBufferList.prototype.clear = function () {\n  this.head = this.tail = null;\n  this.length = 0;\n};\n\nBufferList.prototype.join = function (s) {\n  if (this.length === 0) return '';\n  var p = this.head;\n  var ret = '' + p.data;\n  while (p = p.next) {\n    ret += s + p.data;\n  }return ret;\n};\n\nBufferList.prototype.concat = function (n) {\n  if (this.length === 0) return Buffer.alloc(0);\n  if (this.length === 1) return this.head.data;\n  var ret = Buffer.allocUnsafe(n >>> 0);\n  var p = this.head;\n  var i = 0;\n  while (p) {\n    p.data.copy(ret, i);\n    i += p.data.length;\n    p = p.next;\n  }\n  return ret;\n};\n\n// Copyright Joyent, Inc. and other Node contributors.\nvar isBufferEncoding = Buffer.isEncoding\n  || function(encoding) {\n       switch (encoding && encoding.toLowerCase()) {\n         case 'hex': case 'utf8': case 'utf-8': case 'ascii': case 'binary': case 'base64': case 'ucs2': case 'ucs-2': case 'utf16le': case 'utf-16le': case 'raw': return true;\n         default: return false;\n       }\n     };\n\n\nfunction assertEncoding(encoding) {\n  if (encoding && !isBufferEncoding(encoding)) {\n    throw new Error('Unknown encoding: ' + encoding);\n  }\n}\n\n// StringDecoder provides an interface for efficiently splitting a series of\n// buffers into a series of JS strings without breaking apart multi-byte\n// characters. CESU-8 is handled as part of the UTF-8 encoding.\n//\n// @TODO Handling all encodings inside a single object makes it very difficult\n// to reason about this code, so it should be split up in the future.\n// @TODO There should be a utf8-strict encoding that rejects invalid UTF-8 code\n// points as used by CESU-8.\nfunction StringDecoder(encoding) {\n  this.encoding = (encoding || 'utf8').toLowerCase().replace(/[-_]/, '');\n  assertEncoding(encoding);\n  switch (this.encoding) {\n    case 'utf8':\n      // CESU-8 represents each of Surrogate Pair by 3-bytes\n      this.surrogateSize = 3;\n      break;\n    case 'ucs2':\n    case 'utf16le':\n      // UTF-16 represents each of Surrogate Pair by 2-bytes\n      this.surrogateSize = 2;\n      this.detectIncompleteChar = utf16DetectIncompleteChar;\n      break;\n    case 'base64':\n      // Base-64 stores 3 bytes in 4 chars, and pads the remainder.\n      this.surrogateSize = 3;\n      this.detectIncompleteChar = base64DetectIncompleteChar;\n      break;\n    default:\n      this.write = passThroughWrite;\n      return;\n  }\n\n  // Enough space to store all bytes of a single character. UTF-8 needs 4\n  // bytes, but CESU-8 may require up to 6 (3 bytes per surrogate).\n  this.charBuffer = new Buffer(6);\n  // Number of bytes received for the current incomplete multi-byte character.\n  this.charReceived = 0;\n  // Number of bytes expected for the current incomplete multi-byte character.\n  this.charLength = 0;\n}\n\n// write decodes the given buffer and returns it as JS string that is\n// guaranteed to not contain any partial multi-byte characters. Any partial\n// character found at the end of the buffer is buffered up, and will be\n// returned when calling write again with the remaining bytes.\n//\n// Note: Converting a Buffer containing an orphan surrogate to a String\n// currently works, but converting a String to a Buffer (via `new Buffer`, or\n// Buffer#write) will replace incomplete surrogates with the unicode\n// replacement character. See https://codereview.chromium.org/121173009/ .\nStringDecoder.prototype.write = function(buffer) {\n  var charStr = '';\n  // if our last write ended with an incomplete multibyte character\n  while (this.charLength) {\n    // determine how many remaining bytes this buffer has to offer for this char\n    var available = (buffer.length >= this.charLength - this.charReceived) ?\n        this.charLength - this.charReceived :\n        buffer.length;\n\n    // add the new bytes to the char buffer\n    buffer.copy(this.charBuffer, this.charReceived, 0, available);\n    this.charReceived += available;\n\n    if (this.charReceived < this.charLength) {\n      // still not enough chars in this buffer? wait for more ...\n      return '';\n    }\n\n    // remove bytes belonging to the current character from the buffer\n    buffer = buffer.slice(available, buffer.length);\n\n    // get the character that was split\n    charStr = this.charBuffer.slice(0, this.charLength).toString(this.encoding);\n\n    // CESU-8: lead surrogate (D800-DBFF) is also the incomplete character\n    var charCode = charStr.charCodeAt(charStr.length - 1);\n    if (charCode >= 0xD800 && charCode <= 0xDBFF) {\n      this.charLength += this.surrogateSize;\n      charStr = '';\n      continue;\n    }\n    this.charReceived = this.charLength = 0;\n\n    // if there are no more bytes in this buffer, just emit our char\n    if (buffer.length === 0) {\n      return charStr;\n    }\n    break;\n  }\n\n  // determine and set charLength / charReceived\n  this.detectIncompleteChar(buffer);\n\n  var end = buffer.length;\n  if (this.charLength) {\n    // buffer the incomplete character bytes we got\n    buffer.copy(this.charBuffer, 0, buffer.length - this.charReceived, end);\n    end -= this.charReceived;\n  }\n\n  charStr += buffer.toString(this.encoding, 0, end);\n\n  var end = charStr.length - 1;\n  var charCode = charStr.charCodeAt(end);\n  // CESU-8: lead surrogate (D800-DBFF) is also the incomplete character\n  if (charCode >= 0xD800 && charCode <= 0xDBFF) {\n    var size = this.surrogateSize;\n    this.charLength += size;\n    this.charReceived += size;\n    this.charBuffer.copy(this.charBuffer, size, 0, size);\n    buffer.copy(this.charBuffer, 0, 0, size);\n    return charStr.substring(0, end);\n  }\n\n  // or just emit the charStr\n  return charStr;\n};\n\n// detectIncompleteChar determines if there is an incomplete UTF-8 character at\n// the end of the given buffer. If so, it sets this.charLength to the byte\n// length that character, and sets this.charReceived to the number of bytes\n// that are available for this character.\nStringDecoder.prototype.detectIncompleteChar = function(buffer) {\n  // determine how many bytes we have to check at the end of this buffer\n  var i = (buffer.length >= 3) ? 3 : buffer.length;\n\n  // Figure out if one of the last i bytes of our buffer announces an\n  // incomplete char.\n  for (; i > 0; i--) {\n    var c = buffer[buffer.length - i];\n\n    // See http://en.wikipedia.org/wiki/UTF-8#Description\n\n    // 110XXXXX\n    if (i == 1 && c >> 5 == 0x06) {\n      this.charLength = 2;\n      break;\n    }\n\n    // 1110XXXX\n    if (i <= 2 && c >> 4 == 0x0E) {\n      this.charLength = 3;\n      break;\n    }\n\n    // 11110XXX\n    if (i <= 3 && c >> 3 == 0x1E) {\n      this.charLength = 4;\n      break;\n    }\n  }\n  this.charReceived = i;\n};\n\nStringDecoder.prototype.end = function(buffer) {\n  var res = '';\n  if (buffer && buffer.length)\n    res = this.write(buffer);\n\n  if (this.charReceived) {\n    var cr = this.charReceived;\n    var buf = this.charBuffer;\n    var enc = this.encoding;\n    res += buf.slice(0, cr).toString(enc);\n  }\n\n  return res;\n};\n\nfunction passThroughWrite(buffer) {\n  return buffer.toString(this.encoding);\n}\n\nfunction utf16DetectIncompleteChar(buffer) {\n  this.charReceived = buffer.length % 2;\n  this.charLength = this.charReceived ? 2 : 0;\n}\n\nfunction base64DetectIncompleteChar(buffer) {\n  this.charReceived = buffer.length % 3;\n  this.charLength = this.charReceived ? 3 : 0;\n}\n\nReadable.ReadableState = ReadableState;\n\nvar debug = debuglog('stream');\ninherits$1(Readable, EventEmitter);\n\nfunction prependListener(emitter, event, fn) {\n  // Sadly this is not cacheable as some libraries bundle their own\n  // event emitter implementation with them.\n  if (typeof emitter.prependListener === 'function') {\n    return emitter.prependListener(event, fn);\n  } else {\n    // This is a hack to make sure that our error handler is attached before any\n    // userland ones.  NEVER DO THIS. This is here only because this code needs\n    // to continue to work with older versions of Node.js that do not include\n    // the prependListener() method. The goal is to eventually remove this hack.\n    if (!emitter._events || !emitter._events[event])\n      emitter.on(event, fn);\n    else if (Array.isArray(emitter._events[event]))\n      emitter._events[event].unshift(fn);\n    else\n      emitter._events[event] = [fn, emitter._events[event]];\n  }\n}\nfunction listenerCount (emitter, type) {\n  return emitter.listeners(type).length;\n}\nfunction ReadableState(options, stream) {\n\n  options = options || {};\n\n  // object stream flag. Used to make read(n) ignore n and to\n  // make all the buffer merging and length checks go away\n  this.objectMode = !!options.objectMode;\n\n  if (stream instanceof Duplex) this.objectMode = this.objectMode || !!options.readableObjectMode;\n\n  // the point at which it stops calling _read() to fill the buffer\n  // Note: 0 is a valid value, means \"don't call _read preemptively ever\"\n  var hwm = options.highWaterMark;\n  var defaultHwm = this.objectMode ? 16 : 16 * 1024;\n  this.highWaterMark = hwm || hwm === 0 ? hwm : defaultHwm;\n\n  // cast to ints.\n  this.highWaterMark = ~ ~this.highWaterMark;\n\n  // A linked list is used to store data chunks instead of an array because the\n  // linked list can remove elements from the beginning faster than\n  // array.shift()\n  this.buffer = new BufferList();\n  this.length = 0;\n  this.pipes = null;\n  this.pipesCount = 0;\n  this.flowing = null;\n  this.ended = false;\n  this.endEmitted = false;\n  this.reading = false;\n\n  // a flag to be able to tell if the onwrite cb is called immediately,\n  // or on a later tick.  We set this to true at first, because any\n  // actions that shouldn't happen until \"later\" should generally also\n  // not happen before the first write call.\n  this.sync = true;\n\n  // whenever we return null, then we set a flag to say\n  // that we're awaiting a 'readable' event emission.\n  this.needReadable = false;\n  this.emittedReadable = false;\n  this.readableListening = false;\n  this.resumeScheduled = false;\n\n  // Crypto is kind of old and crusty.  Historically, its default string\n  // encoding is 'binary' so we have to make this configurable.\n  // Everything else in the universe uses 'utf8', though.\n  this.defaultEncoding = options.defaultEncoding || 'utf8';\n\n  // when piping, we only care about 'readable' events that happen\n  // after read()ing all the bytes and not getting any pushback.\n  this.ranOut = false;\n\n  // the number of writers that are awaiting a drain event in .pipe()s\n  this.awaitDrain = 0;\n\n  // if true, a maybeReadMore has been scheduled\n  this.readingMore = false;\n\n  this.decoder = null;\n  this.encoding = null;\n  if (options.encoding) {\n    this.decoder = new StringDecoder(options.encoding);\n    this.encoding = options.encoding;\n  }\n}\nfunction Readable(options) {\n\n  if (!(this instanceof Readable)) return new Readable(options);\n\n  this._readableState = new ReadableState(options, this);\n\n  // legacy\n  this.readable = true;\n\n  if (options && typeof options.read === 'function') this._read = options.read;\n\n  EventEmitter.call(this);\n}\n\n// Manually shove something into the read() buffer.\n// This returns true if the highWaterMark has not been hit yet,\n// similar to how Writable.write() returns true if you should\n// write() some more.\nReadable.prototype.push = function (chunk, encoding) {\n  var state = this._readableState;\n\n  if (!state.objectMode && typeof chunk === 'string') {\n    encoding = encoding || state.defaultEncoding;\n    if (encoding !== state.encoding) {\n      chunk = Buffer.from(chunk, encoding);\n      encoding = '';\n    }\n  }\n\n  return readableAddChunk(this, state, chunk, encoding, false);\n};\n\n// Unshift should *always* be something directly out of read()\nReadable.prototype.unshift = function (chunk) {\n  var state = this._readableState;\n  return readableAddChunk(this, state, chunk, '', true);\n};\n\nReadable.prototype.isPaused = function () {\n  return this._readableState.flowing === false;\n};\n\nfunction readableAddChunk(stream, state, chunk, encoding, addToFront) {\n  var er = chunkInvalid(state, chunk);\n  if (er) {\n    stream.emit('error', er);\n  } else if (chunk === null) {\n    state.reading = false;\n    onEofChunk(stream, state);\n  } else if (state.objectMode || chunk && chunk.length > 0) {\n    if (state.ended && !addToFront) {\n      var e = new Error('stream.push() after EOF');\n      stream.emit('error', e);\n    } else if (state.endEmitted && addToFront) {\n      var _e = new Error('stream.unshift() after end event');\n      stream.emit('error', _e);\n    } else {\n      var skipAdd;\n      if (state.decoder && !addToFront && !encoding) {\n        chunk = state.decoder.write(chunk);\n        skipAdd = !state.objectMode && chunk.length === 0;\n      }\n\n      if (!addToFront) state.reading = false;\n\n      // Don't add to the buffer if we've decoded to an empty string chunk and\n      // we're not in object mode\n      if (!skipAdd) {\n        // if we want the data now, just emit it.\n        if (state.flowing && state.length === 0 && !state.sync) {\n          stream.emit('data', chunk);\n          stream.read(0);\n        } else {\n          // update the buffer info.\n          state.length += state.objectMode ? 1 : chunk.length;\n          if (addToFront) state.buffer.unshift(chunk);else state.buffer.push(chunk);\n\n          if (state.needReadable) emitReadable(stream);\n        }\n      }\n\n      maybeReadMore(stream, state);\n    }\n  } else if (!addToFront) {\n    state.reading = false;\n  }\n\n  return needMoreData(state);\n}\n\n// if it's past the high water mark, we can push in some more.\n// Also, if we have no data yet, we can stand some\n// more bytes.  This is to work around cases where hwm=0,\n// such as the repl.  Also, if the push() triggered a\n// readable event, and the user called read(largeNumber) such that\n// needReadable was set, then we ought to push more, so that another\n// 'readable' event will be triggered.\nfunction needMoreData(state) {\n  return !state.ended && (state.needReadable || state.length < state.highWaterMark || state.length === 0);\n}\n\n// backwards compatibility.\nReadable.prototype.setEncoding = function (enc) {\n  this._readableState.decoder = new StringDecoder(enc);\n  this._readableState.encoding = enc;\n  return this;\n};\n\n// Don't raise the hwm > 8MB\nvar MAX_HWM = 0x800000;\nfunction computeNewHighWaterMark(n) {\n  if (n >= MAX_HWM) {\n    n = MAX_HWM;\n  } else {\n    // Get the next highest power of 2 to prevent increasing hwm excessively in\n    // tiny amounts\n    n--;\n    n |= n >>> 1;\n    n |= n >>> 2;\n    n |= n >>> 4;\n    n |= n >>> 8;\n    n |= n >>> 16;\n    n++;\n  }\n  return n;\n}\n\n// This function is designed to be inlinable, so please take care when making\n// changes to the function body.\nfunction howMuchToRead(n, state) {\n  if (n <= 0 || state.length === 0 && state.ended) return 0;\n  if (state.objectMode) return 1;\n  if (n !== n) {\n    // Only flow one buffer at a time\n    if (state.flowing && state.length) return state.buffer.head.data.length;else return state.length;\n  }\n  // If we're asking for more than the current hwm, then raise the hwm.\n  if (n > state.highWaterMark) state.highWaterMark = computeNewHighWaterMark(n);\n  if (n <= state.length) return n;\n  // Don't have enough\n  if (!state.ended) {\n    state.needReadable = true;\n    return 0;\n  }\n  return state.length;\n}\n\n// you can override either this method, or the async _read(n) below.\nReadable.prototype.read = function (n) {\n  debug('read', n);\n  n = parseInt(n, 10);\n  var state = this._readableState;\n  var nOrig = n;\n\n  if (n !== 0) state.emittedReadable = false;\n\n  // if we're doing read(0) to trigger a readable event, but we\n  // already have a bunch of data in the buffer, then just trigger\n  // the 'readable' event and move on.\n  if (n === 0 && state.needReadable && (state.length >= state.highWaterMark || state.ended)) {\n    debug('read: emitReadable', state.length, state.ended);\n    if (state.length === 0 && state.ended) endReadable(this);else emitReadable(this);\n    return null;\n  }\n\n  n = howMuchToRead(n, state);\n\n  // if we've ended, and we're now clear, then finish it up.\n  if (n === 0 && state.ended) {\n    if (state.length === 0) endReadable(this);\n    return null;\n  }\n\n  // All the actual chunk generation logic needs to be\n  // *below* the call to _read.  The reason is that in certain\n  // synthetic stream cases, such as passthrough streams, _read\n  // may be a completely synchronous operation which may change\n  // the state of the read buffer, providing enough data when\n  // before there was *not* enough.\n  //\n  // So, the steps are:\n  // 1. Figure out what the state of things will be after we do\n  // a read from the buffer.\n  //\n  // 2. If that resulting state will trigger a _read, then call _read.\n  // Note that this may be asynchronous, or synchronous.  Yes, it is\n  // deeply ugly to write APIs this way, but that still doesn't mean\n  // that the Readable class should behave improperly, as streams are\n  // designed to be sync/async agnostic.\n  // Take note if the _read call is sync or async (ie, if the read call\n  // has returned yet), so that we know whether or not it's safe to emit\n  // 'readable' etc.\n  //\n  // 3. Actually pull the requested chunks out of the buffer and return.\n\n  // if we need a readable event, then we need to do some reading.\n  var doRead = state.needReadable;\n  debug('need readable', doRead);\n\n  // if we currently have less than the highWaterMark, then also read some\n  if (state.length === 0 || state.length - n < state.highWaterMark) {\n    doRead = true;\n    debug('length less than watermark', doRead);\n  }\n\n  // however, if we've ended, then there's no point, and if we're already\n  // reading, then it's unnecessary.\n  if (state.ended || state.reading) {\n    doRead = false;\n    debug('reading or ended', doRead);\n  } else if (doRead) {\n    debug('do read');\n    state.reading = true;\n    state.sync = true;\n    // if the length is currently zero, then we *need* a readable event.\n    if (state.length === 0) state.needReadable = true;\n    // call internal read method\n    this._read(state.highWaterMark);\n    state.sync = false;\n    // If _read pushed data synchronously, then `reading` will be false,\n    // and we need to re-evaluate how much data we can return to the user.\n    if (!state.reading) n = howMuchToRead(nOrig, state);\n  }\n\n  var ret;\n  if (n > 0) ret = fromList(n, state);else ret = null;\n\n  if (ret === null) {\n    state.needReadable = true;\n    n = 0;\n  } else {\n    state.length -= n;\n  }\n\n  if (state.length === 0) {\n    // If we have nothing in the buffer, then we want to know\n    // as soon as we *do* get something into the buffer.\n    if (!state.ended) state.needReadable = true;\n\n    // If we tried to read() past the EOF, then emit end on the next tick.\n    if (nOrig !== n && state.ended) endReadable(this);\n  }\n\n  if (ret !== null) this.emit('data', ret);\n\n  return ret;\n};\n\nfunction chunkInvalid(state, chunk) {\n  var er = null;\n  if (!isBuffer(chunk) && typeof chunk !== 'string' && chunk !== null && chunk !== undefined && !state.objectMode) {\n    er = new TypeError('Invalid non-string/buffer chunk');\n  }\n  return er;\n}\n\nfunction onEofChunk(stream, state) {\n  if (state.ended) return;\n  if (state.decoder) {\n    var chunk = state.decoder.end();\n    if (chunk && chunk.length) {\n      state.buffer.push(chunk);\n      state.length += state.objectMode ? 1 : chunk.length;\n    }\n  }\n  state.ended = true;\n\n  // emit 'readable' now to make sure it gets picked up.\n  emitReadable(stream);\n}\n\n// Don't emit readable right away in sync mode, because this can trigger\n// another read() call => stack overflow.  This way, it might trigger\n// a nextTick recursion warning, but that's not so bad.\nfunction emitReadable(stream) {\n  var state = stream._readableState;\n  state.needReadable = false;\n  if (!state.emittedReadable) {\n    debug('emitReadable', state.flowing);\n    state.emittedReadable = true;\n    if (state.sync) nextTick(emitReadable_, stream);else emitReadable_(stream);\n  }\n}\n\nfunction emitReadable_(stream) {\n  debug('emit readable');\n  stream.emit('readable');\n  flow(stream);\n}\n\n// at this point, the user has presumably seen the 'readable' event,\n// and called read() to consume some data.  that may have triggered\n// in turn another _read(n) call, in which case reading = true if\n// it's in progress.\n// However, if we're not ended, or reading, and the length < hwm,\n// then go ahead and try to read some more preemptively.\nfunction maybeReadMore(stream, state) {\n  if (!state.readingMore) {\n    state.readingMore = true;\n    nextTick(maybeReadMore_, stream, state);\n  }\n}\n\nfunction maybeReadMore_(stream, state) {\n  var len = state.length;\n  while (!state.reading && !state.flowing && !state.ended && state.length < state.highWaterMark) {\n    debug('maybeReadMore read 0');\n    stream.read(0);\n    if (len === state.length)\n      // didn't get any data, stop spinning.\n      break;else len = state.length;\n  }\n  state.readingMore = false;\n}\n\n// abstract method.  to be overridden in specific implementation classes.\n// call cb(er, data) where data is <= n in length.\n// for virtual (non-string, non-buffer) streams, \"length\" is somewhat\n// arbitrary, and perhaps not very meaningful.\nReadable.prototype._read = function (n) {\n  this.emit('error', new Error('not implemented'));\n};\n\nReadable.prototype.pipe = function (dest, pipeOpts) {\n  var src = this;\n  var state = this._readableState;\n\n  switch (state.pipesCount) {\n    case 0:\n      state.pipes = dest;\n      break;\n    case 1:\n      state.pipes = [state.pipes, dest];\n      break;\n    default:\n      state.pipes.push(dest);\n      break;\n  }\n  state.pipesCount += 1;\n  debug('pipe count=%d opts=%j', state.pipesCount, pipeOpts);\n\n  var doEnd = (!pipeOpts || pipeOpts.end !== false);\n\n  var endFn = doEnd ? onend : cleanup;\n  if (state.endEmitted) nextTick(endFn);else src.once('end', endFn);\n\n  dest.on('unpipe', onunpipe);\n  function onunpipe(readable) {\n    debug('onunpipe');\n    if (readable === src) {\n      cleanup();\n    }\n  }\n\n  function onend() {\n    debug('onend');\n    dest.end();\n  }\n\n  // when the dest drains, it reduces the awaitDrain counter\n  // on the source.  This would be more elegant with a .once()\n  // handler in flow(), but adding and removing repeatedly is\n  // too slow.\n  var ondrain = pipeOnDrain(src);\n  dest.on('drain', ondrain);\n\n  var cleanedUp = false;\n  function cleanup() {\n    debug('cleanup');\n    // cleanup event handlers once the pipe is broken\n    dest.removeListener('close', onclose);\n    dest.removeListener('finish', onfinish);\n    dest.removeListener('drain', ondrain);\n    dest.removeListener('error', onerror);\n    dest.removeListener('unpipe', onunpipe);\n    src.removeListener('end', onend);\n    src.removeListener('end', cleanup);\n    src.removeListener('data', ondata);\n\n    cleanedUp = true;\n\n    // if the reader is waiting for a drain event from this\n    // specific writer, then it would cause it to never start\n    // flowing again.\n    // So, if this is awaiting a drain, then we just call it now.\n    // If we don't know, then assume that we are waiting for one.\n    if (state.awaitDrain && (!dest._writableState || dest._writableState.needDrain)) ondrain();\n  }\n\n  // If the user pushes more data while we're writing to dest then we'll end up\n  // in ondata again. However, we only want to increase awaitDrain once because\n  // dest will only emit one 'drain' event for the multiple writes.\n  // => Introduce a guard on increasing awaitDrain.\n  var increasedAwaitDrain = false;\n  src.on('data', ondata);\n  function ondata(chunk) {\n    debug('ondata');\n    increasedAwaitDrain = false;\n    var ret = dest.write(chunk);\n    if (false === ret && !increasedAwaitDrain) {\n      // If the user unpiped during `dest.write()`, it is possible\n      // to get stuck in a permanently paused state if that write\n      // also returned false.\n      // => Check whether `dest` is still a piping destination.\n      if ((state.pipesCount === 1 && state.pipes === dest || state.pipesCount > 1 && indexOf(state.pipes, dest) !== -1) && !cleanedUp) {\n        debug('false write response, pause', src._readableState.awaitDrain);\n        src._readableState.awaitDrain++;\n        increasedAwaitDrain = true;\n      }\n      src.pause();\n    }\n  }\n\n  // if the dest has an error, then stop piping into it.\n  // however, don't suppress the throwing behavior for this.\n  function onerror(er) {\n    debug('onerror', er);\n    unpipe();\n    dest.removeListener('error', onerror);\n    if (listenerCount(dest, 'error') === 0) dest.emit('error', er);\n  }\n\n  // Make sure our error handler is attached before userland ones.\n  prependListener(dest, 'error', onerror);\n\n  // Both close and finish should trigger unpipe, but only once.\n  function onclose() {\n    dest.removeListener('finish', onfinish);\n    unpipe();\n  }\n  dest.once('close', onclose);\n  function onfinish() {\n    debug('onfinish');\n    dest.removeListener('close', onclose);\n    unpipe();\n  }\n  dest.once('finish', onfinish);\n\n  function unpipe() {\n    debug('unpipe');\n    src.unpipe(dest);\n  }\n\n  // tell the dest that it's being piped to\n  dest.emit('pipe', src);\n\n  // start the flow if it hasn't been started already.\n  if (!state.flowing) {\n    debug('pipe resume');\n    src.resume();\n  }\n\n  return dest;\n};\n\nfunction pipeOnDrain(src) {\n  return function () {\n    var state = src._readableState;\n    debug('pipeOnDrain', state.awaitDrain);\n    if (state.awaitDrain) state.awaitDrain--;\n    if (state.awaitDrain === 0 && src.listeners('data').length) {\n      state.flowing = true;\n      flow(src);\n    }\n  };\n}\n\nReadable.prototype.unpipe = function (dest) {\n  var state = this._readableState;\n\n  // if we're not piping anywhere, then do nothing.\n  if (state.pipesCount === 0) return this;\n\n  // just one destination.  most common case.\n  if (state.pipesCount === 1) {\n    // passed in one, but it's not the right one.\n    if (dest && dest !== state.pipes) return this;\n\n    if (!dest) dest = state.pipes;\n\n    // got a match.\n    state.pipes = null;\n    state.pipesCount = 0;\n    state.flowing = false;\n    if (dest) dest.emit('unpipe', this);\n    return this;\n  }\n\n  // slow case. multiple pipe destinations.\n\n  if (!dest) {\n    // remove all.\n    var dests = state.pipes;\n    var len = state.pipesCount;\n    state.pipes = null;\n    state.pipesCount = 0;\n    state.flowing = false;\n\n    for (var _i = 0; _i < len; _i++) {\n      dests[_i].emit('unpipe', this);\n    }return this;\n  }\n\n  // try to find the right one.\n  var i = indexOf(state.pipes, dest);\n  if (i === -1) return this;\n\n  state.pipes.splice(i, 1);\n  state.pipesCount -= 1;\n  if (state.pipesCount === 1) state.pipes = state.pipes[0];\n\n  dest.emit('unpipe', this);\n\n  return this;\n};\n\n// set up data events if they are asked for\n// Ensure readable listeners eventually get something\nReadable.prototype.on = function (ev, fn) {\n  var res = EventEmitter.prototype.on.call(this, ev, fn);\n\n  if (ev === 'data') {\n    // Start flowing on next tick if stream isn't explicitly paused\n    if (this._readableState.flowing !== false) this.resume();\n  } else if (ev === 'readable') {\n    var state = this._readableState;\n    if (!state.endEmitted && !state.readableListening) {\n      state.readableListening = state.needReadable = true;\n      state.emittedReadable = false;\n      if (!state.reading) {\n        nextTick(nReadingNextTick, this);\n      } else if (state.length) {\n        emitReadable(this);\n      }\n    }\n  }\n\n  return res;\n};\nReadable.prototype.addListener = Readable.prototype.on;\n\nfunction nReadingNextTick(self) {\n  debug('readable nexttick read 0');\n  self.read(0);\n}\n\n// pause() and resume() are remnants of the legacy readable stream API\n// If the user uses them, then switch into old mode.\nReadable.prototype.resume = function () {\n  var state = this._readableState;\n  if (!state.flowing) {\n    debug('resume');\n    state.flowing = true;\n    resume(this, state);\n  }\n  return this;\n};\n\nfunction resume(stream, state) {\n  if (!state.resumeScheduled) {\n    state.resumeScheduled = true;\n    nextTick(resume_, stream, state);\n  }\n}\n\nfunction resume_(stream, state) {\n  if (!state.reading) {\n    debug('resume read 0');\n    stream.read(0);\n  }\n\n  state.resumeScheduled = false;\n  state.awaitDrain = 0;\n  stream.emit('resume');\n  flow(stream);\n  if (state.flowing && !state.reading) stream.read(0);\n}\n\nReadable.prototype.pause = function () {\n  debug('call pause flowing=%j', this._readableState.flowing);\n  if (false !== this._readableState.flowing) {\n    debug('pause');\n    this._readableState.flowing = false;\n    this.emit('pause');\n  }\n  return this;\n};\n\nfunction flow(stream) {\n  var state = stream._readableState;\n  debug('flow', state.flowing);\n  while (state.flowing && stream.read() !== null) {}\n}\n\n// wrap an old-style stream as the async data source.\n// This is *not* part of the readable stream interface.\n// It is an ugly unfortunate mess of history.\nReadable.prototype.wrap = function (stream) {\n  var state = this._readableState;\n  var paused = false;\n\n  var self = this;\n  stream.on('end', function () {\n    debug('wrapped end');\n    if (state.decoder && !state.ended) {\n      var chunk = state.decoder.end();\n      if (chunk && chunk.length) self.push(chunk);\n    }\n\n    self.push(null);\n  });\n\n  stream.on('data', function (chunk) {\n    debug('wrapped data');\n    if (state.decoder) chunk = state.decoder.write(chunk);\n\n    // don't skip over falsy values in objectMode\n    if (state.objectMode && (chunk === null || chunk === undefined)) return;else if (!state.objectMode && (!chunk || !chunk.length)) return;\n\n    var ret = self.push(chunk);\n    if (!ret) {\n      paused = true;\n      stream.pause();\n    }\n  });\n\n  // proxy all the other methods.\n  // important when wrapping filters and duplexes.\n  for (var i in stream) {\n    if (this[i] === undefined && typeof stream[i] === 'function') {\n      this[i] = function (method) {\n        return function () {\n          return stream[method].apply(stream, arguments);\n        };\n      }(i);\n    }\n  }\n\n  // proxy certain important events.\n  var events = ['error', 'close', 'destroy', 'pause', 'resume'];\n  forEach(events, function (ev) {\n    stream.on(ev, self.emit.bind(self, ev));\n  });\n\n  // when we try to consume some more bytes, simply unpause the\n  // underlying stream.\n  self._read = function (n) {\n    debug('wrapped _read', n);\n    if (paused) {\n      paused = false;\n      stream.resume();\n    }\n  };\n\n  return self;\n};\n\n// exposed for testing purposes only.\nReadable._fromList = fromList;\n\n// Pluck off n bytes from an array of buffers.\n// Length is the combined lengths of all the buffers in the list.\n// This function is designed to be inlinable, so please take care when making\n// changes to the function body.\nfunction fromList(n, state) {\n  // nothing buffered\n  if (state.length === 0) return null;\n\n  var ret;\n  if (state.objectMode) ret = state.buffer.shift();else if (!n || n >= state.length) {\n    // read it all, truncate the list\n    if (state.decoder) ret = state.buffer.join('');else if (state.buffer.length === 1) ret = state.buffer.head.data;else ret = state.buffer.concat(state.length);\n    state.buffer.clear();\n  } else {\n    // read part of list\n    ret = fromListPartial(n, state.buffer, state.decoder);\n  }\n\n  return ret;\n}\n\n// Extracts only enough buffered data to satisfy the amount requested.\n// This function is designed to be inlinable, so please take care when making\n// changes to the function body.\nfunction fromListPartial(n, list, hasStrings) {\n  var ret;\n  if (n < list.head.data.length) {\n    // slice is the same for buffers and strings\n    ret = list.head.data.slice(0, n);\n    list.head.data = list.head.data.slice(n);\n  } else if (n === list.head.data.length) {\n    // first chunk is a perfect match\n    ret = list.shift();\n  } else {\n    // result spans more than one buffer\n    ret = hasStrings ? copyFromBufferString(n, list) : copyFromBuffer(n, list);\n  }\n  return ret;\n}\n\n// Copies a specified amount of characters from the list of buffered data\n// chunks.\n// This function is designed to be inlinable, so please take care when making\n// changes to the function body.\nfunction copyFromBufferString(n, list) {\n  var p = list.head;\n  var c = 1;\n  var ret = p.data;\n  n -= ret.length;\n  while (p = p.next) {\n    var str = p.data;\n    var nb = n > str.length ? str.length : n;\n    if (nb === str.length) ret += str;else ret += str.slice(0, n);\n    n -= nb;\n    if (n === 0) {\n      if (nb === str.length) {\n        ++c;\n        if (p.next) list.head = p.next;else list.head = list.tail = null;\n      } else {\n        list.head = p;\n        p.data = str.slice(nb);\n      }\n      break;\n    }\n    ++c;\n  }\n  list.length -= c;\n  return ret;\n}\n\n// Copies a specified amount of bytes from the list of buffered data chunks.\n// This function is designed to be inlinable, so please take care when making\n// changes to the function body.\nfunction copyFromBuffer(n, list) {\n  var ret = Buffer.allocUnsafe(n);\n  var p = list.head;\n  var c = 1;\n  p.data.copy(ret);\n  n -= p.data.length;\n  while (p = p.next) {\n    var buf = p.data;\n    var nb = n > buf.length ? buf.length : n;\n    buf.copy(ret, ret.length - n, 0, nb);\n    n -= nb;\n    if (n === 0) {\n      if (nb === buf.length) {\n        ++c;\n        if (p.next) list.head = p.next;else list.head = list.tail = null;\n      } else {\n        list.head = p;\n        p.data = buf.slice(nb);\n      }\n      break;\n    }\n    ++c;\n  }\n  list.length -= c;\n  return ret;\n}\n\nfunction endReadable(stream) {\n  var state = stream._readableState;\n\n  // If we get here before consuming all the bytes, then that is a\n  // bug in node.  Should never happen.\n  if (state.length > 0) throw new Error('\"endReadable()\" called on non-empty stream');\n\n  if (!state.endEmitted) {\n    state.ended = true;\n    nextTick(endReadableNT, state, stream);\n  }\n}\n\nfunction endReadableNT(state, stream) {\n  // Check that we didn't get one last unshift.\n  if (!state.endEmitted && state.length === 0) {\n    state.endEmitted = true;\n    stream.readable = false;\n    stream.emit('end');\n  }\n}\n\nfunction forEach(xs, f) {\n  for (var i = 0, l = xs.length; i < l; i++) {\n    f(xs[i], i);\n  }\n}\n\nfunction indexOf(xs, x) {\n  for (var i = 0, l = xs.length; i < l; i++) {\n    if (xs[i] === x) return i;\n  }\n  return -1;\n}\n\n// A bit simpler than readable streams.\nWritable.WritableState = WritableState;\ninherits$1(Writable, EventEmitter);\n\nfunction nop() {}\n\nfunction WriteReq(chunk, encoding, cb) {\n  this.chunk = chunk;\n  this.encoding = encoding;\n  this.callback = cb;\n  this.next = null;\n}\n\nfunction WritableState(options, stream) {\n  Object.defineProperty(this, 'buffer', {\n    get: deprecate(function () {\n      return this.getBuffer();\n    }, '_writableState.buffer is deprecated. Use _writableState.getBuffer ' + 'instead.')\n  });\n  options = options || {};\n\n  // object stream flag to indicate whether or not this stream\n  // contains buffers or objects.\n  this.objectMode = !!options.objectMode;\n\n  if (stream instanceof Duplex) this.objectMode = this.objectMode || !!options.writableObjectMode;\n\n  // the point at which write() starts returning false\n  // Note: 0 is a valid value, means that we always return false if\n  // the entire buffer is not flushed immediately on write()\n  var hwm = options.highWaterMark;\n  var defaultHwm = this.objectMode ? 16 : 16 * 1024;\n  this.highWaterMark = hwm || hwm === 0 ? hwm : defaultHwm;\n\n  // cast to ints.\n  this.highWaterMark = ~ ~this.highWaterMark;\n\n  this.needDrain = false;\n  // at the start of calling end()\n  this.ending = false;\n  // when end() has been called, and returned\n  this.ended = false;\n  // when 'finish' is emitted\n  this.finished = false;\n\n  // should we decode strings into buffers before passing to _write?\n  // this is here so that some node-core streams can optimize string\n  // handling at a lower level.\n  var noDecode = options.decodeStrings === false;\n  this.decodeStrings = !noDecode;\n\n  // Crypto is kind of old and crusty.  Historically, its default string\n  // encoding is 'binary' so we have to make this configurable.\n  // Everything else in the universe uses 'utf8', though.\n  this.defaultEncoding = options.defaultEncoding || 'utf8';\n\n  // not an actual buffer we keep track of, but a measurement\n  // of how much we're waiting to get pushed to some underlying\n  // socket or file.\n  this.length = 0;\n\n  // a flag to see when we're in the middle of a write.\n  this.writing = false;\n\n  // when true all writes will be buffered until .uncork() call\n  this.corked = 0;\n\n  // a flag to be able to tell if the onwrite cb is called immediately,\n  // or on a later tick.  We set this to true at first, because any\n  // actions that shouldn't happen until \"later\" should generally also\n  // not happen before the first write call.\n  this.sync = true;\n\n  // a flag to know if we're processing previously buffered items, which\n  // may call the _write() callback in the same tick, so that we don't\n  // end up in an overlapped onwrite situation.\n  this.bufferProcessing = false;\n\n  // the callback that's passed to _write(chunk,cb)\n  this.onwrite = function (er) {\n    onwrite(stream, er);\n  };\n\n  // the callback that the user supplies to write(chunk,encoding,cb)\n  this.writecb = null;\n\n  // the amount that is being written when _write is called.\n  this.writelen = 0;\n\n  this.bufferedRequest = null;\n  this.lastBufferedRequest = null;\n\n  // number of pending user-supplied write callbacks\n  // this must be 0 before 'finish' can be emitted\n  this.pendingcb = 0;\n\n  // emit prefinish if the only thing we're waiting for is _write cbs\n  // This is relevant for synchronous Transform streams\n  this.prefinished = false;\n\n  // True if the error was already emitted and should not be thrown again\n  this.errorEmitted = false;\n\n  // count buffered requests\n  this.bufferedRequestCount = 0;\n\n  // allocate the first CorkedRequest, there is always\n  // one allocated and free to use, and we maintain at most two\n  this.corkedRequestsFree = new CorkedRequest(this);\n}\n\nWritableState.prototype.getBuffer = function writableStateGetBuffer() {\n  var current = this.bufferedRequest;\n  var out = [];\n  while (current) {\n    out.push(current);\n    current = current.next;\n  }\n  return out;\n};\nfunction Writable(options) {\n\n  // Writable ctor is applied to Duplexes, though they're not\n  // instanceof Writable, they're instanceof Readable.\n  if (!(this instanceof Writable) && !(this instanceof Duplex)) return new Writable(options);\n\n  this._writableState = new WritableState(options, this);\n\n  // legacy.\n  this.writable = true;\n\n  if (options) {\n    if (typeof options.write === 'function') this._write = options.write;\n\n    if (typeof options.writev === 'function') this._writev = options.writev;\n  }\n\n  EventEmitter.call(this);\n}\n\n// Otherwise people can pipe Writable streams, which is just wrong.\nWritable.prototype.pipe = function () {\n  this.emit('error', new Error('Cannot pipe, not readable'));\n};\n\nfunction writeAfterEnd(stream, cb) {\n  var er = new Error('write after end');\n  // TODO: defer error events consistently everywhere, not just the cb\n  stream.emit('error', er);\n  nextTick(cb, er);\n}\n\n// If we get something that is not a buffer, string, null, or undefined,\n// and we're not in objectMode, then that's an error.\n// Otherwise stream chunks are all considered to be of length=1, and the\n// watermarks determine how many objects to keep in the buffer, rather than\n// how many bytes or characters.\nfunction validChunk(stream, state, chunk, cb) {\n  var valid = true;\n  var er = false;\n  // Always throw error if a null is written\n  // if we are not in object mode then throw\n  // if it is not a buffer, string, or undefined.\n  if (chunk === null) {\n    er = new TypeError('May not write null values to stream');\n  } else if (!Buffer.isBuffer(chunk) && typeof chunk !== 'string' && chunk !== undefined && !state.objectMode) {\n    er = new TypeError('Invalid non-string/buffer chunk');\n  }\n  if (er) {\n    stream.emit('error', er);\n    nextTick(cb, er);\n    valid = false;\n  }\n  return valid;\n}\n\nWritable.prototype.write = function (chunk, encoding, cb) {\n  var state = this._writableState;\n  var ret = false;\n\n  if (typeof encoding === 'function') {\n    cb = encoding;\n    encoding = null;\n  }\n\n  if (Buffer.isBuffer(chunk)) encoding = 'buffer';else if (!encoding) encoding = state.defaultEncoding;\n\n  if (typeof cb !== 'function') cb = nop;\n\n  if (state.ended) writeAfterEnd(this, cb);else if (validChunk(this, state, chunk, cb)) {\n    state.pendingcb++;\n    ret = writeOrBuffer(this, state, chunk, encoding, cb);\n  }\n\n  return ret;\n};\n\nWritable.prototype.cork = function () {\n  var state = this._writableState;\n\n  state.corked++;\n};\n\nWritable.prototype.uncork = function () {\n  var state = this._writableState;\n\n  if (state.corked) {\n    state.corked--;\n\n    if (!state.writing && !state.corked && !state.finished && !state.bufferProcessing && state.bufferedRequest) clearBuffer(this, state);\n  }\n};\n\nWritable.prototype.setDefaultEncoding = function setDefaultEncoding(encoding) {\n  // node::ParseEncoding() requires lower case.\n  if (typeof encoding === 'string') encoding = encoding.toLowerCase();\n  if (!(['hex', 'utf8', 'utf-8', 'ascii', 'binary', 'base64', 'ucs2', 'ucs-2', 'utf16le', 'utf-16le', 'raw'].indexOf((encoding + '').toLowerCase()) > -1)) throw new TypeError('Unknown encoding: ' + encoding);\n  this._writableState.defaultEncoding = encoding;\n  return this;\n};\n\nfunction decodeChunk(state, chunk, encoding) {\n  if (!state.objectMode && state.decodeStrings !== false && typeof chunk === 'string') {\n    chunk = Buffer.from(chunk, encoding);\n  }\n  return chunk;\n}\n\n// if we're already writing something, then just put this\n// in the queue, and wait our turn.  Otherwise, call _write\n// If we return false, then we need a drain event, so set that flag.\nfunction writeOrBuffer(stream, state, chunk, encoding, cb) {\n  chunk = decodeChunk(state, chunk, encoding);\n\n  if (Buffer.isBuffer(chunk)) encoding = 'buffer';\n  var len = state.objectMode ? 1 : chunk.length;\n\n  state.length += len;\n\n  var ret = state.length < state.highWaterMark;\n  // we must ensure that previous needDrain will not be reset to false.\n  if (!ret) state.needDrain = true;\n\n  if (state.writing || state.corked) {\n    var last = state.lastBufferedRequest;\n    state.lastBufferedRequest = new WriteReq(chunk, encoding, cb);\n    if (last) {\n      last.next = state.lastBufferedRequest;\n    } else {\n      state.bufferedRequest = state.lastBufferedRequest;\n    }\n    state.bufferedRequestCount += 1;\n  } else {\n    doWrite(stream, state, false, len, chunk, encoding, cb);\n  }\n\n  return ret;\n}\n\nfunction doWrite(stream, state, writev, len, chunk, encoding, cb) {\n  state.writelen = len;\n  state.writecb = cb;\n  state.writing = true;\n  state.sync = true;\n  if (writev) stream._writev(chunk, state.onwrite);else stream._write(chunk, encoding, state.onwrite);\n  state.sync = false;\n}\n\nfunction onwriteError(stream, state, sync, er, cb) {\n  --state.pendingcb;\n  if (sync) nextTick(cb, er);else cb(er);\n\n  stream._writableState.errorEmitted = true;\n  stream.emit('error', er);\n}\n\nfunction onwriteStateUpdate(state) {\n  state.writing = false;\n  state.writecb = null;\n  state.length -= state.writelen;\n  state.writelen = 0;\n}\n\nfunction onwrite(stream, er) {\n  var state = stream._writableState;\n  var sync = state.sync;\n  var cb = state.writecb;\n\n  onwriteStateUpdate(state);\n\n  if (er) onwriteError(stream, state, sync, er, cb);else {\n    // Check if we're actually ready to finish, but don't emit yet\n    var finished = needFinish(state);\n\n    if (!finished && !state.corked && !state.bufferProcessing && state.bufferedRequest) {\n      clearBuffer(stream, state);\n    }\n\n    if (sync) {\n      /*<replacement>*/\n        nextTick(afterWrite, stream, state, finished, cb);\n      /*</replacement>*/\n    } else {\n        afterWrite(stream, state, finished, cb);\n      }\n  }\n}\n\nfunction afterWrite(stream, state, finished, cb) {\n  if (!finished) onwriteDrain(stream, state);\n  state.pendingcb--;\n  cb();\n  finishMaybe(stream, state);\n}\n\n// Must force callback to be called on nextTick, so that we don't\n// emit 'drain' before the write() consumer gets the 'false' return\n// value, and has a chance to attach a 'drain' listener.\nfunction onwriteDrain(stream, state) {\n  if (state.length === 0 && state.needDrain) {\n    state.needDrain = false;\n    stream.emit('drain');\n  }\n}\n\n// if there's something in the buffer waiting, then process it\nfunction clearBuffer(stream, state) {\n  state.bufferProcessing = true;\n  var entry = state.bufferedRequest;\n\n  if (stream._writev && entry && entry.next) {\n    // Fast case, write everything using _writev()\n    var l = state.bufferedRequestCount;\n    var buffer = new Array(l);\n    var holder = state.corkedRequestsFree;\n    holder.entry = entry;\n\n    var count = 0;\n    while (entry) {\n      buffer[count] = entry;\n      entry = entry.next;\n      count += 1;\n    }\n\n    doWrite(stream, state, true, state.length, buffer, '', holder.finish);\n\n    // doWrite is almost always async, defer these to save a bit of time\n    // as the hot path ends with doWrite\n    state.pendingcb++;\n    state.lastBufferedRequest = null;\n    if (holder.next) {\n      state.corkedRequestsFree = holder.next;\n      holder.next = null;\n    } else {\n      state.corkedRequestsFree = new CorkedRequest(state);\n    }\n  } else {\n    // Slow case, write chunks one-by-one\n    while (entry) {\n      var chunk = entry.chunk;\n      var encoding = entry.encoding;\n      var cb = entry.callback;\n      var len = state.objectMode ? 1 : chunk.length;\n\n      doWrite(stream, state, false, len, chunk, encoding, cb);\n      entry = entry.next;\n      // if we didn't call the onwrite immediately, then\n      // it means that we need to wait until it does.\n      // also, that means that the chunk and cb are currently\n      // being processed, so move the buffer counter past them.\n      if (state.writing) {\n        break;\n      }\n    }\n\n    if (entry === null) state.lastBufferedRequest = null;\n  }\n\n  state.bufferedRequestCount = 0;\n  state.bufferedRequest = entry;\n  state.bufferProcessing = false;\n}\n\nWritable.prototype._write = function (chunk, encoding, cb) {\n  cb(new Error('not implemented'));\n};\n\nWritable.prototype._writev = null;\n\nWritable.prototype.end = function (chunk, encoding, cb) {\n  var state = this._writableState;\n\n  if (typeof chunk === 'function') {\n    cb = chunk;\n    chunk = null;\n    encoding = null;\n  } else if (typeof encoding === 'function') {\n    cb = encoding;\n    encoding = null;\n  }\n\n  if (chunk !== null && chunk !== undefined) this.write(chunk, encoding);\n\n  // .end() fully uncorks\n  if (state.corked) {\n    state.corked = 1;\n    this.uncork();\n  }\n\n  // ignore unnecessary end() calls.\n  if (!state.ending && !state.finished) endWritable(this, state, cb);\n};\n\nfunction needFinish(state) {\n  return state.ending && state.length === 0 && state.bufferedRequest === null && !state.finished && !state.writing;\n}\n\nfunction prefinish(stream, state) {\n  if (!state.prefinished) {\n    state.prefinished = true;\n    stream.emit('prefinish');\n  }\n}\n\nfunction finishMaybe(stream, state) {\n  var need = needFinish(state);\n  if (need) {\n    if (state.pendingcb === 0) {\n      prefinish(stream, state);\n      state.finished = true;\n      stream.emit('finish');\n    } else {\n      prefinish(stream, state);\n    }\n  }\n  return need;\n}\n\nfunction endWritable(stream, state, cb) {\n  state.ending = true;\n  finishMaybe(stream, state);\n  if (cb) {\n    if (state.finished) nextTick(cb);else stream.once('finish', cb);\n  }\n  state.ended = true;\n  stream.writable = false;\n}\n\n// It seems a linked list but it is not\n// there will be only 2 of these for each stream\nfunction CorkedRequest(state) {\n  var _this = this;\n\n  this.next = null;\n  this.entry = null;\n\n  this.finish = function (err) {\n    var entry = _this.entry;\n    _this.entry = null;\n    while (entry) {\n      var cb = entry.callback;\n      state.pendingcb--;\n      cb(err);\n      entry = entry.next;\n    }\n    if (state.corkedRequestsFree) {\n      state.corkedRequestsFree.next = _this;\n    } else {\n      state.corkedRequestsFree = _this;\n    }\n  };\n}\n\ninherits$1(Duplex, Readable);\n\nvar keys = Object.keys(Writable.prototype);\nfor (var v = 0; v < keys.length; v++) {\n  var method = keys[v];\n  if (!Duplex.prototype[method]) Duplex.prototype[method] = Writable.prototype[method];\n}\nfunction Duplex(options) {\n  if (!(this instanceof Duplex)) return new Duplex(options);\n\n  Readable.call(this, options);\n  Writable.call(this, options);\n\n  if (options && options.readable === false) this.readable = false;\n\n  if (options && options.writable === false) this.writable = false;\n\n  this.allowHalfOpen = true;\n  if (options && options.allowHalfOpen === false) this.allowHalfOpen = false;\n\n  this.once('end', onend);\n}\n\n// the no-half-open enforcer\nfunction onend() {\n  // if we allow half-open state, or if the writable side ended,\n  // then we're ok.\n  if (this.allowHalfOpen || this._writableState.ended) return;\n\n  // no more data can be written.\n  // But allow more writes to happen in this tick.\n  nextTick(onEndNT, this);\n}\n\nfunction onEndNT(self) {\n  self.end();\n}\n\n// a transform stream is a readable/writable stream where you do\ninherits$1(Transform, Duplex);\n\nfunction TransformState(stream) {\n  this.afterTransform = function (er, data) {\n    return afterTransform(stream, er, data);\n  };\n\n  this.needTransform = false;\n  this.transforming = false;\n  this.writecb = null;\n  this.writechunk = null;\n  this.writeencoding = null;\n}\n\nfunction afterTransform(stream, er, data) {\n  var ts = stream._transformState;\n  ts.transforming = false;\n\n  var cb = ts.writecb;\n\n  if (!cb) return stream.emit('error', new Error('no writecb in Transform class'));\n\n  ts.writechunk = null;\n  ts.writecb = null;\n\n  if (data !== null && data !== undefined) stream.push(data);\n\n  cb(er);\n\n  var rs = stream._readableState;\n  rs.reading = false;\n  if (rs.needReadable || rs.length < rs.highWaterMark) {\n    stream._read(rs.highWaterMark);\n  }\n}\nfunction Transform(options) {\n  if (!(this instanceof Transform)) return new Transform(options);\n\n  Duplex.call(this, options);\n\n  this._transformState = new TransformState(this);\n\n  // when the writable side finishes, then flush out anything remaining.\n  var stream = this;\n\n  // start out asking for a readable event once data is transformed.\n  this._readableState.needReadable = true;\n\n  // we have implemented the _read method, and done the other things\n  // that Readable wants before the first _read call, so unset the\n  // sync guard flag.\n  this._readableState.sync = false;\n\n  if (options) {\n    if (typeof options.transform === 'function') this._transform = options.transform;\n\n    if (typeof options.flush === 'function') this._flush = options.flush;\n  }\n\n  this.once('prefinish', function () {\n    if (typeof this._flush === 'function') this._flush(function (er) {\n      done(stream, er);\n    });else done(stream);\n  });\n}\n\nTransform.prototype.push = function (chunk, encoding) {\n  this._transformState.needTransform = false;\n  return Duplex.prototype.push.call(this, chunk, encoding);\n};\n\n// This is the part where you do stuff!\n// override this function in implementation classes.\n// 'chunk' is an input chunk.\n//\n// Call `push(newChunk)` to pass along transformed output\n// to the readable side.  You may call 'push' zero or more times.\n//\n// Call `cb(err)` when you are done with this chunk.  If you pass\n// an error, then that'll put the hurt on the whole operation.  If you\n// never call cb(), then you'll never get another chunk.\nTransform.prototype._transform = function (chunk, encoding, cb) {\n  throw new Error('Not implemented');\n};\n\nTransform.prototype._write = function (chunk, encoding, cb) {\n  var ts = this._transformState;\n  ts.writecb = cb;\n  ts.writechunk = chunk;\n  ts.writeencoding = encoding;\n  if (!ts.transforming) {\n    var rs = this._readableState;\n    if (ts.needTransform || rs.needReadable || rs.length < rs.highWaterMark) this._read(rs.highWaterMark);\n  }\n};\n\n// Doesn't matter what the args are here.\n// _transform does all the work.\n// That we got here means that the readable side wants more data.\nTransform.prototype._read = function (n) {\n  var ts = this._transformState;\n\n  if (ts.writechunk !== null && ts.writecb && !ts.transforming) {\n    ts.transforming = true;\n    this._transform(ts.writechunk, ts.writeencoding, ts.afterTransform);\n  } else {\n    // mark that we need a transform, so that any data that comes in\n    // will get processed, now that we've asked for it.\n    ts.needTransform = true;\n  }\n};\n\nfunction done(stream, er) {\n  if (er) return stream.emit('error', er);\n\n  // if there's nothing in the write buffer, then that means\n  // that nothing more will ever be provided\n  var ws = stream._writableState;\n  var ts = stream._transformState;\n\n  if (ws.length) throw new Error('Calling transform done when ws.length != 0');\n\n  if (ts.transforming) throw new Error('Calling transform done when still transforming');\n\n  return stream.push(null);\n}\n\ninherits$1(PassThrough, Transform);\nfunction PassThrough(options) {\n  if (!(this instanceof PassThrough)) return new PassThrough(options);\n\n  Transform.call(this, options);\n}\n\nPassThrough.prototype._transform = function (chunk, encoding, cb) {\n  cb(null, chunk);\n};\n\ninherits$1(Stream, EventEmitter);\nStream.Readable = Readable;\nStream.Writable = Writable;\nStream.Duplex = Duplex;\nStream.Transform = Transform;\nStream.PassThrough = PassThrough;\n\n// Backwards-compat with node 0.4.x\nStream.Stream = Stream;\n\n// old-style streams.  Note that the pipe method (the only relevant\n// part of this class) is overridden in the Readable class.\n\nfunction Stream() {\n  EventEmitter.call(this);\n}\n\nStream.prototype.pipe = function(dest, options) {\n  var source = this;\n\n  function ondata(chunk) {\n    if (dest.writable) {\n      if (false === dest.write(chunk) && source.pause) {\n        source.pause();\n      }\n    }\n  }\n\n  source.on('data', ondata);\n\n  function ondrain() {\n    if (source.readable && source.resume) {\n      source.resume();\n    }\n  }\n\n  dest.on('drain', ondrain);\n\n  // If the 'end' option is not supplied, dest.end() will be called when\n  // source gets the 'end' or 'close' events.  Only dest.end() once.\n  if (!dest._isStdio && (!options || options.end !== false)) {\n    source.on('end', onend);\n    source.on('close', onclose);\n  }\n\n  var didOnEnd = false;\n  function onend() {\n    if (didOnEnd) return;\n    didOnEnd = true;\n\n    dest.end();\n  }\n\n\n  function onclose() {\n    if (didOnEnd) return;\n    didOnEnd = true;\n\n    if (typeof dest.destroy === 'function') dest.destroy();\n  }\n\n  // don't leave dangling pipes when there are errors.\n  function onerror(er) {\n    cleanup();\n    if (EventEmitter.listenerCount(this, 'error') === 0) {\n      throw er; // Unhandled stream error in pipe.\n    }\n  }\n\n  source.on('error', onerror);\n  dest.on('error', onerror);\n\n  // remove all the event listeners that were added.\n  function cleanup() {\n    source.removeListener('data', ondata);\n    dest.removeListener('drain', ondrain);\n\n    source.removeListener('end', onend);\n    source.removeListener('close', onclose);\n\n    source.removeListener('error', onerror);\n    dest.removeListener('error', onerror);\n\n    source.removeListener('end', cleanup);\n    source.removeListener('close', cleanup);\n\n    dest.removeListener('close', cleanup);\n  }\n\n  source.on('end', cleanup);\n  source.on('close', cleanup);\n\n  dest.on('close', cleanup);\n\n  dest.emit('pipe', source);\n\n  // Allow for unix-like usage: A.pipe(B).pipe(C)\n  return dest;\n};\n\nclass ResizeableBuffer{\n  constructor(size=100){\n    this.size = size;\n    this.length = 0;\n    this.buf = Buffer.allocUnsafe(size);\n  }\n  prepend(val){\n    if(isBuffer(val)){\n      const length = this.length + val.length;\n      if(length >= this.size){\n        this.resize();\n        if(length >= this.size){\n          throw Error('INVALID_BUFFER_STATE');\n        }\n      }\n      const buf = this.buf;\n      this.buf = Buffer.allocUnsafe(this.size);\n      val.copy(this.buf, 0);\n      buf.copy(this.buf, val.length);\n      this.length += val.length;\n    }else {\n      const length = this.length++;\n      if(length === this.size){\n        this.resize();\n      }\n      const buf = this.clone();\n      this.buf[0] = val;\n      buf.copy(this.buf,1, 0, length);\n    }\n  }\n  append(val){\n    const length = this.length++;\n    if(length === this.size){\n      this.resize();\n    }\n    this.buf[length] = val;\n  }\n  clone(){\n    return Buffer.from(this.buf.slice(0, this.length));\n  }\n  resize(){\n    const length = this.length;\n    this.size = this.size * 2;\n    const buf = Buffer.allocUnsafe(this.size);\n    this.buf.copy(buf,0, 0, length);\n    this.buf = buf;\n  }\n  toString(encoding){\n    if(encoding){\n      return this.buf.slice(0, this.length).toString(encoding);\n    }else {\n      return Uint8Array.prototype.slice.call(this.buf.slice(0, this.length));\n    }\n  }\n  toJSON(){\n    return this.toString('utf8');\n  }\n  reset(){\n    this.length = 0;\n  }\n}\n\n// white space characters\n// https://en.wikipedia.org/wiki/Whitespace_character\n// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Character_Classes#Types\n// \\f\\n\\r\\t\\v\\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\nconst tab = 9;\nconst nl = 10; // \\n, 0x0A in hexadecimal, 10 in decimal\nconst np = 12;\nconst cr = 13; // \\r, 0x0D in hexadécimal, 13 in decimal\nconst space = 32;\nconst boms = {\n  // Note, the following are equals:\n  // Buffer.from(\"\\ufeff\")\n  // Buffer.from([239, 187, 191])\n  // Buffer.from('EFBBBF', 'hex')\n  'utf8': Buffer.from([239, 187, 191]),\n  // Note, the following are equals:\n  // Buffer.from \"\\ufeff\", 'utf16le\n  // Buffer.from([255, 254])\n  'utf16le': Buffer.from([255, 254])\n};\n\nclass CsvError extends Error {\n  constructor(code, message, options, ...contexts) {\n    if(Array.isArray(message)) message = message.join(' ');\n    super(message);\n    if(Error.captureStackTrace !== undefined){\n      Error.captureStackTrace(this, CsvError);\n    }\n    this.code = code;\n    for(const context of contexts){\n      for(const key in context){\n        const value = context[key];\n        this[key] = isBuffer(value) ? value.toString(options.encoding) : value == null ? value : JSON.parse(JSON.stringify(value));\n      }\n    }\n  }\n}\n\nconst underscore = function(str){\n  return str.replace(/([A-Z])/g, function(_, match){\n    return '_' + match.toLowerCase();\n  });\n};\n\nconst isObject = function(obj){\n  return (typeof obj === 'object' && obj !== null && !Array.isArray(obj));\n};\n\nconst isRecordEmpty = function(record){\n  return record.every((field) => field == null || field.toString && field.toString().trim() === '');\n};\n\nconst normalizeColumnsArray = function(columns){\n  const normalizedColumns = [];\n  for(let i = 0, l = columns.length; i < l; i++){\n    const column = columns[i];\n    if(column === undefined || column === null || column === false){\n      normalizedColumns[i] = { disabled: true };\n    }else if(typeof column === 'string'){\n      normalizedColumns[i] = { name: column };\n    }else if(isObject(column)){\n      if(typeof column.name !== 'string'){\n        throw new CsvError('CSV_OPTION_COLUMNS_MISSING_NAME', [\n          'Option columns missing name:',\n          `property \"name\" is required at position ${i}`,\n          'when column is an object literal'\n        ]);\n      }\n      normalizedColumns[i] = column;\n    }else {\n      throw new CsvError('CSV_INVALID_COLUMN_DEFINITION', [\n        'Invalid column definition:',\n        'expect a string or a literal object,',\n        `got ${JSON.stringify(column)} at position ${i}`\n      ]);\n    }\n  }\n  return normalizedColumns;\n};\n\nclass Parser extends Transform {\n  constructor(opts = {}){\n    super({...{readableObjectMode: true}, ...opts, encoding: null});\n    this.__originalOptions = opts;\n    this.__normalizeOptions(opts);\n  }\n  __normalizeOptions(opts){\n    const options = {};\n    // Merge with user options\n    for(const opt in opts){\n      options[underscore(opt)] = opts[opt];\n    }\n    // Normalize option `encoding`\n    // Note: defined first because other options depends on it\n    // to convert chars/strings into buffers.\n    if(options.encoding === undefined || options.encoding === true){\n      options.encoding = 'utf8';\n    }else if(options.encoding === null || options.encoding === false){\n      options.encoding = null;\n    }else if(typeof options.encoding !== 'string' && options.encoding !== null){\n      throw new CsvError('CSV_INVALID_OPTION_ENCODING', [\n        'Invalid option encoding:',\n        'encoding must be a string or null to return a buffer,',\n        `got ${JSON.stringify(options.encoding)}`\n      ], options);\n    }\n    // Normalize option `bom`\n    if(options.bom === undefined || options.bom === null || options.bom === false){\n      options.bom = false;\n    }else if(options.bom !== true){\n      throw new CsvError('CSV_INVALID_OPTION_BOM', [\n        'Invalid option bom:', 'bom must be true,',\n        `got ${JSON.stringify(options.bom)}`\n      ], options);\n    }\n    // Normalize option `cast`\n    let fnCastField = null;\n    if(options.cast === undefined || options.cast === null || options.cast === false || options.cast === ''){\n      options.cast = undefined;\n    }else if(typeof options.cast === 'function'){\n      fnCastField = options.cast;\n      options.cast = true;\n    }else if(options.cast !== true){\n      throw new CsvError('CSV_INVALID_OPTION_CAST', [\n        'Invalid option cast:', 'cast must be true or a function,',\n        `got ${JSON.stringify(options.cast)}`\n      ], options);\n    }\n    // Normalize option `cast_date`\n    if(options.cast_date === undefined || options.cast_date === null || options.cast_date === false || options.cast_date === ''){\n      options.cast_date = false;\n    }else if(options.cast_date === true){\n      options.cast_date = function(value){\n        const date = Date.parse(value);\n        return !isNaN(date) ? new Date(date) : value;\n      };\n    }else {\n      throw new CsvError('CSV_INVALID_OPTION_CAST_DATE', [\n        'Invalid option cast_date:', 'cast_date must be true or a function,',\n        `got ${JSON.stringify(options.cast_date)}`\n      ], options);\n    }\n    // Normalize option `columns`\n    let fnFirstLineToHeaders = null;\n    if(options.columns === true){\n      // Fields in the first line are converted as-is to columns\n      fnFirstLineToHeaders = undefined;\n    }else if(typeof options.columns === 'function'){\n      fnFirstLineToHeaders = options.columns;\n      options.columns = true;\n    }else if(Array.isArray(options.columns)){\n      options.columns = normalizeColumnsArray(options.columns);\n    }else if(options.columns === undefined || options.columns === null || options.columns === false){\n      options.columns = false;\n    }else {\n      throw new CsvError('CSV_INVALID_OPTION_COLUMNS', [\n        'Invalid option columns:',\n        'expect an array, a function or true,',\n        `got ${JSON.stringify(options.columns)}`\n      ], options);\n    }\n    // Normalize option `group_columns_by_name`\n    if(options.group_columns_by_name === undefined || options.group_columns_by_name === null || options.group_columns_by_name === false){\n      options.group_columns_by_name = false;\n    }else if(options.group_columns_by_name !== true){\n      throw new CsvError('CSV_INVALID_OPTION_GROUP_COLUMNS_BY_NAME', [\n        'Invalid option group_columns_by_name:',\n        'expect an boolean,',\n        `got ${JSON.stringify(options.group_columns_by_name)}`\n      ], options);\n    }else if(options.columns === false){\n      throw new CsvError('CSV_INVALID_OPTION_GROUP_COLUMNS_BY_NAME', [\n        'Invalid option group_columns_by_name:',\n        'the `columns` mode must be activated.'\n      ], options);\n    }\n    // Normalize option `comment`\n    if(options.comment === undefined || options.comment === null || options.comment === false || options.comment === ''){\n      options.comment = null;\n    }else {\n      if(typeof options.comment === 'string'){\n        options.comment = Buffer.from(options.comment, options.encoding);\n      }\n      if(!isBuffer(options.comment)){\n        throw new CsvError('CSV_INVALID_OPTION_COMMENT', [\n          'Invalid option comment:',\n          'comment must be a buffer or a string,',\n          `got ${JSON.stringify(options.comment)}`\n        ], options);\n      }\n    }\n    // Normalize option `delimiter`\n    const delimiter_json = JSON.stringify(options.delimiter);\n    if(!Array.isArray(options.delimiter)) options.delimiter = [options.delimiter];\n    if(options.delimiter.length === 0){\n      throw new CsvError('CSV_INVALID_OPTION_DELIMITER', [\n        'Invalid option delimiter:',\n        'delimiter must be a non empty string or buffer or array of string|buffer,',\n        `got ${delimiter_json}`\n      ], options);\n    }\n    options.delimiter = options.delimiter.map(function(delimiter){\n      if(delimiter === undefined || delimiter === null || delimiter === false){\n        return Buffer.from(',', options.encoding);\n      }\n      if(typeof delimiter === 'string'){\n        delimiter = Buffer.from(delimiter, options.encoding);\n      }\n      if(!isBuffer(delimiter) || delimiter.length === 0){\n        throw new CsvError('CSV_INVALID_OPTION_DELIMITER', [\n          'Invalid option delimiter:',\n          'delimiter must be a non empty string or buffer or array of string|buffer,',\n          `got ${delimiter_json}`\n        ], options);\n      }\n      return delimiter;\n    });\n    // Normalize option `escape`\n    if(options.escape === undefined || options.escape === true){\n      options.escape = Buffer.from('\"', options.encoding);\n    }else if(typeof options.escape === 'string'){\n      options.escape = Buffer.from(options.escape, options.encoding);\n    }else if (options.escape === null || options.escape === false){\n      options.escape = null;\n    }\n    if(options.escape !== null){\n      if(!isBuffer(options.escape)){\n        throw new Error(`Invalid Option: escape must be a buffer, a string or a boolean, got ${JSON.stringify(options.escape)}`);\n      }\n    }\n    // Normalize option `from`\n    if(options.from === undefined || options.from === null){\n      options.from = 1;\n    }else {\n      if(typeof options.from === 'string' && /\\d+/.test(options.from)){\n        options.from = parseInt(options.from);\n      }\n      if(Number.isInteger(options.from)){\n        if(options.from < 0){\n          throw new Error(`Invalid Option: from must be a positive integer, got ${JSON.stringify(opts.from)}`);\n        }\n      }else {\n        throw new Error(`Invalid Option: from must be an integer, got ${JSON.stringify(options.from)}`);\n      }\n    }\n    // Normalize option `from_line`\n    if(options.from_line === undefined || options.from_line === null){\n      options.from_line = 1;\n    }else {\n      if(typeof options.from_line === 'string' && /\\d+/.test(options.from_line)){\n        options.from_line = parseInt(options.from_line);\n      }\n      if(Number.isInteger(options.from_line)){\n        if(options.from_line <= 0){\n          throw new Error(`Invalid Option: from_line must be a positive integer greater than 0, got ${JSON.stringify(opts.from_line)}`);\n        }\n      }else {\n        throw new Error(`Invalid Option: from_line must be an integer, got ${JSON.stringify(opts.from_line)}`);\n      }\n    }\n    // Normalize options `ignore_last_delimiters`\n    if(options.ignore_last_delimiters === undefined || options.ignore_last_delimiters === null){\n      options.ignore_last_delimiters = false;\n    }else if(typeof options.ignore_last_delimiters === 'number'){\n      options.ignore_last_delimiters = Math.floor(options.ignore_last_delimiters);\n      if(options.ignore_last_delimiters === 0){\n        options.ignore_last_delimiters = false;\n      }\n    }else if(typeof options.ignore_last_delimiters !== 'boolean'){\n      throw new CsvError('CSV_INVALID_OPTION_IGNORE_LAST_DELIMITERS', [\n        'Invalid option `ignore_last_delimiters`:',\n        'the value must be a boolean value or an integer,',\n        `got ${JSON.stringify(options.ignore_last_delimiters)}`\n      ], options);\n    }\n    if(options.ignore_last_delimiters === true && options.columns === false){\n      throw new CsvError('CSV_IGNORE_LAST_DELIMITERS_REQUIRES_COLUMNS', [\n        'The option `ignore_last_delimiters`',\n        'requires the activation of the `columns` option'\n      ], options);\n    }\n    // Normalize option `info`\n    if(options.info === undefined || options.info === null || options.info === false){\n      options.info = false;\n    }else if(options.info !== true){\n      throw new Error(`Invalid Option: info must be true, got ${JSON.stringify(options.info)}`);\n    }\n    // Normalize option `max_record_size`\n    if(options.max_record_size === undefined || options.max_record_size === null || options.max_record_size === false){\n      options.max_record_size = 0;\n    }else if(Number.isInteger(options.max_record_size) && options.max_record_size >= 0);else if(typeof options.max_record_size === 'string' && /\\d+/.test(options.max_record_size)){\n      options.max_record_size = parseInt(options.max_record_size);\n    }else {\n      throw new Error(`Invalid Option: max_record_size must be a positive integer, got ${JSON.stringify(options.max_record_size)}`);\n    }\n    // Normalize option `objname`\n    if(options.objname === undefined || options.objname === null || options.objname === false){\n      options.objname = undefined;\n    }else if(isBuffer(options.objname)){\n      if(options.objname.length === 0){\n        throw new Error(`Invalid Option: objname must be a non empty buffer`);\n      }\n      if(options.encoding === null);else {\n        options.objname = options.objname.toString(options.encoding);\n      }\n    }else if(typeof options.objname === 'string'){\n      if(options.objname.length === 0){\n        throw new Error(`Invalid Option: objname must be a non empty string`);\n      }\n      // Great, nothing to do\n    }else if(typeof options.objname === 'number');else {\n      throw new Error(`Invalid Option: objname must be a string or a buffer, got ${options.objname}`);\n    }\n    if(options.objname !== undefined){\n      if(typeof options.objname === 'number'){\n        if(options.columns !== false){\n          throw Error('Invalid Option: objname index cannot be combined with columns or be defined as a field');\n        }\n      }else { // A string or a buffer\n        if(options.columns === false){\n          throw Error('Invalid Option: objname field must be combined with columns or be defined as an index');\n        }\n      }\n    }\n    // Normalize option `on_record`\n    if(options.on_record === undefined || options.on_record === null){\n      options.on_record = undefined;\n    }else if(typeof options.on_record !== 'function'){\n      throw new CsvError('CSV_INVALID_OPTION_ON_RECORD', [\n        'Invalid option `on_record`:',\n        'expect a function,',\n        `got ${JSON.stringify(options.on_record)}`\n      ], options);\n    }\n    // Normalize option `quote`\n    if(options.quote === null || options.quote === false || options.quote === ''){\n      options.quote = null;\n    }else {\n      if(options.quote === undefined || options.quote === true){\n        options.quote = Buffer.from('\"', options.encoding);\n      }else if(typeof options.quote === 'string'){\n        options.quote = Buffer.from(options.quote, options.encoding);\n      }\n      if(!isBuffer(options.quote)){\n        throw new Error(`Invalid Option: quote must be a buffer or a string, got ${JSON.stringify(options.quote)}`);\n      }\n    }\n    // Normalize option `raw`\n    if(options.raw === undefined || options.raw === null || options.raw === false){\n      options.raw = false;\n    }else if(options.raw !== true){\n      throw new Error(`Invalid Option: raw must be true, got ${JSON.stringify(options.raw)}`);\n    }\n    // Normalize option `record_delimiter`\n    if(options.record_delimiter === undefined){\n      options.record_delimiter = [];\n    }else if(typeof options.record_delimiter === 'string' || isBuffer(options.record_delimiter)){\n      if(options.record_delimiter.length === 0){\n        throw new CsvError('CSV_INVALID_OPTION_RECORD_DELIMITER', [\n          'Invalid option `record_delimiter`:',\n          'value must be a non empty string or buffer,',\n          `got ${JSON.stringify(options.record_delimiter)}`\n        ], options);\n      }\n      options.record_delimiter = [options.record_delimiter];\n    }else if(!Array.isArray(options.record_delimiter)){\n      throw new CsvError('CSV_INVALID_OPTION_RECORD_DELIMITER', [\n        'Invalid option `record_delimiter`:',\n        'value must be a string, a buffer or array of string|buffer,',\n        `got ${JSON.stringify(options.record_delimiter)}`\n      ], options);\n    }\n    options.record_delimiter = options.record_delimiter.map(function(rd, i){\n      if(typeof rd !== 'string' && ! isBuffer(rd)){\n        throw new CsvError('CSV_INVALID_OPTION_RECORD_DELIMITER', [\n          'Invalid option `record_delimiter`:',\n          'value must be a string, a buffer or array of string|buffer',\n          `at index ${i},`,\n          `got ${JSON.stringify(rd)}`\n        ], options);\n      }else if(rd.length === 0){\n        throw new CsvError('CSV_INVALID_OPTION_RECORD_DELIMITER', [\n          'Invalid option `record_delimiter`:',\n          'value must be a non empty string or buffer',\n          `at index ${i},`,\n          `got ${JSON.stringify(rd)}`\n        ], options);\n      }\n      if(typeof rd === 'string'){\n        rd = Buffer.from(rd, options.encoding);\n      }\n      return rd;\n    });\n    // Normalize option `relax_column_count`\n    if(typeof options.relax_column_count === 'boolean');else if(options.relax_column_count === undefined || options.relax_column_count === null){\n      options.relax_column_count = false;\n    }else {\n      throw new Error(`Invalid Option: relax_column_count must be a boolean, got ${JSON.stringify(options.relax_column_count)}`);\n    }\n    if(typeof options.relax_column_count_less === 'boolean');else if(options.relax_column_count_less === undefined || options.relax_column_count_less === null){\n      options.relax_column_count_less = false;\n    }else {\n      throw new Error(`Invalid Option: relax_column_count_less must be a boolean, got ${JSON.stringify(options.relax_column_count_less)}`);\n    }\n    if(typeof options.relax_column_count_more === 'boolean');else if(options.relax_column_count_more === undefined || options.relax_column_count_more === null){\n      options.relax_column_count_more = false;\n    }else {\n      throw new Error(`Invalid Option: relax_column_count_more must be a boolean, got ${JSON.stringify(options.relax_column_count_more)}`);\n    }\n    // Normalize option `relax_quotes`\n    if(typeof options.relax_quotes === 'boolean');else if(options.relax_quotes === undefined || options.relax_quotes === null){\n      options.relax_quotes = false;\n    }else {\n      throw new Error(`Invalid Option: relax_quotes must be a boolean, got ${JSON.stringify(options.relax_quotes)}`);\n    }\n    // Normalize option `skip_empty_lines`\n    if(typeof options.skip_empty_lines === 'boolean');else if(options.skip_empty_lines === undefined || options.skip_empty_lines === null){\n      options.skip_empty_lines = false;\n    }else {\n      throw new Error(`Invalid Option: skip_empty_lines must be a boolean, got ${JSON.stringify(options.skip_empty_lines)}`);\n    }\n    // Normalize option `skip_records_with_empty_values`\n    if(typeof options.skip_records_with_empty_values === 'boolean');else if(options.skip_records_with_empty_values === undefined || options.skip_records_with_empty_values === null){\n      options.skip_records_with_empty_values = false;\n    }else {\n      throw new Error(`Invalid Option: skip_records_with_empty_values must be a boolean, got ${JSON.stringify(options.skip_records_with_empty_values)}`);\n    }\n    // Normalize option `skip_records_with_error`\n    if(typeof options.skip_records_with_error === 'boolean');else if(options.skip_records_with_error === undefined || options.skip_records_with_error === null){\n      options.skip_records_with_error = false;\n    }else {\n      throw new Error(`Invalid Option: skip_records_with_error must be a boolean, got ${JSON.stringify(options.skip_records_with_error)}`);\n    }\n    // Normalize option `rtrim`\n    if(options.rtrim === undefined || options.rtrim === null || options.rtrim === false){\n      options.rtrim = false;\n    }else if(options.rtrim !== true){\n      throw new Error(`Invalid Option: rtrim must be a boolean, got ${JSON.stringify(options.rtrim)}`);\n    }\n    // Normalize option `ltrim`\n    if(options.ltrim === undefined || options.ltrim === null || options.ltrim === false){\n      options.ltrim = false;\n    }else if(options.ltrim !== true){\n      throw new Error(`Invalid Option: ltrim must be a boolean, got ${JSON.stringify(options.ltrim)}`);\n    }\n    // Normalize option `trim`\n    if(options.trim === undefined || options.trim === null || options.trim === false){\n      options.trim = false;\n    }else if(options.trim !== true){\n      throw new Error(`Invalid Option: trim must be a boolean, got ${JSON.stringify(options.trim)}`);\n    }\n    // Normalize options `trim`, `ltrim` and `rtrim`\n    if(options.trim === true && opts.ltrim !== false){\n      options.ltrim = true;\n    }else if(options.ltrim !== true){\n      options.ltrim = false;\n    }\n    if(options.trim === true && opts.rtrim !== false){\n      options.rtrim = true;\n    }else if(options.rtrim !== true){\n      options.rtrim = false;\n    }\n    // Normalize option `to`\n    if(options.to === undefined || options.to === null){\n      options.to = -1;\n    }else {\n      if(typeof options.to === 'string' && /\\d+/.test(options.to)){\n        options.to = parseInt(options.to);\n      }\n      if(Number.isInteger(options.to)){\n        if(options.to <= 0){\n          throw new Error(`Invalid Option: to must be a positive integer greater than 0, got ${JSON.stringify(opts.to)}`);\n        }\n      }else {\n        throw new Error(`Invalid Option: to must be an integer, got ${JSON.stringify(opts.to)}`);\n      }\n    }\n    // Normalize option `to_line`\n    if(options.to_line === undefined || options.to_line === null){\n      options.to_line = -1;\n    }else {\n      if(typeof options.to_line === 'string' && /\\d+/.test(options.to_line)){\n        options.to_line = parseInt(options.to_line);\n      }\n      if(Number.isInteger(options.to_line)){\n        if(options.to_line <= 0){\n          throw new Error(`Invalid Option: to_line must be a positive integer greater than 0, got ${JSON.stringify(opts.to_line)}`);\n        }\n      }else {\n        throw new Error(`Invalid Option: to_line must be an integer, got ${JSON.stringify(opts.to_line)}`);\n      }\n    }\n    this.info = {\n      bytes: 0,\n      comment_lines: 0,\n      empty_lines: 0,\n      invalid_field_length: 0,\n      lines: 1,\n      records: 0\n    };\n    this.options = options;\n    this.state = {\n      bomSkipped: false,\n      bufBytesStart: 0,\n      castField: fnCastField,\n      commenting: false,\n      // Current error encountered by a record\n      error: undefined,\n      enabled: options.from_line === 1,\n      escaping: false,\n      escapeIsQuote: isBuffer(options.escape) && isBuffer(options.quote) && Buffer.compare(options.escape, options.quote) === 0,\n      // columns can be `false`, `true`, `Array`\n      expectedRecordLength: Array.isArray(options.columns) ? options.columns.length : undefined,\n      field: new ResizeableBuffer(20),\n      firstLineToHeaders: fnFirstLineToHeaders,\n      needMoreDataSize: Math.max(\n        // Skip if the remaining buffer smaller than comment\n        options.comment !== null ? options.comment.length : 0,\n        // Skip if the remaining buffer can be delimiter\n        ...options.delimiter.map((delimiter) => delimiter.length),\n        // Skip if the remaining buffer can be escape sequence\n        options.quote !== null ? options.quote.length : 0,\n      ),\n      previousBuf: undefined,\n      quoting: false,\n      stop: false,\n      rawBuffer: new ResizeableBuffer(100),\n      record: [],\n      recordHasError: false,\n      record_length: 0,\n      recordDelimiterMaxLength: options.record_delimiter.length === 0 ? 2 : Math.max(...options.record_delimiter.map((v) => v.length)),\n      trimChars: [Buffer.from(' ', options.encoding)[0], Buffer.from('\\t', options.encoding)[0]],\n      wasQuoting: false,\n      wasRowDelimiter: false\n    };\n  }\n  // Implementation of `Transform._transform`\n  _transform(buf, encoding, callback){\n    if(this.state.stop === true){\n      return;\n    }\n    const err = this.__parse(buf, false);\n    if(err !== undefined){\n      this.state.stop = true;\n    }\n    callback(err);\n  }\n  // Implementation of `Transform._flush`\n  _flush(callback){\n    if(this.state.stop === true){\n      return;\n    }\n    const err = this.__parse(undefined, true);\n    callback(err);\n  }\n  // Central parser implementation\n  __parse(nextBuf, end){\n    const {bom, comment, escape, from_line, ltrim, max_record_size, quote, raw, relax_quotes, rtrim, skip_empty_lines, to, to_line} = this.options;\n    let {record_delimiter} = this.options;\n    const {bomSkipped, previousBuf, rawBuffer, escapeIsQuote} = this.state;\n    let buf;\n    if(previousBuf === undefined){\n      if(nextBuf === undefined){\n        // Handle empty string\n        this.push(null);\n        return;\n      }else {\n        buf = nextBuf;\n      }\n    }else if(previousBuf !== undefined && nextBuf === undefined){\n      buf = previousBuf;\n    }else {\n      buf = Buffer.concat([previousBuf, nextBuf]);\n    }\n    // Handle UTF BOM\n    if(bomSkipped === false){\n      if(bom === false){\n        this.state.bomSkipped = true;\n      }else if(buf.length < 3){\n        // No enough data\n        if(end === false){\n          // Wait for more data\n          this.state.previousBuf = buf;\n          return;\n        }\n      }else {\n        for(const encoding in boms){\n          if(boms[encoding].compare(buf, 0, boms[encoding].length) === 0){\n            // Skip BOM\n            const bomLength = boms[encoding].length;\n            this.state.bufBytesStart += bomLength;\n            buf = buf.slice(bomLength);\n            // Renormalize original options with the new encoding\n            this.__normalizeOptions({...this.__originalOptions, encoding: encoding});\n            break;\n          }\n        }\n        this.state.bomSkipped = true;\n      }\n    }\n    const bufLen = buf.length;\n    let pos;\n    for(pos = 0; pos < bufLen; pos++){\n      // Ensure we get enough space to look ahead\n      // There should be a way to move this out of the loop\n      if(this.__needMoreData(pos, bufLen, end)){\n        break;\n      }\n      if(this.state.wasRowDelimiter === true){\n        this.info.lines++;\n        this.state.wasRowDelimiter = false;\n      }\n      if(to_line !== -1 && this.info.lines > to_line){\n        this.state.stop = true;\n        this.push(null);\n        return;\n      }\n      // Auto discovery of record_delimiter, unix, mac and windows supported\n      if(this.state.quoting === false && record_delimiter.length === 0){\n        const record_delimiterCount = this.__autoDiscoverRecordDelimiter(buf, pos);\n        if(record_delimiterCount){\n          record_delimiter = this.options.record_delimiter;\n        }\n      }\n      const chr = buf[pos];\n      if(raw === true){\n        rawBuffer.append(chr);\n      }\n      if((chr === cr || chr === nl) && this.state.wasRowDelimiter === false){\n        this.state.wasRowDelimiter = true;\n      }\n      // Previous char was a valid escape char\n      // treat the current char as a regular char\n      if(this.state.escaping === true){\n        this.state.escaping = false;\n      }else {\n        // Escape is only active inside quoted fields\n        // We are quoting, the char is an escape chr and there is a chr to escape\n        // if(escape !== null && this.state.quoting === true && chr === escape && pos + 1 < bufLen){\n        if(escape !== null && this.state.quoting === true && this.__isEscape(buf, pos, chr) && pos + escape.length < bufLen){\n          if(escapeIsQuote){\n            if(this.__isQuote(buf, pos+escape.length)){\n              this.state.escaping = true;\n              pos += escape.length - 1;\n              continue;\n            }\n          }else {\n            this.state.escaping = true;\n            pos += escape.length - 1;\n            continue;\n          }\n        }\n        // Not currently escaping and chr is a quote\n        // TODO: need to compare bytes instead of single char\n        if(this.state.commenting === false && this.__isQuote(buf, pos)){\n          if(this.state.quoting === true){\n            const nextChr = buf[pos+quote.length];\n            const isNextChrTrimable = rtrim && this.__isCharTrimable(nextChr);\n            const isNextChrComment = comment !== null && this.__compareBytes(comment, buf, pos+quote.length, nextChr);\n            const isNextChrDelimiter = this.__isDelimiter(buf, pos+quote.length, nextChr);\n            const isNextChrRecordDelimiter = record_delimiter.length === 0 ? this.__autoDiscoverRecordDelimiter(buf, pos+quote.length) : this.__isRecordDelimiter(nextChr, buf, pos+quote.length);\n            // Escape a quote\n            // Treat next char as a regular character\n            if(escape !== null && this.__isEscape(buf, pos, chr) && this.__isQuote(buf, pos + escape.length)){\n              pos += escape.length - 1;\n            }else if(!nextChr || isNextChrDelimiter || isNextChrRecordDelimiter || isNextChrComment || isNextChrTrimable){\n              this.state.quoting = false;\n              this.state.wasQuoting = true;\n              pos += quote.length - 1;\n              continue;\n            }else if(relax_quotes === false){\n              const err = this.__error(\n                new CsvError('CSV_INVALID_CLOSING_QUOTE', [\n                  'Invalid Closing Quote:',\n                  `got \"${String.fromCharCode(nextChr)}\"`,\n                  `at line ${this.info.lines}`,\n                  'instead of delimiter, record delimiter, trimable character',\n                  '(if activated) or comment',\n                ], this.options, this.__infoField())\n              );\n              if(err !== undefined) return err;\n            }else {\n              this.state.quoting = false;\n              this.state.wasQuoting = true;\n              this.state.field.prepend(quote);\n              pos += quote.length - 1;\n            }\n          }else {\n            if(this.state.field.length !== 0){\n              // In relax_quotes mode, treat opening quote preceded by chrs as regular\n              if(relax_quotes === false){\n                const err = this.__error(\n                  new CsvError('INVALID_OPENING_QUOTE', [\n                    'Invalid Opening Quote:',\n                    `a quote is found inside a field at line ${this.info.lines}`,\n                  ], this.options, this.__infoField(), {\n                    field: this.state.field,\n                  })\n                );\n                if(err !== undefined) return err;\n              }\n            }else {\n              this.state.quoting = true;\n              pos += quote.length - 1;\n              continue;\n            }\n          }\n        }\n        if(this.state.quoting === false){\n          const recordDelimiterLength = this.__isRecordDelimiter(chr, buf, pos);\n          if(recordDelimiterLength !== 0){\n            // Do not emit comments which take a full line\n            const skipCommentLine = this.state.commenting && (this.state.wasQuoting === false && this.state.record.length === 0 && this.state.field.length === 0);\n            if(skipCommentLine){\n              this.info.comment_lines++;\n              // Skip full comment line\n            }else {\n              // Activate records emition if above from_line\n              if(this.state.enabled === false && this.info.lines + (this.state.wasRowDelimiter === true ? 1: 0) >= from_line){\n                this.state.enabled = true;\n                this.__resetField();\n                this.__resetRecord();\n                pos += recordDelimiterLength - 1;\n                continue;\n              }\n              // Skip if line is empty and skip_empty_lines activated\n              if(skip_empty_lines === true && this.state.wasQuoting === false && this.state.record.length === 0 && this.state.field.length === 0){\n                this.info.empty_lines++;\n                pos += recordDelimiterLength - 1;\n                continue;\n              }\n              this.info.bytes = this.state.bufBytesStart + pos;\n              const errField = this.__onField();\n              if(errField !== undefined) return errField;\n              this.info.bytes = this.state.bufBytesStart + pos + recordDelimiterLength;\n              const errRecord = this.__onRecord();\n              if(errRecord !== undefined) return errRecord;\n              if(to !== -1 && this.info.records >= to){\n                this.state.stop = true;\n                this.push(null);\n                return;\n              }\n            }\n            this.state.commenting = false;\n            pos += recordDelimiterLength - 1;\n            continue;\n          }\n          if(this.state.commenting){\n            continue;\n          }\n          const commentCount = comment === null ? 0 : this.__compareBytes(comment, buf, pos, chr);\n          if(commentCount !== 0){\n            this.state.commenting = true;\n            continue;\n          }\n          const delimiterLength = this.__isDelimiter(buf, pos, chr);\n          if(delimiterLength !== 0){\n            this.info.bytes = this.state.bufBytesStart + pos;\n            const errField = this.__onField();\n            if(errField !== undefined) return errField;\n            pos += delimiterLength - 1;\n            continue;\n          }\n        }\n      }\n      if(this.state.commenting === false){\n        if(max_record_size !== 0 && this.state.record_length + this.state.field.length > max_record_size){\n          const err = this.__error(\n            new CsvError('CSV_MAX_RECORD_SIZE', [\n              'Max Record Size:',\n              'record exceed the maximum number of tolerated bytes',\n              `of ${max_record_size}`,\n              `at line ${this.info.lines}`,\n            ], this.options, this.__infoField())\n          );\n          if(err !== undefined) return err;\n        }\n      }\n      const lappend = ltrim === false || this.state.quoting === true || this.state.field.length !== 0 || !this.__isCharTrimable(chr);\n      // rtrim in non quoting is handle in __onField\n      const rappend = rtrim === false || this.state.wasQuoting === false;\n      if(lappend === true && rappend === true){\n        this.state.field.append(chr);\n      }else if(rtrim === true && !this.__isCharTrimable(chr)){\n        const err = this.__error(\n          new CsvError('CSV_NON_TRIMABLE_CHAR_AFTER_CLOSING_QUOTE', [\n            'Invalid Closing Quote:',\n            'found non trimable byte after quote',\n            `at line ${this.info.lines}`,\n          ], this.options, this.__infoField())\n        );\n        if(err !== undefined) return err;\n      }\n    }\n    if(end === true){\n      // Ensure we are not ending in a quoting state\n      if(this.state.quoting === true){\n        const err = this.__error(\n          new CsvError('CSV_QUOTE_NOT_CLOSED', [\n            'Quote Not Closed:',\n            `the parsing is finished with an opening quote at line ${this.info.lines}`,\n          ], this.options, this.__infoField())\n        );\n        if(err !== undefined) return err;\n      }else {\n        // Skip last line if it has no characters\n        if(this.state.wasQuoting === true || this.state.record.length !== 0 || this.state.field.length !== 0){\n          this.info.bytes = this.state.bufBytesStart + pos;\n          const errField = this.__onField();\n          if(errField !== undefined) return errField;\n          const errRecord = this.__onRecord();\n          if(errRecord !== undefined) return errRecord;\n        }else if(this.state.wasRowDelimiter === true){\n          this.info.empty_lines++;\n        }else if(this.state.commenting === true){\n          this.info.comment_lines++;\n        }\n      }\n    }else {\n      this.state.bufBytesStart += pos;\n      this.state.previousBuf = buf.slice(pos);\n    }\n    if(this.state.wasRowDelimiter === true){\n      this.info.lines++;\n      this.state.wasRowDelimiter = false;\n    }\n  }\n  __onRecord(){\n    const {columns, group_columns_by_name, encoding, info, from, relax_column_count, relax_column_count_less, relax_column_count_more, raw, skip_records_with_empty_values} = this.options;\n    const {enabled, record} = this.state;\n    if(enabled === false){\n      return this.__resetRecord();\n    }\n    // Convert the first line into column names\n    const recordLength = record.length;\n    if(columns === true){\n      if(skip_records_with_empty_values === true && isRecordEmpty(record)){\n        this.__resetRecord();\n        return;\n      }\n      return this.__firstLineToColumns(record);\n    }\n    if(columns === false && this.info.records === 0){\n      this.state.expectedRecordLength = recordLength;\n    }\n    if(recordLength !== this.state.expectedRecordLength){\n      const err = columns === false ?\n        new CsvError('CSV_RECORD_INCONSISTENT_FIELDS_LENGTH', [\n          'Invalid Record Length:',\n          `expect ${this.state.expectedRecordLength},`,\n          `got ${recordLength} on line ${this.info.lines}`,\n        ], this.options, this.__infoField(), {\n          record: record,\n        })\n        :\n        new CsvError('CSV_RECORD_INCONSISTENT_COLUMNS', [\n          'Invalid Record Length:',\n          `columns length is ${columns.length},`, // rename columns\n          `got ${recordLength} on line ${this.info.lines}`,\n        ], this.options, this.__infoField(), {\n          record: record,\n        });\n      if(relax_column_count === true ||\n        (relax_column_count_less === true && recordLength < this.state.expectedRecordLength) ||\n        (relax_column_count_more === true && recordLength > this.state.expectedRecordLength)){\n        this.info.invalid_field_length++;\n        this.state.error = err;\n      // Error is undefined with skip_records_with_error\n      }else {\n        const finalErr = this.__error(err);\n        if(finalErr) return finalErr;\n      }\n    }\n    if(skip_records_with_empty_values === true && isRecordEmpty(record)){\n      this.__resetRecord();\n      return;\n    }\n    if(this.state.recordHasError === true){\n      this.__resetRecord();\n      this.state.recordHasError = false;\n      return;\n    }\n    this.info.records++;\n    if(from === 1 || this.info.records >= from){\n      const {objname} = this.options;\n      // With columns, records are object\n      if(columns !== false){\n        const obj = {};\n        // Transform record array to an object\n        for(let i = 0, l = record.length; i < l; i++){\n          if(columns[i] === undefined || columns[i].disabled) continue;\n          // Turn duplicate columns into an array\n          if (group_columns_by_name === true && obj[columns[i].name] !== undefined) {\n            if (Array.isArray(obj[columns[i].name])) {\n              obj[columns[i].name] = obj[columns[i].name].concat(record[i]);\n            } else {\n              obj[columns[i].name] = [obj[columns[i].name], record[i]];\n            }\n          } else {\n            obj[columns[i].name] = record[i];\n          }\n        }\n        // Without objname (default)\n        if(raw === true || info === true){\n          const extRecord = Object.assign(\n            {record: obj},\n            (raw === true ? {raw: this.state.rawBuffer.toString(encoding)}: {}),\n            (info === true ? {info: this.__infoRecord()}: {})\n          );\n          const err = this.__push(\n            objname === undefined ? extRecord : [obj[objname], extRecord]\n          );\n          if(err){\n            return err;\n          }\n        }else {\n          const err = this.__push(\n            objname === undefined ? obj : [obj[objname], obj]\n          );\n          if(err){\n            return err;\n          }\n        }\n      // Without columns, records are array\n      }else {\n        if(raw === true || info === true){\n          const extRecord = Object.assign(\n            {record: record},\n            raw === true ? {raw: this.state.rawBuffer.toString(encoding)}: {},\n            info === true ? {info: this.__infoRecord()}: {}\n          );\n          const err = this.__push(\n            objname === undefined ? extRecord : [record[objname], extRecord]\n          );\n          if(err){\n            return err;\n          }\n        }else {\n          const err = this.__push(\n            objname === undefined ? record : [record[objname], record]\n          );\n          if(err){\n            return err;\n          }\n        }\n      }\n    }\n    this.__resetRecord();\n  }\n  __firstLineToColumns(record){\n    const {firstLineToHeaders} = this.state;\n    try{\n      const headers = firstLineToHeaders === undefined ? record : firstLineToHeaders.call(null, record);\n      if(!Array.isArray(headers)){\n        return this.__error(\n          new CsvError('CSV_INVALID_COLUMN_MAPPING', [\n            'Invalid Column Mapping:',\n            'expect an array from column function,',\n            `got ${JSON.stringify(headers)}`\n          ], this.options, this.__infoField(), {\n            headers: headers,\n          })\n        );\n      }\n      const normalizedHeaders = normalizeColumnsArray(headers);\n      this.state.expectedRecordLength = normalizedHeaders.length;\n      this.options.columns = normalizedHeaders;\n      this.__resetRecord();\n      return;\n    }catch(err){\n      return err;\n    }\n  }\n  __resetRecord(){\n    if(this.options.raw === true){\n      this.state.rawBuffer.reset();\n    }\n    this.state.error = undefined;\n    this.state.record = [];\n    this.state.record_length = 0;\n  }\n  __onField(){\n    const {cast, encoding, rtrim, max_record_size} = this.options;\n    const {enabled, wasQuoting} = this.state;\n    // Short circuit for the from_line options\n    if(enabled === false){\n      return this.__resetField();\n    }\n    let field = this.state.field.toString(encoding);\n    if(rtrim === true && wasQuoting === false){\n      field = field.trimRight();\n    }\n    if(cast === true){\n      const [err, f] = this.__cast(field);\n      if(err !== undefined) return err;\n      field = f;\n    }\n    this.state.record.push(field);\n    // Increment record length if record size must not exceed a limit\n    if(max_record_size !== 0 && typeof field === 'string'){\n      this.state.record_length += field.length;\n    }\n    this.__resetField();\n  }\n  __resetField(){\n    this.state.field.reset();\n    this.state.wasQuoting = false;\n  }\n  __push(record){\n    const {on_record} = this.options;\n    if(on_record !== undefined){\n      const info = this.__infoRecord();\n      try{\n        record = on_record.call(null, record, info);\n      }catch(err){\n        return err;\n      }\n      if(record === undefined || record === null){ return; }\n    }\n    this.push(record);\n  }\n  // Return a tuple with the error and the casted value\n  __cast(field){\n    const {columns, relax_column_count} = this.options;\n    const isColumns = Array.isArray(columns);\n    // Dont loose time calling cast\n    // because the final record is an object\n    // and this field can't be associated to a key present in columns\n    if(isColumns === true && relax_column_count && this.options.columns.length <= this.state.record.length){\n      return [undefined, undefined];\n    }\n    if(this.state.castField !== null){\n      try{\n        const info = this.__infoField();\n        return [undefined, this.state.castField.call(null, field, info)];\n      }catch(err){\n        return [err];\n      }\n    }\n    if(this.__isFloat(field)){\n      return [undefined, parseFloat(field)];\n    }else if(this.options.cast_date !== false){\n      const info = this.__infoField();\n      return [undefined, this.options.cast_date.call(null, field, info)];\n    }\n    return [undefined, field];\n  }\n  // Helper to test if a character is a space or a line delimiter\n  __isCharTrimable(chr){\n    return chr === space || chr === tab || chr === cr || chr === nl || chr === np;\n  }\n  // Keep it in case we implement the `cast_int` option\n  // __isInt(value){\n  //   // return Number.isInteger(parseInt(value))\n  //   // return !isNaN( parseInt( obj ) );\n  //   return /^(\\-|\\+)?[1-9][0-9]*$/.test(value)\n  // }\n  __isFloat(value){\n    return (value - parseFloat(value) + 1) >= 0; // Borrowed from jquery\n  }\n  __compareBytes(sourceBuf, targetBuf, targetPos, firstByte){\n    if(sourceBuf[0] !== firstByte) return 0;\n    const sourceLength = sourceBuf.length;\n    for(let i = 1; i < sourceLength; i++){\n      if(sourceBuf[i] !== targetBuf[targetPos+i]) return 0;\n    }\n    return sourceLength;\n  }\n  __needMoreData(i, bufLen, end){\n    if(end) return false;\n    const {quote} = this.options;\n    const {quoting, needMoreDataSize, recordDelimiterMaxLength} = this.state;\n    const numOfCharLeft = bufLen - i - 1;\n    const requiredLength = Math.max(\n      needMoreDataSize,\n      // Skip if the remaining buffer smaller than record delimiter\n      recordDelimiterMaxLength,\n      // Skip if the remaining buffer can be record delimiter following the closing quote\n      // 1 is for quote.length\n      quoting ? (quote.length + recordDelimiterMaxLength) : 0,\n    );\n    return numOfCharLeft < requiredLength;\n  }\n  __isDelimiter(buf, pos, chr){\n    const {delimiter, ignore_last_delimiters} = this.options;\n    if(ignore_last_delimiters === true && this.state.record.length === this.options.columns.length - 1){\n      return 0;\n    }else if(ignore_last_delimiters !== false && typeof ignore_last_delimiters === 'number' && this.state.record.length === ignore_last_delimiters - 1){\n      return 0;\n    }\n    loop1: for(let i = 0; i < delimiter.length; i++){\n      const del = delimiter[i];\n      if(del[0] === chr){\n        for(let j = 1; j < del.length; j++){\n          if(del[j] !== buf[pos+j]) continue loop1;\n        }\n        return del.length;\n      }\n    }\n    return 0;\n  }\n  __isRecordDelimiter(chr, buf, pos){\n    const {record_delimiter} = this.options;\n    const recordDelimiterLength = record_delimiter.length;\n    loop1: for(let i = 0; i < recordDelimiterLength; i++){\n      const rd = record_delimiter[i];\n      const rdLength = rd.length;\n      if(rd[0] !== chr){\n        continue;\n      }\n      for(let j = 1; j < rdLength; j++){\n        if(rd[j] !== buf[pos+j]){\n          continue loop1;\n        }\n      }\n      return rd.length;\n    }\n    return 0;\n  }\n  __isEscape(buf, pos, chr){\n    const {escape} = this.options;\n    if(escape === null) return false;\n    const l = escape.length;\n    if(escape[0] === chr){\n      for(let i = 0; i < l; i++){\n        if(escape[i] !== buf[pos+i]){\n          return false;\n        }\n      }\n      return true;\n    }\n    return false;\n  }\n  __isQuote(buf, pos){\n    const {quote} = this.options;\n    if(quote === null) return false;\n    const l = quote.length;\n    for(let i = 0; i < l; i++){\n      if(quote[i] !== buf[pos+i]){\n        return false;\n      }\n    }\n    return true;\n  }\n  __autoDiscoverRecordDelimiter(buf, pos){\n    const {encoding} = this.options;\n    const chr = buf[pos];\n    if(chr === cr){\n      if(buf[pos+1] === nl){\n        this.options.record_delimiter.push(Buffer.from('\\r\\n', encoding));\n        this.state.recordDelimiterMaxLength = 2;\n        return 2;\n      }else {\n        this.options.record_delimiter.push(Buffer.from('\\r', encoding));\n        this.state.recordDelimiterMaxLength = 1;\n        return 1;\n      }\n    }else if(chr === nl){\n      this.options.record_delimiter.push(Buffer.from('\\n', encoding));\n      this.state.recordDelimiterMaxLength = 1;\n      return 1;\n    }\n    return 0;\n  }\n  __error(msg){\n    const {encoding, raw, skip_records_with_error} = this.options;\n    const err = typeof msg === 'string' ? new Error(msg) : msg;\n    if(skip_records_with_error){\n      this.state.recordHasError = true;\n      this.emit('skip', err, raw ? this.state.rawBuffer.toString(encoding) : undefined);\n      return undefined;\n    }else {\n      return err;\n    }\n  }\n  __infoDataSet(){\n    return {\n      ...this.info,\n      columns: this.options.columns\n    };\n  }\n  __infoRecord(){\n    const {columns, raw, encoding} = this.options;\n    return {\n      ...this.__infoDataSet(),\n      error: this.state.error,\n      header: columns === true,\n      index: this.state.record.length,\n      raw: raw ? this.state.rawBuffer.toString(encoding) : undefined\n    };\n  }\n  __infoField(){\n    const {columns} = this.options;\n    const isColumns = Array.isArray(columns);\n    return {\n      ...this.__infoRecord(),\n      column: isColumns === true ?\n        (columns.length > this.state.record.length ?\n          columns[this.state.record.length].name :\n          null\n        ) :\n        this.state.record.length,\n      quoting: this.state.wasQuoting,\n    };\n  }\n}\n\nconst parse = function(data, options={}){\n  if(typeof data === 'string'){\n    data = Buffer.from(data);\n  }\n  const records = options && options.objname ? {} : [];\n  const parser = new Parser(options);\n  parser.push = function(record){\n    if(record === null){\n      return;\n    }\n    if(options.objname === undefined)\n      records.push(record);\n    else {\n      records[record[0]] = record[1];\n    }\n  };\n  const err1 = parser.__parse(data, false);\n  if(err1 !== undefined) throw err1;\n  const err2 = parser.__parse(undefined, true);\n  if(err2 !== undefined) throw err2;\n  return records;\n};\n\n\n\n\n//# sourceURL=webpack://@sygnas/wp-posts-convert/./node_modules/csv-parse/dist/esm/sync.js?");
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
 /******/ 	// The module cache
-/******/ 	var installedModules = {};
-/******/
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
-/******/
 /******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId]) {
-/******/ 			return installedModules[moduleId].exports;
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
 /******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = installedModules[moduleId] = {
-/******/ 			i: moduleId,
-/******/ 			l: false,
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
 /******/ 			exports: {}
 /******/ 		};
-/******/
+/******/ 	
 /******/ 		// Execute the module function
-/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
-/******/ 		// Flag the module as loaded
-/******/ 		module.l = true;
-/******/
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/
-/******/
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = modules;
-/******/
-/******/ 	// expose the module cache
-/******/ 	__webpack_require__.c = installedModules;
-/******/
-/******/ 	// identity function for calling harmony imports with the correct context
-/******/ 	__webpack_require__.i = function(value) { return value; };
-/******/
-/******/ 	// define getter function for harmony exports
-/******/ 	__webpack_require__.d = function(exports, name, getter) {
-/******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, {
-/******/ 				configurable: false,
-/******/ 				enumerable: true,
-/******/ 				get: getter
-/******/ 			});
-/******/ 		}
-/******/ 	};
-/******/
-/******/ 	// getDefaultExport function for compatibility with non-harmony modules
-/******/ 	__webpack_require__.n = function(module) {
-/******/ 		var getter = module && module.__esModule ?
-/******/ 			function getDefault() { return module['default']; } :
-/******/ 			function getModuleExports() { return module; };
-/******/ 		__webpack_require__.d(getter, 'a', getter);
-/******/ 		return getter;
-/******/ 	};
-/******/
-/******/ 	// Object.prototype.hasOwnProperty.call
-/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-/******/
-/******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
-/******/
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 30);
-/******/ })
+/******/ 	
 /************************************************************************/
-/******/ ([
-/* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var bind = __webpack_require__(7);
-var isBuffer = __webpack_require__(29);
-
-/*global toString:true*/
-
-// utils is a library of generic helper functions non-specific to axios
-
-var toString = Object.prototype.toString;
-
-/**
- * Determine if a value is an Array
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is an Array, otherwise false
- */
-function isArray(val) {
-  return toString.call(val) === '[object Array]';
-}
-
-/**
- * Determine if a value is an ArrayBuffer
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is an ArrayBuffer, otherwise false
- */
-function isArrayBuffer(val) {
-  return toString.call(val) === '[object ArrayBuffer]';
-}
-
-/**
- * Determine if a value is a FormData
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is an FormData, otherwise false
- */
-function isFormData(val) {
-  return (typeof FormData !== 'undefined') && (val instanceof FormData);
-}
-
-/**
- * Determine if a value is a view on an ArrayBuffer
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is a view on an ArrayBuffer, otherwise false
- */
-function isArrayBufferView(val) {
-  var result;
-  if ((typeof ArrayBuffer !== 'undefined') && (ArrayBuffer.isView)) {
-    result = ArrayBuffer.isView(val);
-  } else {
-    result = (val) && (val.buffer) && (val.buffer instanceof ArrayBuffer);
-  }
-  return result;
-}
-
-/**
- * Determine if a value is a String
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is a String, otherwise false
- */
-function isString(val) {
-  return typeof val === 'string';
-}
-
-/**
- * Determine if a value is a Number
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is a Number, otherwise false
- */
-function isNumber(val) {
-  return typeof val === 'number';
-}
-
-/**
- * Determine if a value is undefined
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if the value is undefined, otherwise false
- */
-function isUndefined(val) {
-  return typeof val === 'undefined';
-}
-
-/**
- * Determine if a value is an Object
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is an Object, otherwise false
- */
-function isObject(val) {
-  return val !== null && typeof val === 'object';
-}
-
-/**
- * Determine if a value is a Date
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is a Date, otherwise false
- */
-function isDate(val) {
-  return toString.call(val) === '[object Date]';
-}
-
-/**
- * Determine if a value is a File
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is a File, otherwise false
- */
-function isFile(val) {
-  return toString.call(val) === '[object File]';
-}
-
-/**
- * Determine if a value is a Blob
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is a Blob, otherwise false
- */
-function isBlob(val) {
-  return toString.call(val) === '[object Blob]';
-}
-
-/**
- * Determine if a value is a Function
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is a Function, otherwise false
- */
-function isFunction(val) {
-  return toString.call(val) === '[object Function]';
-}
-
-/**
- * Determine if a value is a Stream
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is a Stream, otherwise false
- */
-function isStream(val) {
-  return isObject(val) && isFunction(val.pipe);
-}
-
-/**
- * Determine if a value is a URLSearchParams object
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is a URLSearchParams object, otherwise false
- */
-function isURLSearchParams(val) {
-  return typeof URLSearchParams !== 'undefined' && val instanceof URLSearchParams;
-}
-
-/**
- * Trim excess whitespace off the beginning and end of a string
- *
- * @param {String} str The String to trim
- * @returns {String} The String freed of excess whitespace
- */
-function trim(str) {
-  return str.replace(/^\s*/, '').replace(/\s*$/, '');
-}
-
-/**
- * Determine if we're running in a standard browser environment
- *
- * This allows axios to run in a web worker, and react-native.
- * Both environments support XMLHttpRequest, but not fully standard globals.
- *
- * web workers:
- *  typeof window -> undefined
- *  typeof document -> undefined
- *
- * react-native:
- *  navigator.product -> 'ReactNative'
- */
-function isStandardBrowserEnv() {
-  if (typeof navigator !== 'undefined' && navigator.product === 'ReactNative') {
-    return false;
-  }
-  return (
-    typeof window !== 'undefined' &&
-    typeof document !== 'undefined'
-  );
-}
-
-/**
- * Iterate over an Array or an Object invoking a function for each item.
- *
- * If `obj` is an Array callback will be called passing
- * the value, index, and complete array for each item.
- *
- * If 'obj' is an Object callback will be called passing
- * the value, key, and complete object for each property.
- *
- * @param {Object|Array} obj The object to iterate
- * @param {Function} fn The callback to invoke for each item
- */
-function forEach(obj, fn) {
-  // Don't bother if no value provided
-  if (obj === null || typeof obj === 'undefined') {
-    return;
-  }
-
-  // Force an array if not already something iterable
-  if (typeof obj !== 'object') {
-    /*eslint no-param-reassign:0*/
-    obj = [obj];
-  }
-
-  if (isArray(obj)) {
-    // Iterate over array values
-    for (var i = 0, l = obj.length; i < l; i++) {
-      fn.call(null, obj[i], i, obj);
-    }
-  } else {
-    // Iterate over object keys
-    for (var key in obj) {
-      if (Object.prototype.hasOwnProperty.call(obj, key)) {
-        fn.call(null, obj[key], key, obj);
-      }
-    }
-  }
-}
-
-/**
- * Accepts varargs expecting each argument to be an object, then
- * immutably merges the properties of each object and returns result.
- *
- * When multiple objects contain the same key the later object in
- * the arguments list will take precedence.
- *
- * Example:
- *
- * ```js
- * var result = merge({foo: 123}, {foo: 456});
- * console.log(result.foo); // outputs 456
- * ```
- *
- * @param {Object} obj1 Object to merge
- * @returns {Object} Result of all merge properties
- */
-function merge(/* obj1, obj2, obj3, ... */) {
-  var result = {};
-  function assignValue(val, key) {
-    if (typeof result[key] === 'object' && typeof val === 'object') {
-      result[key] = merge(result[key], val);
-    } else {
-      result[key] = val;
-    }
-  }
-
-  for (var i = 0, l = arguments.length; i < l; i++) {
-    forEach(arguments[i], assignValue);
-  }
-  return result;
-}
-
-/**
- * Extends object a by mutably adding to it the properties of object b.
- *
- * @param {Object} a The object to be extended
- * @param {Object} b The object to copy properties from
- * @param {Object} thisArg The object to bind function to
- * @return {Object} The resulting value of object a
- */
-function extend(a, b, thisArg) {
-  forEach(b, function assignValue(val, key) {
-    if (thisArg && typeof val === 'function') {
-      a[key] = bind(val, thisArg);
-    } else {
-      a[key] = val;
-    }
-  });
-  return a;
-}
-
-module.exports = {
-  isArray: isArray,
-  isArrayBuffer: isArrayBuffer,
-  isBuffer: isBuffer,
-  isFormData: isFormData,
-  isArrayBufferView: isArrayBufferView,
-  isString: isString,
-  isNumber: isNumber,
-  isObject: isObject,
-  isUndefined: isUndefined,
-  isDate: isDate,
-  isFile: isFile,
-  isBlob: isBlob,
-  isFunction: isFunction,
-  isStream: isStream,
-  isURLSearchParams: isURLSearchParams,
-  isStandardBrowserEnv: isStandardBrowserEnv,
-  forEach: forEach,
-  merge: merge,
-  extend: extend,
-  trim: trim
-};
-
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-var utils = __webpack_require__(0);
-var normalizeHeaderName = __webpack_require__(25);
-
-var DEFAULT_CONTENT_TYPE = {
-  'Content-Type': 'application/x-www-form-urlencoded'
-};
-
-function setContentTypeIfUnset(headers, value) {
-  if (!utils.isUndefined(headers) && utils.isUndefined(headers['Content-Type'])) {
-    headers['Content-Type'] = value;
-  }
-}
-
-function getDefaultAdapter() {
-  var adapter;
-  if (typeof XMLHttpRequest !== 'undefined') {
-    // For browsers use XHR adapter
-    adapter = __webpack_require__(3);
-  } else if (typeof process !== 'undefined') {
-    // For node use HTTP adapter
-    adapter = __webpack_require__(3);
-  }
-  return adapter;
-}
-
-var defaults = {
-  adapter: getDefaultAdapter(),
-
-  transformRequest: [function transformRequest(data, headers) {
-    normalizeHeaderName(headers, 'Content-Type');
-    if (utils.isFormData(data) ||
-      utils.isArrayBuffer(data) ||
-      utils.isBuffer(data) ||
-      utils.isStream(data) ||
-      utils.isFile(data) ||
-      utils.isBlob(data)
-    ) {
-      return data;
-    }
-    if (utils.isArrayBufferView(data)) {
-      return data.buffer;
-    }
-    if (utils.isURLSearchParams(data)) {
-      setContentTypeIfUnset(headers, 'application/x-www-form-urlencoded;charset=utf-8');
-      return data.toString();
-    }
-    if (utils.isObject(data)) {
-      setContentTypeIfUnset(headers, 'application/json;charset=utf-8');
-      return JSON.stringify(data);
-    }
-    return data;
-  }],
-
-  transformResponse: [function transformResponse(data) {
-    /*eslint no-param-reassign:0*/
-    if (typeof data === 'string') {
-      try {
-        data = JSON.parse(data);
-      } catch (e) { /* Ignore */ }
-    }
-    return data;
-  }],
-
-  timeout: 0,
-
-  xsrfCookieName: 'XSRF-TOKEN',
-  xsrfHeaderName: 'X-XSRF-TOKEN',
-
-  maxContentLength: -1,
-
-  validateStatus: function validateStatus(status) {
-    return status >= 200 && status < 300;
-  }
-};
-
-defaults.headers = {
-  common: {
-    'Accept': 'application/json, text/plain, */*'
-  }
-};
-
-utils.forEach(['delete', 'get', 'head'], function forEachMethodNoData(method) {
-  defaults.headers[method] = {};
-});
-
-utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
-  defaults.headers[method] = utils.merge(DEFAULT_CONTENT_TYPE);
-});
-
-module.exports = defaults;
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
-// shim for using process in browser
-var process = module.exports = {};
-
-// cached from whatever global is present so that test runners that stub it
-// don't break things.  But we need to wrap it in a try catch in case it is
-// wrapped in strict mode code which doesn't define any globals.  It's inside a
-// function because try/catches deoptimize in certain engines.
-
-var cachedSetTimeout;
-var cachedClearTimeout;
-
-function defaultSetTimout() {
-    throw new Error('setTimeout has not been defined');
-}
-function defaultClearTimeout () {
-    throw new Error('clearTimeout has not been defined');
-}
-(function () {
-    try {
-        if (typeof setTimeout === 'function') {
-            cachedSetTimeout = setTimeout;
-        } else {
-            cachedSetTimeout = defaultSetTimout;
-        }
-    } catch (e) {
-        cachedSetTimeout = defaultSetTimout;
-    }
-    try {
-        if (typeof clearTimeout === 'function') {
-            cachedClearTimeout = clearTimeout;
-        } else {
-            cachedClearTimeout = defaultClearTimeout;
-        }
-    } catch (e) {
-        cachedClearTimeout = defaultClearTimeout;
-    }
-} ())
-function runTimeout(fun) {
-    if (cachedSetTimeout === setTimeout) {
-        //normal enviroments in sane situations
-        return setTimeout(fun, 0);
-    }
-    // if setTimeout wasn't available but was latter defined
-    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
-        cachedSetTimeout = setTimeout;
-        return setTimeout(fun, 0);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedSetTimeout(fun, 0);
-    } catch(e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
-            return cachedSetTimeout.call(null, fun, 0);
-        } catch(e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
-            return cachedSetTimeout.call(this, fun, 0);
-        }
-    }
-
-
-}
-function runClearTimeout(marker) {
-    if (cachedClearTimeout === clearTimeout) {
-        //normal enviroments in sane situations
-        return clearTimeout(marker);
-    }
-    // if clearTimeout wasn't available but was latter defined
-    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
-        cachedClearTimeout = clearTimeout;
-        return clearTimeout(marker);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedClearTimeout(marker);
-    } catch (e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
-            return cachedClearTimeout.call(null, marker);
-        } catch (e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
-            return cachedClearTimeout.call(this, marker);
-        }
-    }
-
-
-
-}
-var queue = [];
-var draining = false;
-var currentQueue;
-var queueIndex = -1;
-
-function cleanUpNextTick() {
-    if (!draining || !currentQueue) {
-        return;
-    }
-    draining = false;
-    if (currentQueue.length) {
-        queue = currentQueue.concat(queue);
-    } else {
-        queueIndex = -1;
-    }
-    if (queue.length) {
-        drainQueue();
-    }
-}
-
-function drainQueue() {
-    if (draining) {
-        return;
-    }
-    var timeout = runTimeout(cleanUpNextTick);
-    draining = true;
-
-    var len = queue.length;
-    while(len) {
-        currentQueue = queue;
-        queue = [];
-        while (++queueIndex < len) {
-            if (currentQueue) {
-                currentQueue[queueIndex].run();
-            }
-        }
-        queueIndex = -1;
-        len = queue.length;
-    }
-    currentQueue = null;
-    draining = false;
-    runClearTimeout(timeout);
-}
-
-process.nextTick = function (fun) {
-    var args = new Array(arguments.length - 1);
-    if (arguments.length > 1) {
-        for (var i = 1; i < arguments.length; i++) {
-            args[i - 1] = arguments[i];
-        }
-    }
-    queue.push(new Item(fun, args));
-    if (queue.length === 1 && !draining) {
-        runTimeout(drainQueue);
-    }
-};
-
-// v8 likes predictible objects
-function Item(fun, array) {
-    this.fun = fun;
-    this.array = array;
-}
-Item.prototype.run = function () {
-    this.fun.apply(null, this.array);
-};
-process.title = 'browser';
-process.browser = true;
-process.env = {};
-process.argv = [];
-process.version = ''; // empty string to avoid regexp issues
-process.versions = {};
-
-function noop() {}
-
-process.on = noop;
-process.addListener = noop;
-process.once = noop;
-process.off = noop;
-process.removeListener = noop;
-process.removeAllListeners = noop;
-process.emit = noop;
-process.prependListener = noop;
-process.prependOnceListener = noop;
-
-process.listeners = function (name) { return [] }
-
-process.binding = function (name) {
-    throw new Error('process.binding is not supported');
-};
-
-process.cwd = function () { return '/' };
-process.chdir = function (dir) {
-    throw new Error('process.chdir is not supported');
-};
-process.umask = function() { return 0; };
-
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-var utils = __webpack_require__(0);
-var settle = __webpack_require__(17);
-var buildURL = __webpack_require__(20);
-var parseHeaders = __webpack_require__(26);
-var isURLSameOrigin = __webpack_require__(24);
-var createError = __webpack_require__(6);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(19);
-
-module.exports = function xhrAdapter(config) {
-  return new Promise(function dispatchXhrRequest(resolve, reject) {
-    var requestData = config.data;
-    var requestHeaders = config.headers;
-
-    if (utils.isFormData(requestData)) {
-      delete requestHeaders['Content-Type']; // Let the browser set it
-    }
-
-    var request = new XMLHttpRequest();
-    var loadEvent = 'onreadystatechange';
-    var xDomain = false;
-
-    // For IE 8/9 CORS support
-    // Only supports POST and GET calls and doesn't returns the response headers.
-    // DON'T do this for testing b/c XMLHttpRequest is mocked, not XDomainRequest.
-    if (process.env.NODE_ENV !== 'test' &&
-        typeof window !== 'undefined' &&
-        window.XDomainRequest && !('withCredentials' in request) &&
-        !isURLSameOrigin(config.url)) {
-      request = new window.XDomainRequest();
-      loadEvent = 'onload';
-      xDomain = true;
-      request.onprogress = function handleProgress() {};
-      request.ontimeout = function handleTimeout() {};
-    }
-
-    // HTTP basic authentication
-    if (config.auth) {
-      var username = config.auth.username || '';
-      var password = config.auth.password || '';
-      requestHeaders.Authorization = 'Basic ' + btoa(username + ':' + password);
-    }
-
-    request.open(config.method.toUpperCase(), buildURL(config.url, config.params, config.paramsSerializer), true);
-
-    // Set the request timeout in MS
-    request.timeout = config.timeout;
-
-    // Listen for ready state
-    request[loadEvent] = function handleLoad() {
-      if (!request || (request.readyState !== 4 && !xDomain)) {
-        return;
-      }
-
-      // The request errored out and we didn't get a response, this will be
-      // handled by onerror instead
-      // With one exception: request that using file: protocol, most browsers
-      // will return status as 0 even though it's a successful request
-      if (request.status === 0 && !(request.responseURL && request.responseURL.indexOf('file:') === 0)) {
-        return;
-      }
-
-      // Prepare the response
-      var responseHeaders = 'getAllResponseHeaders' in request ? parseHeaders(request.getAllResponseHeaders()) : null;
-      var responseData = !config.responseType || config.responseType === 'text' ? request.responseText : request.response;
-      var response = {
-        data: responseData,
-        // IE sends 1223 instead of 204 (https://github.com/axios/axios/issues/201)
-        status: request.status === 1223 ? 204 : request.status,
-        statusText: request.status === 1223 ? 'No Content' : request.statusText,
-        headers: responseHeaders,
-        config: config,
-        request: request
-      };
-
-      settle(resolve, reject, response);
-
-      // Clean up request
-      request = null;
-    };
-
-    // Handle low level network errors
-    request.onerror = function handleError() {
-      // Real errors are hidden from us by the browser
-      // onerror should only fire if it's a network error
-      reject(createError('Network Error', config, null, request));
-
-      // Clean up request
-      request = null;
-    };
-
-    // Handle timeout
-    request.ontimeout = function handleTimeout() {
-      reject(createError('timeout of ' + config.timeout + 'ms exceeded', config, 'ECONNABORTED',
-        request));
-
-      // Clean up request
-      request = null;
-    };
-
-    // Add xsrf header
-    // This is only done if running in a standard browser environment.
-    // Specifically not if we're in a web worker, or react-native.
-    if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(22);
-
-      // Add xsrf header
-      var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
-          cookies.read(config.xsrfCookieName) :
-          undefined;
-
-      if (xsrfValue) {
-        requestHeaders[config.xsrfHeaderName] = xsrfValue;
-      }
-    }
-
-    // Add headers to the request
-    if ('setRequestHeader' in request) {
-      utils.forEach(requestHeaders, function setRequestHeader(val, key) {
-        if (typeof requestData === 'undefined' && key.toLowerCase() === 'content-type') {
-          // Remove Content-Type if data is undefined
-          delete requestHeaders[key];
-        } else {
-          // Otherwise add header to the request
-          request.setRequestHeader(key, val);
-        }
-      });
-    }
-
-    // Add withCredentials to request if needed
-    if (config.withCredentials) {
-      request.withCredentials = true;
-    }
-
-    // Add responseType to request if needed
-    if (config.responseType) {
-      try {
-        request.responseType = config.responseType;
-      } catch (e) {
-        // Expected DOMException thrown by browsers not compatible XMLHttpRequest Level 2.
-        // But, this can be suppressed for 'json' type as it can be parsed by default 'transformResponse' function.
-        if (config.responseType !== 'json') {
-          throw e;
-        }
-      }
-    }
-
-    // Handle progress if needed
-    if (typeof config.onDownloadProgress === 'function') {
-      request.addEventListener('progress', config.onDownloadProgress);
-    }
-
-    // Not all browsers support upload events
-    if (typeof config.onUploadProgress === 'function' && request.upload) {
-      request.upload.addEventListener('progress', config.onUploadProgress);
-    }
-
-    if (config.cancelToken) {
-      // Handle cancellation
-      config.cancelToken.promise.then(function onCanceled(cancel) {
-        if (!request) {
-          return;
-        }
-
-        request.abort();
-        reject(cancel);
-        // Clean up request
-        request = null;
-      });
-    }
-
-    if (requestData === undefined) {
-      requestData = null;
-    }
-
-    // Send the request
-    request.send(requestData);
-  });
-};
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * A `Cancel` is an object that is thrown when an operation is canceled.
- *
- * @class
- * @param {string=} message The message.
- */
-function Cancel(message) {
-  this.message = message;
-}
-
-Cancel.prototype.toString = function toString() {
-  return 'Cancel' + (this.message ? ': ' + this.message : '');
-};
-
-Cancel.prototype.__CANCEL__ = true;
-
-module.exports = Cancel;
-
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = function isCancel(value) {
-  return !!(value && value.__CANCEL__);
-};
-
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var enhanceError = __webpack_require__(16);
-
-/**
- * Create an Error with the specified message, config, error code, request and response.
- *
- * @param {string} message The error message.
- * @param {Object} config The config.
- * @param {string} [code] The error code (for example, 'ECONNABORTED').
- * @param {Object} [request] The request.
- * @param {Object} [response] The response.
- * @returns {Error} The created error.
- */
-module.exports = function createError(message, config, code, request, response) {
-  var error = new Error(message);
-  return enhanceError(error, config, code, request, response);
-};
-
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = function bind(fn, thisArg) {
-  return function wrap() {
-    var args = new Array(arguments.length);
-    for (var i = 0; i < args.length; i++) {
-      args[i] = arguments[i];
-    }
-    return fn.apply(thisArg, args);
-  };
-};
-
-
-/***/ }),
-/* 8 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dist_wp_posts_convert_es__ = __webpack_require__(9);
-
-
-// import wp_posts_convert from 'syg-wp-posts-convert';
-
-
-// --------------
-// シンプルなリスト
-// --------------
-var wp_posts1 = new __WEBPACK_IMPORTED_MODULE_0__dist_wp_posts_convert_es__["a" /* default */]({
-    template: document.querySelector('.js-wp-posts-template-1').textContent
-});
-wp_posts1.start('./sample.json');
-
-// --------------
-// オプションを指定
-// --------------
-// 変換結果の配列も別途受け取る
-var wp_posts2 = new __WEBPACK_IMPORTED_MODULE_0__dist_wp_posts_convert_es__["a" /* default */]({
-    template: document.querySelector('.js-wp-posts-template-2').textContent,
-    target: '.js-wp-posts-2'
-});
-// ヘルパー関数追加
-// 数字を漢字にするサンプル
-wp_posts2.add_helper('convert_maru', function (post, key) {
-    var output = post[key];
-    output = output.replace('1', '①');
-    output = output.replace('2', '②');
-    output = output.replace('3', '③');
-    output = output.replace('4', '④');
-    output = output.replace('5', '⑤');
-    output = output.replace('6', '⑥');
-    output = output.replace('7', '⑦');
-    output = output.replace('9', '⑧');
-    output = output.replace('9', '⑨');
-    output = output.replace('0', '⓪');
-    return output;
-});
-
-wp_posts2.start('./sample.json').then(function (list) {
-    console.log("変換したものを配列で受け取る");
-    console.log(list);
-});
-
-/***/ }),
-/* 9 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_csv_string_lib_parser__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_csv_string_lib_parser___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_csv_string_lib_parser__);
-
-
-
-// 日付書式変換
-function convert_date(post, key, format) {
-
-    var date = post[key].split(/[: -]/);
-    var YY = date[0];
-    var MM = date[1];
-    var DD = date[2];
-    var hh = date[3];
-    var mm = date[4];
-
-    var output = format;
-    output = output.split('YY').join(YY);
-    output = output.split('MM').join(MM);
-    output = output.split('DD').join(DD);
-    output = output.split('hh').join(hh);
-    output = output.split('mm').join(mm);
-
-    return output;
-}
-
-// タグ除去
-function remove_tag(post, key) {
-
-    return post[key].replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '');
-}
-
-var _createClass = function () {
-    function defineProperties(target, props) {
-        for (var i = 0; i < props.length; i++) {
-            var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-        }
-    }return function (Constructor, protoProps, staticProps) {
-        if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-    };
-}();
-
-function _toConsumableArray(arr) {
-    if (Array.isArray(arr)) {
-        for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) {
-            arr2[i] = arr[i];
-        }return arr2;
-    } else {
-        return Array.from(arr);
-    }
-}
-
-function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-        throw new TypeError("Cannot call a class as a function");
-    }
-}
-
-/**
- * Wordpress get_posts() json to html convert.
- * Wordpress の get_posts() の json を html に変換する。
- * htmlテンプレートには Handlebarsを使用
- *
- * @author   Hiroshi Fukuda <info.sygnas@gmail.com>
- * @license  MIT
- */
-
-/* eslint no-console: off */
-/* eslint no-unused-vars: off */
-
-// ヘルパー
-// ヘルパー関数を使った置き換えのパターン
-var helper_reg = new RegExp('{{{(.+?)\\((.*?)\\)}}}');
-
-/**
- *
- */
-
-var _class = function () {
-
-    /**
-     * コンストラクタ
-     * @param {Object} config 設定。const defaults 参照
-     */
-    function _class(config) {
-        _classCallCheck(this, _class);
-
-        // 初期設定
-        var defaults = {
-            // 表示テンプレート
-            template: '<li><a href="{{permalink}}">{{post_title}}</a></li>',
-            // 出力先のDOMセレクター
-            target: '.js-wp-posts',
-            // ヘルパー関数
-            helpers: {
-                remove_tag: remove_tag,
-                convert_date: convert_date
-            }
-        };
-
-        // 設定をマージ
-        this.opt = Object.assign(defaults, config);
-    }
-
-    /**
-     * json を読み込んでテンプレートを展開する
-     * @param {String} url json取得URL
-     * @return {Promise} 成功・失敗を返す。成功時には変換したリストを一緒に返す
-     */
-
-    _createClass(_class, [{
-        key: 'start',
-        value: function start(url) {
-            var _this = this;
-
-            return new Promise(function (resolve, reject) {
-                // jsonを読み込む
-                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(url).then(function (res) {
-                    // 受け取った記事一覧を変換し、
-                    // 指定されたエレメントに埋め込む
-                    var list = _this.$_convert_list(res.data);
-                    _this.$_insert_to_target(list.join(''));
-
-                    // Promiseで変換済みリストを返す
-                    resolve(list);
-                }).catch(function (e) {
-                    reject(e);
-                });
-            });
-        }
-
-        /**
-         * ヘルパー関数を追加
-         * @param {String} name 関数名
-         * @param {Function} func 関数
-         */
-
-    }, {
-        key: 'add_helper',
-        value: function add_helper(name, func) {
-            this.opt.helpers[name] = func;
-        }
-
-        /**
-         * private
-         */
-
-        /**
-         * 変換したテンプレートをターゲットエレメントに挿入する
-         * エレメントが存在しなければ何もしない
-         * @param {String} output 変換済みテンプレート
-         */
-
-    }, {
-        key: '$_insert_to_target',
-        value: function $_insert_to_target(output) {
-            var target = document.querySelector(this.opt.target);
-            if (target) {
-                target.insertAdjacentHTML('afterbegin', output);
-            }
-        }
-
-        /**
-         * 受け取った記事リストを変換して返す
-         * @param {Array} data WP_postの配列
-         * @return {Array} 変換した記事毎の配列
-         */
-
-    }, {
-        key: '$_convert_list',
-        value: function $_convert_list(data) {
-            var _this2 = this;
-
-            var output_list = [];
-            // console.log(data);
-
-            data.forEach(function (post) {
-                var result = _this2.$_convert_post(post);
-                output_list.push(result);
-            });
-            return output_list;
-        }
-
-        /**
-         * 受け取った記事をテンプレートで変換して返す
-         * @param {Object} post
-         * @return {String} 変換したテンプレート
-         */
-
-    }, {
-        key: '$_convert_post',
-        value: function $_convert_post(post) {
-            var template = this.opt.template;
-
-            // ヘルパーでの置き換えを処理
-            template = this.$_convert_helper(template, post);
-            // 記事の項目で検索して書き換え
-            template = this.$_convert_simple(template, post);
-
-            return template;
-        }
-
-        /**
-         * 記事データの項目名で置換
-         * @param {String} template テンプレート
-         * @param {Object} post ポストデータ
-         * @return {String} 変換後テンプレート
-         */
-
-    }, {
-        key: '$_convert_simple',
-        value: function $_convert_simple(template, post) {
-            Object.keys(post).forEach(function (key) {
-                template = template.replace('{{' + key + '}}', post[key]);
-            });
-            return template;
-        }
-
-        /**
-         * ヘルパー指定されたパターンからヘルパー名とパラメーターを抜き出して実行する
-         * @param {String} template テンプレート
-         * @param {Object} post ポストデータ
-         * @return {String} 変換後テンプレート
-         */
-
-    }, {
-        key: '$_convert_helper',
-        value: function $_convert_helper(template, post) {
-            var helpers = this.opt.helpers;
-            var match = void 0;
-
-            while ((match = helper_reg.exec(template)) !== null) {
-                // 検索パターン
-                var pattern = match[0];
-                // ヘルパー関数名
-                var helper = match[1];
-                var parser = new __WEBPACK_IMPORTED_MODULE_1_csv_string_lib_parser___default.a(match[2]);
-                // ヘルパーに渡す引数
-                var params = parser.File()[0];
-                // ヘルパーの実行結果で置換する
-                var helper_res = helpers[helper].apply(helpers, [post].concat(_toConsumableArray(params)));
-                template = template.replace(pattern, helper_res);
-            }
-            return template;
-        }
-    }]);
-
-    return _class;
-}();
-
-/* harmony default export */ __webpack_exports__["a"] = (_class);
-//# sourceMappingURL=wp-posts-convert.es.js.map
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(11);
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(0);
-var bind = __webpack_require__(7);
-var Axios = __webpack_require__(13);
-var defaults = __webpack_require__(1);
-
-/**
- * Create an instance of Axios
- *
- * @param {Object} defaultConfig The default config for the instance
- * @return {Axios} A new instance of Axios
- */
-function createInstance(defaultConfig) {
-  var context = new Axios(defaultConfig);
-  var instance = bind(Axios.prototype.request, context);
-
-  // Copy axios.prototype to instance
-  utils.extend(instance, Axios.prototype, context);
-
-  // Copy context to instance
-  utils.extend(instance, context);
-
-  return instance;
-}
-
-// Create the default instance to be exported
-var axios = createInstance(defaults);
-
-// Expose Axios class to allow class inheritance
-axios.Axios = Axios;
-
-// Factory for creating new instances
-axios.create = function create(instanceConfig) {
-  return createInstance(utils.merge(defaults, instanceConfig));
-};
-
-// Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(4);
-axios.CancelToken = __webpack_require__(12);
-axios.isCancel = __webpack_require__(5);
-
-// Expose all/spread
-axios.all = function all(promises) {
-  return Promise.all(promises);
-};
-axios.spread = __webpack_require__(27);
-
-module.exports = axios;
-
-// Allow use of default import syntax in TypeScript
-module.exports.default = axios;
-
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var Cancel = __webpack_require__(4);
-
-/**
- * A `CancelToken` is an object that can be used to request cancellation of an operation.
- *
- * @class
- * @param {Function} executor The executor function.
- */
-function CancelToken(executor) {
-  if (typeof executor !== 'function') {
-    throw new TypeError('executor must be a function.');
-  }
-
-  var resolvePromise;
-  this.promise = new Promise(function promiseExecutor(resolve) {
-    resolvePromise = resolve;
-  });
-
-  var token = this;
-  executor(function cancel(message) {
-    if (token.reason) {
-      // Cancellation has already been requested
-      return;
-    }
-
-    token.reason = new Cancel(message);
-    resolvePromise(token.reason);
-  });
-}
-
-/**
- * Throws a `Cancel` if cancellation has been requested.
- */
-CancelToken.prototype.throwIfRequested = function throwIfRequested() {
-  if (this.reason) {
-    throw this.reason;
-  }
-};
-
-/**
- * Returns an object that contains a new `CancelToken` and a function that, when called,
- * cancels the `CancelToken`.
- */
-CancelToken.source = function source() {
-  var cancel;
-  var token = new CancelToken(function executor(c) {
-    cancel = c;
-  });
-  return {
-    token: token,
-    cancel: cancel
-  };
-};
-
-module.exports = CancelToken;
-
-
-/***/ }),
-/* 13 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var defaults = __webpack_require__(1);
-var utils = __webpack_require__(0);
-var InterceptorManager = __webpack_require__(14);
-var dispatchRequest = __webpack_require__(15);
-
-/**
- * Create a new instance of Axios
- *
- * @param {Object} instanceConfig The default config for the instance
- */
-function Axios(instanceConfig) {
-  this.defaults = instanceConfig;
-  this.interceptors = {
-    request: new InterceptorManager(),
-    response: new InterceptorManager()
-  };
-}
-
-/**
- * Dispatch a request
- *
- * @param {Object} config The config specific for this request (merged with this.defaults)
- */
-Axios.prototype.request = function request(config) {
-  /*eslint no-param-reassign:0*/
-  // Allow for axios('example/url'[, config]) a la fetch API
-  if (typeof config === 'string') {
-    config = utils.merge({
-      url: arguments[0]
-    }, arguments[1]);
-  }
-
-  config = utils.merge(defaults, this.defaults, { method: 'get' }, config);
-  config.method = config.method.toLowerCase();
-
-  // Hook up interceptors middleware
-  var chain = [dispatchRequest, undefined];
-  var promise = Promise.resolve(config);
-
-  this.interceptors.request.forEach(function unshiftRequestInterceptors(interceptor) {
-    chain.unshift(interceptor.fulfilled, interceptor.rejected);
-  });
-
-  this.interceptors.response.forEach(function pushResponseInterceptors(interceptor) {
-    chain.push(interceptor.fulfilled, interceptor.rejected);
-  });
-
-  while (chain.length) {
-    promise = promise.then(chain.shift(), chain.shift());
-  }
-
-  return promise;
-};
-
-// Provide aliases for supported request methods
-utils.forEach(['delete', 'get', 'head', 'options'], function forEachMethodNoData(method) {
-  /*eslint func-names:0*/
-  Axios.prototype[method] = function(url, config) {
-    return this.request(utils.merge(config || {}, {
-      method: method,
-      url: url
-    }));
-  };
-});
-
-utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
-  /*eslint func-names:0*/
-  Axios.prototype[method] = function(url, data, config) {
-    return this.request(utils.merge(config || {}, {
-      method: method,
-      url: url,
-      data: data
-    }));
-  };
-});
-
-module.exports = Axios;
-
-
-/***/ }),
-/* 14 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(0);
-
-function InterceptorManager() {
-  this.handlers = [];
-}
-
-/**
- * Add a new interceptor to the stack
- *
- * @param {Function} fulfilled The function to handle `then` for a `Promise`
- * @param {Function} rejected The function to handle `reject` for a `Promise`
- *
- * @return {Number} An ID used to remove interceptor later
- */
-InterceptorManager.prototype.use = function use(fulfilled, rejected) {
-  this.handlers.push({
-    fulfilled: fulfilled,
-    rejected: rejected
-  });
-  return this.handlers.length - 1;
-};
-
-/**
- * Remove an interceptor from the stack
- *
- * @param {Number} id The ID that was returned by `use`
- */
-InterceptorManager.prototype.eject = function eject(id) {
-  if (this.handlers[id]) {
-    this.handlers[id] = null;
-  }
-};
-
-/**
- * Iterate over all the registered interceptors
- *
- * This method is particularly useful for skipping over any
- * interceptors that may have become `null` calling `eject`.
- *
- * @param {Function} fn The function to call for each interceptor
- */
-InterceptorManager.prototype.forEach = function forEach(fn) {
-  utils.forEach(this.handlers, function forEachHandler(h) {
-    if (h !== null) {
-      fn(h);
-    }
-  });
-};
-
-module.exports = InterceptorManager;
-
-
-/***/ }),
-/* 15 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(0);
-var transformData = __webpack_require__(18);
-var isCancel = __webpack_require__(5);
-var defaults = __webpack_require__(1);
-var isAbsoluteURL = __webpack_require__(23);
-var combineURLs = __webpack_require__(21);
-
-/**
- * Throws a `Cancel` if cancellation has been requested.
- */
-function throwIfCancellationRequested(config) {
-  if (config.cancelToken) {
-    config.cancelToken.throwIfRequested();
-  }
-}
-
-/**
- * Dispatch a request to the server using the configured adapter.
- *
- * @param {object} config The config that is to be used for the request
- * @returns {Promise} The Promise to be fulfilled
- */
-module.exports = function dispatchRequest(config) {
-  throwIfCancellationRequested(config);
-
-  // Support baseURL config
-  if (config.baseURL && !isAbsoluteURL(config.url)) {
-    config.url = combineURLs(config.baseURL, config.url);
-  }
-
-  // Ensure headers exist
-  config.headers = config.headers || {};
-
-  // Transform request data
-  config.data = transformData(
-    config.data,
-    config.headers,
-    config.transformRequest
-  );
-
-  // Flatten headers
-  config.headers = utils.merge(
-    config.headers.common || {},
-    config.headers[config.method] || {},
-    config.headers || {}
-  );
-
-  utils.forEach(
-    ['delete', 'get', 'head', 'post', 'put', 'patch', 'common'],
-    function cleanHeaderConfig(method) {
-      delete config.headers[method];
-    }
-  );
-
-  var adapter = config.adapter || defaults.adapter;
-
-  return adapter(config).then(function onAdapterResolution(response) {
-    throwIfCancellationRequested(config);
-
-    // Transform response data
-    response.data = transformData(
-      response.data,
-      response.headers,
-      config.transformResponse
-    );
-
-    return response;
-  }, function onAdapterRejection(reason) {
-    if (!isCancel(reason)) {
-      throwIfCancellationRequested(config);
-
-      // Transform response data
-      if (reason && reason.response) {
-        reason.response.data = transformData(
-          reason.response.data,
-          reason.response.headers,
-          config.transformResponse
-        );
-      }
-    }
-
-    return Promise.reject(reason);
-  });
-};
-
-
-/***/ }),
-/* 16 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Update an Error with the specified config, error code, and response.
- *
- * @param {Error} error The error to update.
- * @param {Object} config The config.
- * @param {string} [code] The error code (for example, 'ECONNABORTED').
- * @param {Object} [request] The request.
- * @param {Object} [response] The response.
- * @returns {Error} The error.
- */
-module.exports = function enhanceError(error, config, code, request, response) {
-  error.config = config;
-  if (code) {
-    error.code = code;
-  }
-  error.request = request;
-  error.response = response;
-  return error;
-};
-
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var createError = __webpack_require__(6);
-
-/**
- * Resolve or reject a Promise based on response status.
- *
- * @param {Function} resolve A function that resolves the promise.
- * @param {Function} reject A function that rejects the promise.
- * @param {object} response The response.
- */
-module.exports = function settle(resolve, reject, response) {
-  var validateStatus = response.config.validateStatus;
-  // Note: status is not exposed by XDomainRequest
-  if (!response.status || !validateStatus || validateStatus(response.status)) {
-    resolve(response);
-  } else {
-    reject(createError(
-      'Request failed with status code ' + response.status,
-      response.config,
-      null,
-      response.request,
-      response
-    ));
-  }
-};
-
-
-/***/ }),
-/* 18 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(0);
-
-/**
- * Transform the data for a request or a response
- *
- * @param {Object|String} data The data to be transformed
- * @param {Array} headers The headers for the request or response
- * @param {Array|Function} fns A single function or Array of functions
- * @returns {*} The resulting transformed data
- */
-module.exports = function transformData(data, headers, fns) {
-  /*eslint no-param-reassign:0*/
-  utils.forEach(fns, function transform(fn) {
-    data = fn(data, headers);
-  });
-
-  return data;
-};
-
-
-/***/ }),
-/* 19 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-// btoa polyfill for IE<10 courtesy https://github.com/davidchambers/Base64.js
-
-var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
-
-function E() {
-  this.message = 'String contains an invalid character';
-}
-E.prototype = new Error;
-E.prototype.code = 5;
-E.prototype.name = 'InvalidCharacterError';
-
-function btoa(input) {
-  var str = String(input);
-  var output = '';
-  for (
-    // initialize result and counter
-    var block, charCode, idx = 0, map = chars;
-    // if the next str index does not exist:
-    //   change the mapping table to "="
-    //   check if d has no fractional digits
-    str.charAt(idx | 0) || (map = '=', idx % 1);
-    // "8 - idx % 1 * 8" generates the sequence 2, 4, 6, 8
-    output += map.charAt(63 & block >> 8 - idx % 1 * 8)
-  ) {
-    charCode = str.charCodeAt(idx += 3 / 4);
-    if (charCode > 0xFF) {
-      throw new E();
-    }
-    block = block << 8 | charCode;
-  }
-  return output;
-}
-
-module.exports = btoa;
-
-
-/***/ }),
-/* 20 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(0);
-
-function encode(val) {
-  return encodeURIComponent(val).
-    replace(/%40/gi, '@').
-    replace(/%3A/gi, ':').
-    replace(/%24/g, '$').
-    replace(/%2C/gi, ',').
-    replace(/%20/g, '+').
-    replace(/%5B/gi, '[').
-    replace(/%5D/gi, ']');
-}
-
-/**
- * Build a URL by appending params to the end
- *
- * @param {string} url The base of the url (e.g., http://www.google.com)
- * @param {object} [params] The params to be appended
- * @returns {string} The formatted url
- */
-module.exports = function buildURL(url, params, paramsSerializer) {
-  /*eslint no-param-reassign:0*/
-  if (!params) {
-    return url;
-  }
-
-  var serializedParams;
-  if (paramsSerializer) {
-    serializedParams = paramsSerializer(params);
-  } else if (utils.isURLSearchParams(params)) {
-    serializedParams = params.toString();
-  } else {
-    var parts = [];
-
-    utils.forEach(params, function serialize(val, key) {
-      if (val === null || typeof val === 'undefined') {
-        return;
-      }
-
-      if (utils.isArray(val)) {
-        key = key + '[]';
-      }
-
-      if (!utils.isArray(val)) {
-        val = [val];
-      }
-
-      utils.forEach(val, function parseValue(v) {
-        if (utils.isDate(v)) {
-          v = v.toISOString();
-        } else if (utils.isObject(v)) {
-          v = JSON.stringify(v);
-        }
-        parts.push(encode(key) + '=' + encode(v));
-      });
-    });
-
-    serializedParams = parts.join('&');
-  }
-
-  if (serializedParams) {
-    url += (url.indexOf('?') === -1 ? '?' : '&') + serializedParams;
-  }
-
-  return url;
-};
-
-
-/***/ }),
-/* 21 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Creates a new URL by combining the specified URLs
- *
- * @param {string} baseURL The base URL
- * @param {string} relativeURL The relative URL
- * @returns {string} The combined URL
- */
-module.exports = function combineURLs(baseURL, relativeURL) {
-  return relativeURL
-    ? baseURL.replace(/\/+$/, '') + '/' + relativeURL.replace(/^\/+/, '')
-    : baseURL;
-};
-
-
-/***/ }),
-/* 22 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(0);
-
-module.exports = (
-  utils.isStandardBrowserEnv() ?
-
-  // Standard browser envs support document.cookie
-  (function standardBrowserEnv() {
-    return {
-      write: function write(name, value, expires, path, domain, secure) {
-        var cookie = [];
-        cookie.push(name + '=' + encodeURIComponent(value));
-
-        if (utils.isNumber(expires)) {
-          cookie.push('expires=' + new Date(expires).toGMTString());
-        }
-
-        if (utils.isString(path)) {
-          cookie.push('path=' + path);
-        }
-
-        if (utils.isString(domain)) {
-          cookie.push('domain=' + domain);
-        }
-
-        if (secure === true) {
-          cookie.push('secure');
-        }
-
-        document.cookie = cookie.join('; ');
-      },
-
-      read: function read(name) {
-        var match = document.cookie.match(new RegExp('(^|;\\s*)(' + name + ')=([^;]*)'));
-        return (match ? decodeURIComponent(match[3]) : null);
-      },
-
-      remove: function remove(name) {
-        this.write(name, '', Date.now() - 86400000);
-      }
-    };
-  })() :
-
-  // Non standard browser env (web workers, react-native) lack needed support.
-  (function nonStandardBrowserEnv() {
-    return {
-      write: function write() {},
-      read: function read() { return null; },
-      remove: function remove() {}
-    };
-  })()
-);
-
-
-/***/ }),
-/* 23 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Determines whether the specified URL is absolute
- *
- * @param {string} url The URL to test
- * @returns {boolean} True if the specified URL is absolute, otherwise false
- */
-module.exports = function isAbsoluteURL(url) {
-  // A URL is considered absolute if it begins with "<scheme>://" or "//" (protocol-relative URL).
-  // RFC 3986 defines scheme name as a sequence of characters beginning with a letter and followed
-  // by any combination of letters, digits, plus, period, or hyphen.
-  return /^([a-z][a-z\d\+\-\.]*:)?\/\//i.test(url);
-};
-
-
-/***/ }),
-/* 24 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(0);
-
-module.exports = (
-  utils.isStandardBrowserEnv() ?
-
-  // Standard browser envs have full support of the APIs needed to test
-  // whether the request URL is of the same origin as current location.
-  (function standardBrowserEnv() {
-    var msie = /(msie|trident)/i.test(navigator.userAgent);
-    var urlParsingNode = document.createElement('a');
-    var originURL;
-
-    /**
-    * Parse a URL to discover it's components
-    *
-    * @param {String} url The URL to be parsed
-    * @returns {Object}
-    */
-    function resolveURL(url) {
-      var href = url;
-
-      if (msie) {
-        // IE needs attribute set twice to normalize properties
-        urlParsingNode.setAttribute('href', href);
-        href = urlParsingNode.href;
-      }
-
-      urlParsingNode.setAttribute('href', href);
-
-      // urlParsingNode provides the UrlUtils interface - http://url.spec.whatwg.org/#urlutils
-      return {
-        href: urlParsingNode.href,
-        protocol: urlParsingNode.protocol ? urlParsingNode.protocol.replace(/:$/, '') : '',
-        host: urlParsingNode.host,
-        search: urlParsingNode.search ? urlParsingNode.search.replace(/^\?/, '') : '',
-        hash: urlParsingNode.hash ? urlParsingNode.hash.replace(/^#/, '') : '',
-        hostname: urlParsingNode.hostname,
-        port: urlParsingNode.port,
-        pathname: (urlParsingNode.pathname.charAt(0) === '/') ?
-                  urlParsingNode.pathname :
-                  '/' + urlParsingNode.pathname
-      };
-    }
-
-    originURL = resolveURL(window.location.href);
-
-    /**
-    * Determine if a URL shares the same origin as the current location
-    *
-    * @param {String} requestURL The URL to test
-    * @returns {boolean} True if URL shares the same origin, otherwise false
-    */
-    return function isURLSameOrigin(requestURL) {
-      var parsed = (utils.isString(requestURL)) ? resolveURL(requestURL) : requestURL;
-      return (parsed.protocol === originURL.protocol &&
-            parsed.host === originURL.host);
-    };
-  })() :
-
-  // Non standard browser envs (web workers, react-native) lack needed support.
-  (function nonStandardBrowserEnv() {
-    return function isURLSameOrigin() {
-      return true;
-    };
-  })()
-);
-
-
-/***/ }),
-/* 25 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(0);
-
-module.exports = function normalizeHeaderName(headers, normalizedName) {
-  utils.forEach(headers, function processHeader(value, name) {
-    if (name !== normalizedName && name.toUpperCase() === normalizedName.toUpperCase()) {
-      headers[normalizedName] = value;
-      delete headers[name];
-    }
-  });
-};
-
-
-/***/ }),
-/* 26 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(0);
-
-// Headers whose duplicates are ignored by node
-// c.f. https://nodejs.org/api/http.html#http_message_headers
-var ignoreDuplicateOf = [
-  'age', 'authorization', 'content-length', 'content-type', 'etag',
-  'expires', 'from', 'host', 'if-modified-since', 'if-unmodified-since',
-  'last-modified', 'location', 'max-forwards', 'proxy-authorization',
-  'referer', 'retry-after', 'user-agent'
-];
-
-/**
- * Parse headers into an object
- *
- * ```
- * Date: Wed, 27 Aug 2014 08:58:49 GMT
- * Content-Type: application/json
- * Connection: keep-alive
- * Transfer-Encoding: chunked
- * ```
- *
- * @param {String} headers Headers needing to be parsed
- * @returns {Object} Headers parsed into an object
- */
-module.exports = function parseHeaders(headers) {
-  var parsed = {};
-  var key;
-  var val;
-  var i;
-
-  if (!headers) { return parsed; }
-
-  utils.forEach(headers.split('\n'), function parser(line) {
-    i = line.indexOf(':');
-    key = utils.trim(line.substr(0, i)).toLowerCase();
-    val = utils.trim(line.substr(i + 1));
-
-    if (key) {
-      if (parsed[key] && ignoreDuplicateOf.indexOf(key) >= 0) {
-        return;
-      }
-      if (key === 'set-cookie') {
-        parsed[key] = (parsed[key] ? parsed[key] : []).concat([val]);
-      } else {
-        parsed[key] = parsed[key] ? parsed[key] + ', ' + val : val;
-      }
-    }
-  });
-
-  return parsed;
-};
-
-
-/***/ }),
-/* 27 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Syntactic sugar for invoking a function and expanding an array for arguments.
- *
- * Common use case would be to use `Function.prototype.apply`.
- *
- *  ```js
- *  function f(x, y, z) {}
- *  var args = [1, 2, 3];
- *  f.apply(null, args);
- *  ```
- *
- * With `spread` this example can be re-written.
- *
- *  ```js
- *  spread(function(x, y, z) {})([1, 2, 3]);
- *  ```
- *
- * @param {Function} callback
- * @returns {Function}
- */
-module.exports = function spread(callback) {
-  return function wrap(arr) {
-    return callback.apply(null, arr);
-  };
-};
-
-
-/***/ }),
-/* 28 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/*jshint node:true,laxcomma:true*/
-
-
-/*
-file
-  :  row+ EOF
-  ;
-row
-  :  value (Comma value)* (LineBreak | EOF)
-  ;
-value
-  :  SimpleValue
-  |  QuotedValue
-  ;
-Comma
-  :  ','
-  ;
-LineBreak
-  :  '\r'? '\n'
-  |  '\r'
-  ;
-SimpleValue
-  :  ~(',' | '\r' | '\n' | '"')+
-  ;
-QuotedValue
-  :  Residue '"' ('""' | ~'"')* '"' Residue
-  ;
-
-Residue
-  : (' ' | '\t' | '\f')*
-*/
-
-function Parser(input, comma, quote) {
-  if (!(this instanceof Parser)) {
-    return new Parser(input, comma);
-  }
-  this.input = input;
-  this.pointer = 0;
-  this.linePointer = 0;
-  this.comma = ',';
-  this.quote = '"';
-  if (comma && comma[0]) {
-    this.comma = comma[0];
-  }
-  if (quote && quote[0]) {
-    this.quote = quote[0];
-  }
-}
-
-Parser.prototype.File = function () {
-  var files = [], row, eof;
-  while (1) {
-    var tempointer = this.pointer;
-    row = this.Row();
-    if (row.length > 0) {
-      this.linePointer = tempointer;
-      files.push(row);
-    }
-    else {
-      if (this.linePointer && this.pointer !== this.input.length) {
-        files.pop();
-        this.pointer = this.linePointer;
-      }
-      break;
-    }
-    eof = this.EOF();
-    if (eof) {
-      if (this.linePointer && this.pointer !== this.input.length) {
-        files.pop();
-        this.pointer = this.linePointer;
-      }
-      break;
-    }
-  }
-  return files;
-};
-
-Parser.prototype.Row = function () {
-  var value, comma, linebreak, eof, row = [];
-  while (1) {
-    value = this.Value();
-    if (!value) {
-      row.push('');
-    }
-    else {
-      row.push(value);
-    }
-    comma = this.Comma();
-    if (comma) {
-      continue;
-    }
-    linebreak = this.LineBreak();
-    eof = this.EOF();
-    if (linebreak || eof) {
-      return row;
-    }
-    else {
-      row.pop();
-      return row;
-    }
-  }
-};
-Parser.prototype.Value = function () {
-  var simplevalue, quotedvalue, residue;
-
-  residue = this.Residue();
-  quotedvalue = this.QuotedValue();
-  if (quotedvalue) {
-    var value = quotedvalue.slice(1, -1).replace(new RegExp(this.quote + this.quote, 'g'), this.quote);
-    this.Residue();
-    return value;
-  }
-  simplevalue = this.SimpleValue();
-  if (simplevalue && residue) {
-    return residue + simplevalue;
-  }
-  else if (simplevalue && !residue) {
-    return simplevalue;
-  }
-
-};
-Parser.prototype.Comma = function () {
-  if (this.input.slice(this.pointer, this.pointer + this.comma.length) === this.comma) {
-    this.pointer += this.comma.length;
-    return this.comma;
-  }
-};
-Parser.prototype.LineBreak = function () {
-  if (this.input.slice(this.pointer, this.pointer + 2) === '\r\n') {
-    this.pointer += 2;
-    return '\r\n';
-  }
-  if (this.input.charAt(this.pointer) === '\n') {
-    this.pointer += 1;
-    return '\n';
-  }
-  if (this.input.charAt(this.pointer) === '\r') {
-    this.pointer += 1;
-    return '\r';
-  }
-};
-Parser.prototype.SimpleValue = function () {
-  var value = '', index = this.input.slice(this.pointer).search(new RegExp('[' + this.comma + '\r\n]'));
-  if (this.input.charAt(this.pointer) === this.quote) {
-    return;
-  }
-  else if (index === -1) {
-    value = this.input.slice(this.pointer);
-  }
-  else if (index === 0) {
-    return;
-  }
-  else {
-    value = this.input.slice(this.pointer, this.pointer + index);
-  }
-  this.pointer += value.length;
-  return value;
-};
-Parser.prototype.QuotedValue = function () {
-  if (this.input.charAt(this.pointer) === this.quote) {
-    var searchIndex, index = 1;
-     while (1) {
-      searchIndex = this.input.slice(this.pointer + index).search(this.quote);
-      if (searchIndex === -1) {
-        return;
-      }
-      if (this.input.charAt(this.pointer + index + searchIndex + 1) === this.quote) {
-        index += searchIndex + 2;
-        continue;
-      }
-      var value = this.input.slice(this.pointer, this.pointer + index + searchIndex + 1);
-      this.pointer += value.length;
-      return value;
-    }
-  }
-};
-Parser.prototype.EOF = function () {
-  return (this.pointer >= this.input.length);
-};
-Parser.prototype.Residue = function () {
-  var value = ''
-    , chars = ' \f\v\u00a0\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u2028\u2029\u202f\u205f\u3000';
-
-  if (this.comma !== "\t") {
-    chars += "\t";
-  }
-  var index = this.input.slice(this.pointer).search(new RegExp('[^' + chars + ']'));
-  if (index === -1) {
-    value = this.input.slice(this.pointer);
-  }
-  else if (index === 0) {
-    return;
-  }
-  else {
-    value = this.input.slice(this.pointer, this.pointer + index);
-  }
-  this.pointer += value.length;
-  return value;
-};
-
-module.exports = Parser;
-
-
-
-/***/ }),
-/* 29 */
-/***/ (function(module, exports) {
-
-/*!
- * Determine if an object is a Buffer
- *
- * @author   Feross Aboukhadijeh <https://feross.org>
- * @license  MIT
- */
-
-// The _isBuffer check is for Safari 5-7 support, because it's missing
-// Object.prototype.constructor. Remove this eventually
-module.exports = function (obj) {
-  return obj != null && (isBuffer(obj) || isSlowBuffer(obj) || !!obj._isBuffer)
-}
-
-function isBuffer (obj) {
-  return !!obj.constructor && typeof obj.constructor.isBuffer === 'function' && obj.constructor.isBuffer(obj)
-}
-
-// For Node v0.10 support. Remove this eventually.
-function isSlowBuffer (obj) {
-  return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0))
-}
-
-
-/***/ }),
-/* 30 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(8);
-
-
-/***/ })
-/******/ ]);
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module can't be inlined because the eval devtool is used.
+/******/ 	var __webpack_exports__ = __webpack_require__("./demo/src/demo.js");
+/******/ 	
+/******/ })()
+;

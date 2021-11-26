@@ -1,51 +1,50 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-    <head>
-            <meta charset="utf-8">
-            <style>
-        </style>
-    </head>
-    <body>
+  <head>
+    <meta charset="utf-8" />
+    <style></style>
+  </head>
+  <body>
 
-        <h1>シンプルなリスト</h1>
+    <!--//////////////////-->
+    <h1>シンプルなパターン</h1>
+    <!--//////////////////-->
 
-        <script type="text/x-template" class="js-wp-posts-template-1">
-<li>
-    <a href="{{permalink}}">
-        {{post_date}} - {{post_title}}
-    </a>
-</li>
-        </script>
+    <p>受け取った文字を変換せずに出力</p>
 
-        <ul class="js-wp-posts">
-        </ul>
+    <!-- リストアイテム用テンプレート -->
+    <script type="text/x-template" class="js-wp-posts-template-1">
+      <li>
+          <a href="{{link}}">
+              {{date}} - {{title}}
+          </a>
+      </li>
+    </script>
 
+    <!-- この<ul>の中に変換されたデータが入る -->
+    <ul class="js-wp-posts-1" data-url="sample_rest.json"></ul>
 
-        <!--//////////////////-->
+    <!--//////////////////-->
+    <h1>画像指定、日付の変換などを指定したパターン</h1>
+    <!--//////////////////-->
 
+    <!-- リストアイテム用テンプレート -->
+    <script type="text/x-template" class="js-wp-posts-template-2">
+      <li>
+          <a href="{{link}}">
+              <img src="{{eyecatch}}">
+              <span>{{{convertDate("date","YY年MM月DD日")}}}</span> -
+              {{#loop categories}}
+              <span>{{name}}</span>
+              {{/#loop}} -
+              <span>{{{convertMaru("title")}}}</span>
+          </a>
+      </li>
+    </script>
 
-        <h1>オプションを指定</h1>
+    <!-- この<ul>の中に変換されたデータが入る -->
+      <ul class="js-wp-posts-2" data-url="sample_custom.json"></ul>
 
-        <script type="text/x-template" class="js-wp-posts-template-2">
-<li>
-    <a href="{{permalink}}">
-        <img src="{{eyecatch}}">
-        {{{convert_date("post_date","YY年MM月DD日")}}} -
-        {{{convert_maru("post_title")}}}
-    </a>
-</li>
-        </script>
-
-        <ul class="js-wp-posts-2">
-        </ul>
-
-
-
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.9.1/polyfill.min.js"></script>
-        <script src="bundle.js?4"></script>
-    </body>
+    <script src="bundle.js"></script>
+  </body>
 </html>
-
-
-
