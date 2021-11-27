@@ -1,6 +1,6 @@
 // 日付書式変換
-function convertDate(post, key, format) {
-  var date = post[key];
+function convertDate(post, format) {
+  var date = post.date;
   var dateArray = date.split(/[T: -]/);
   var YY = dateArray[0];
   var MM = dateArray[1];

@@ -6,9 +6,9 @@ import convertCustomToNormal from './convertCustomToNormal.js';
 import removeTag from './helpers/removeTag.js';
 import convertDate from './helpers/convertDate.js';
 
-var HELPER_REG = new RegExp("{{{(.+?)\\((.*?)\\)}}}", "m"); // 繰り返し処理のパターン
+var HELPER_REG = new RegExp("{{{(.+?)\\((.*?)\\)}}}", "mg"); // 繰り返し処理のパターン
 
-var LOOP_REG = new RegExp("{{#loop (.+?)}}([\\s\\S]+?){{\\/#loop}}", "m");
+var LOOP_REG = new RegExp("{{#loop (.+?)}}([\\s\\S]+?){{\\/#loop}}", "mg");
 /**
  *
  */
@@ -164,7 +164,7 @@ var WpPostsConvert = /*#__PURE__*/function () {
 
         var params = parse(match[2], {
           columns: false
-        })[0]; // ヘルパーの実行結果で置換する
+        })[0] || []; // ヘルパーの実行結果で置換する
 
         if (helpers && helpers[helperName]) {
           var result = helpers[helperName].apply(helpers, [post].concat(_toConsumableArray(params)));
