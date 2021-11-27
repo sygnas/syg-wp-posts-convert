@@ -216,19 +216,12 @@ addHelper(name: string, func: THelperFunction): void
 | name | String | 関数名 |
 | func | THelperFunction | 関数 |
 
-```
-// サンプル
-converter.addHelper('convert_maru', function(post, key){
-  let output = post[key];
-  output = output.replace('1', '①');
-  // ...
-  return output;
-}
-```
+
 
 #### THelperFunction
 ヘルパー関数は必ず引数`post`を付ける。
 変換した文字列を戻す。
+追加の引数は無くてもOK。
 
 ```
 THelperFunction = (post: TWpData, ...args: any) => string;
@@ -257,7 +250,7 @@ THelperFunction = (post: TWpData, ...args: any) => string;
 {{{convert_date("date","YY年MM月DD日")}}}
 ```
 
-詳細は下記Helperで解説。
+ヘルパーの引数は必ず「""」を使う。「''」ではエラーになる。
 
 
 ### 使用できる項目
@@ -274,17 +267,21 @@ THelperFunction = (post: TWpData, ...args: any) => string;
 
 ## Helper
 
-簡単な置換は `convertDate` というヘルパー関数を用意しているが、詳細な変換をしたければ独自にヘルパー関数を追加する必要がある。
+Wordpressから受け取った文字列を埋め込むだけなら不要だが、日時のように書式変換したい時は独自にヘルパー関数を追加することもできる。
 
-下記は搭載しているヘルパー。
+#### 注意点
+ヘルパーの呼び出しで引数を与える時は必ず「""」を使う。「''」ではエラーになる。
 
-### convertDate(項目, フォーマット)
 
-標準で搭載しているヘルパー関数。日付を好きなフォーマットに変換する。<br>
+### 標準で搭載しているヘルパー
+
+### convertDate(フォーマット)
+
+投稿日を好きなフォーマットに変換する。
 
 ```
 <!-- テンプレート -->
-{{{convert_date("date","YY年MM月DD日")}}}
+{{{convertDate("YY年MM月DD日")}}}
 
 <!-- 出力結果 -->
 2017年12月10日
@@ -298,20 +295,62 @@ THelperFunction = (post: TWpData, ...args: any) => string;
 | hh | 時（1-2桁） |
 | mm | 分（1-2桁） |
 
-### remove_tag(項目)
+### removeTag(項目)
 
-htmlタグを除去する。<br>
+htmlタグを除去する。
 
 ```
-<!-- オリジナルデータ -->
+<!-- オリジナルデータ<post.title> -->
 <strong>これはすごい！</strong>
 
 <!-- テンプレート -->
-{{{remove_tag("post_title")}}}
+{{{removeTag("title")}}}
 
 <!-- 出力結果 -->
 これはすごい！
 ```
+
+### 独自でヘルパーを作る
+
+#### 例：任意の項目の数字を丸数字にする
+
+```
+converter.addHelper('maru', (post, key) => {
+  let output = post[key];
+  output = output.replaceAll('1', '①');
+  output = output.replaceAll('2', '②');
+  // ...
+  output = output.replaceAll('9', '⑨');
+  output = output.replaceAll('10', '⑩');
+  return output;
+}
+```
+
+```
+{{{maru("date")}}}
+{{{maru("title")}}}
+```
+
+#### 例：ACFの項目を使う
+
+Advanced Custom Fieldsで用意したカスタムフィールドを使う。
+ここでは`favoriteColor`、`favoriteFood`を使っている。
+使用する項目は関数内で指定しているので、引数は`post`のみ指定している。
+
+```
+converter.addHelper('acf', (post) => {
+  const color = post.acf.color;
+  const food = post.acf.food;
+  return `<span style="color:#${color}">好きな色</span> <span>好きな食べ物：${food}</span>`;
+}
+```
+```
+{{{acf()}}}
+```
+
+
+
+
 
 
 ## License

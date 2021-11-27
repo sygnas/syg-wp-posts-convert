@@ -1,6 +1,6 @@
 {
   "name": "@sygnas/wp-posts-convert",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Wordpress REST API から記事を取得して出力する",
   "main": "dist/commonjs/index.js",
   "module": "dist/es6/index.js",
