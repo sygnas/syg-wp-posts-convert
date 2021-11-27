@@ -34,9 +34,9 @@ import removeTag from "./helpers/removeTag";
 import convertDate from "./helpers/convertDate.js";
 
 // ヘルパー関数を使った置き換えのパターン
-const HELPER_REG: RegExp = new RegExp("{{{(.+?)\\((.*?)\\)}}}", "m");
+const HELPER_REG: RegExp = new RegExp("{{{(.+?)\\((.*?)\\)}}}", "mg");
 // 繰り返し処理のパターン
-const LOOP_REG: RegExp = new RegExp("{{#loop (.+?)}}([\\s\\S]+?){{\\/#loop}}",　"m");
+const LOOP_REG: RegExp = new RegExp("{{#loop (.+?)}}([\\s\\S]+?){{\\/#loop}}",　"mg");
 
 /**
  *
@@ -183,7 +183,7 @@ class WpPostsConvert {
       // ヘルパー関数名
       const helperName = match[1];
       // ヘルパーに渡す引数（csv文字列）を配列に分解
-      const params = parse(match[2], {columns: false})[0];
+      const params = parse(match[2], {columns: false})[0] || [];
       // ヘルパーの実行結果で置換する
       if (helpers && helpers[helperName]){
         const result = helpers[helperName](post, ...params);
