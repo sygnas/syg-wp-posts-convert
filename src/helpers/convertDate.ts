@@ -2,9 +2,9 @@ import { TWpData } from "../types";
 
 
 // 日付書式変換
-export default function convertDate (post: TWpData, key: keyof TWpData, format: string): string {
+export default function convertDate (post: TWpData, format: string): string {
 
-    const date: string = post[key] as string;
+    const date: string = post.date as string;
     const dateArray: string[] = date.split(/[T: -]/);
     const YY: string = dateArray[0];
     const MM: string = dateArray[1];
